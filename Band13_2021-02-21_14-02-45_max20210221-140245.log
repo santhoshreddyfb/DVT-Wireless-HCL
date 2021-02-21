@@ -1,0 +1,36 @@
+    2064 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>    98: Band: 		 Bandwidth : (MHz) 		DL Frequency:  (MHz)		RB Allocation: 		 RB Start: 		 float(Power Level)       	 Channel type
+    2064 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>    99:  13	 		  :5.0 (MHz) 			: 748.5 (MHz)				: 25	   			 : 0				  23.0  
+    2065 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   100: ____________________________________________________________________________________________________________________________________
+    2065 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    __init__   431: print band: 13
+    2065 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   438: 5205
+    2066 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    __init__   431: print band: 13
+    2066 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    __init__   431: print band: 13
+    2066 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    __init__   431: print band: 13
+    2066 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   442: [5, 24, 49, 99]
+    2068 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   450: version of module : 39
+    2068 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   457: detected : 4D123456789
+    2069 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   468: connected to adb device 4D123456789
+    2069 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    __init__   431: print band: 13
+    2074 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   574: ____________________________________________________________________________________________________________________________________
+    2075 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   624: ------------------------------------------------------------------------------------------------------------------------------------
+    2075 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   625: ***** Script Setup CMW for LTE VoLTE/IMS call *****
+    2075 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   626: Date                 : Sun Feb 21 14:02:45 2021
+    2075 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   627: Computer             : LAPTOP-TL4NCTC4
+    2075 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   628: Operating System     : NT
+    2076 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   629: Target OS            : WIN32
+    2076 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   630: Python Version       : 3.9.0 (TAGS/V3.9.0:9CF6752, OCT  5 2020, 15:34:40) [MSC V.1927 64 BIT (AMD64)]
+    2076 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   631: Python Script        : .\LTE_Tx_Spurious_Emissions_ctf4.py
+    2076 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   632: ------------------------------------------------------------------------------------------------------------------------------------
+    2077 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   634: ------------------------------------------------------------------------------------------------------------------------------------
+    2077 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   635: Get working directory
+    2077 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   637: c:\Test\DVT-Wireless-HCL
+    2077 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   638: ------------------------------------------------------------------------------------------------------------------------------------
+   12080 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   642: ------------------------------------------------------------------------------------------------------------------------------------
+   12080 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   643: Create a Socket Class object to remote the CMW
+   12080 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                     connect   205: Open SOCKET Connection @: 192.168.0.218:5025
+   18092 ERROR        LTE_Tx_Spurious_Emissions_ctf4.py                     connect   212: SCPI Connection failed - run debug mode only 
+   18092 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                     connect   224: SOCKET Connection Successfully Open with: 192.168.0.218:5025 - SOCKET Handle: [<socket.socket fd=320, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('0.0.0.0', 50612), raddr=('192.168.0.218', 5025)>]
+   18092 INFO         LTE_Tx_Spurious_Emissions_ctf4.py                    <module>   653: ------------------------------------------------------------------------------------------------------------------------------------
+   18092 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                       write   253: 192.168.0.218:5025 >> SYST:DISP:UPD ON
+   24095 ERROR        LTE_Tx_Spurious_Emissions_ctf4.py                    <module>  1683: timed out
+   24095 DEBUG        LTE_Tx_Spurious_Emissions_ctf4.py                       write   253: 192.168.0.218:5025 >> &GTL
