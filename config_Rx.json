@@ -1,0 +1,108 @@
+{
+
+	"cmw": {
+
+		"host": "192.168.0.218",
+
+		"socket_port": 5025,
+
+		"timeout": 6
+
+	},
+
+	"fsw": {
+
+		"host": "192.168.0.219",
+
+		"socket_port": 5025,
+
+		"timeout": 6
+
+	},
+
+
+
+
+
+
+
+	"lte": {
+
+		"sua": 1,
+
+		"rf_port": "RF1C",
+
+		"converter": 1,
+
+		"dl_att": 0,
+
+		"ul_att": 0,
+
+		"dl_chan": 5230,
+
+		"bw": [1.4, 3, 5, 10, 15, 20],
+
+		"nrb": 50,
+
+		"rs_epre": -85.0,
+
+		"tx_close_loop_power": 23.0,
+
+		"imsi": "001010123456063",
+
+		"apn": "Test Network",
+
+		"qci": 5
+
+	},
+	"fsw_params": {
+
+		"sweep_points": [8000, 8000],
+		"ranges": [1, 2],
+		"ref_lev": -20,
+		"att_rf": 20,
+		"freq_start": [30000000, 1000000000],
+		"freq_stop": [1000000000, 12750000000],
+		"rbw_in": [100000, 1000000],
+		"vbw_in": [5000000, 5000000],
+		"detector_type": "RMS",
+
+		"limit": [-57, -47],
+		"sweep_time": 5
+
+
+	},
+
+	"dau": {
+
+		"ims_imsi": "001010123456063",
+
+		"epdg_imsi": "001010123456063"
+
+	},
+
+	"wifi_off_loading": {
+
+		"sua": 2,
+
+		"rf_port": "RF3C",
+
+		"converter": 2,
+
+		"dl_att": 25.0,
+
+		"ul_att": 25.0,
+
+		"std": "11g",
+
+		"bw": 20,
+
+		"channel": 1,
+
+		"output_power": -45.0,
+
+		"tx_expected_power": 30.0
+
+	}
+
+}

@@ -1,0 +1,13 @@
+numpy==1.19.5
+pandas==1.2.1
+psutil==5.7.3
+pure-python-adb==0.3.0.dev0
+python-dateutil==2.8.1
+pytz==2020.5
+PyVISA==1.11.3
+PyVISA-py==0.5.1
+pywin32==300
+six==1.15.0
+typing-extensions==3.7.4.3
+wexpect==4.0.0
+xlrd==1.2.0

@@ -1,2 +1,3 @@
-# DVT-Wireless-HCL
-DVT automation for spurious emissions of different technologies LTE/WIFI/Bluetooth
+# DVT-Automation-HCL
+Used for Spurious Emissions of LTE, WIFI/BLUEETOOTH  techanologies
+# some change commited
