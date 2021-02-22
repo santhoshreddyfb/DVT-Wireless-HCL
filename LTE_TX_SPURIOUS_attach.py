@@ -1753,7 +1753,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
 
 csvFilePath = r"{0}\\{1}.csv".format(mydir_d , CMW_verdict)
 logger.debug(csvFilePath)
-jsonFilePath = r"C:\\Test\\DVT-Wireless-HCL\\Cmw_data.json"
+jsonFilePath = r"C:\\Test\\Cmw_data.json"
 csv_to_json(csvFilePath, jsonFilePath)
 #moving csv files and json files to results_run folder
 src = mydir_d
