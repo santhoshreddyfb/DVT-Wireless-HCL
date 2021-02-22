@@ -1711,7 +1711,7 @@ cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
-CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)
+CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d))
 #writing on to csv files content to json file
@@ -1750,7 +1750,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
         jsonf.write(jsonString)
 
 
-csvFilePath = r"{0}\\CMW_VERDICT_*.csv".format(mydir_d)
+csvFilePath = CMW_verdict
 jsonFilePath = r"C:\\Test\\DVT-Wireless-HCL\\Cmw_data.json"
 csv_to_json(csvFilePath, jsonFilePath)
 #moving csv files and json files to results_run folder
