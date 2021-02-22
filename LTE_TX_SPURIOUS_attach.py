@@ -371,16 +371,16 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            self.ul_att = 25.0
-            self.dl_att = 25.0
-            self.imsi = '310260123456789'
+            #self.ul_att = 25.0
+            #self.dl_att = 25.0
+            #self.imsi = '310260123456789'
             #self.band = 4
             #self.bw = 5
 
             #self.nrb = 50
             #self.tx_close_loop_power = 0.0
             #self.rs_epre = -85.0
-            self.apn = 'fast.t-mobile.com'
+            #self.apn = 'fast.t-mobile.com'
             self.qci = 5
             self.rb_d = {1.4: 6, 3: 15, 5: 25, 10: 50, 15: 75, 20: 100}
             self.bw_d = {2: [1.4, 3, 5, 10, 15, 20],
@@ -403,9 +403,9 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            self.ul_att = 0.0
-            self.dl_att = 0.0
-            self.imsi = '0010010123456063'
+            #self.ul_att = 0.0
+            #self.dl_att = 0.0
+            #self.imsi = '0010010123456063'
             self.opc_key = "00000000000000000000000000000000"
             self.secret_key = "000102030405060708090A0B0C0D0E0F"
             self.milenage = False
@@ -429,7 +429,7 @@ while row_count < int(sys.argv[3]): # stop variant
             self.duplex_freq = self.band_d[self.band][-1]
             self.ul_freq = self.dl_freq - self.duplex_freq
             #self.rs_epre = -85.0
-            self.dl_total_power = -57.2
+            #self.dl_total_power = -57.2
             logger.debug('print band: {0}'.format(self.band))
             #logger.debug('print channel value: {0}'.format(self.dl_chan))
             #logger.debug('print dl freq value: {0}'.format(self.dl_freq))
@@ -1234,7 +1234,7 @@ while row_count < int(sys.argv[3]): # stop variant
                             time.sleep(1.0)
                             device.shell('reboot')
                             time.sleep(90)
-                            device.shell('root')
+                            #device.shell('root')
 
 
                     if not registered:
