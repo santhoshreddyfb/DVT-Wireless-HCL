@@ -2,6 +2,7 @@
 import sys
 import os
 import time
+import shutil
 import datetime
 import json
 import logging
@@ -1728,7 +1729,7 @@ df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d))
 #df_j.reset_index(inplace=True)
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
 # printing the csv contents in run log .py for all variants
-logger.debug(df_j)
+#logger.debug(df_j)
 
 def csv_to_json(csvFilePath, jsonFilePath):
     jsonArray = []
@@ -1750,9 +1751,12 @@ def csv_to_json(csvFilePath, jsonFilePath):
 
 
 csvFilePath = r"{0}\\CMW_VERDICT_*.csv".format(mydir_d)
-jsonFilePath = r"C:\\Test\\LTE_TX_SPUR_EMISSIONS\\Cmw_data.json"
+jsonFilePath = r"C:\\Test\\DVT-Wireless-HCL\\Cmw_data.json"
 csv_to_json(csvFilePath, jsonFilePath)
-
+#moving csv files and json files to results_run folder
+src = mydir_d
+dest = "C:\\Test\\Results_run"
+shutil.copytree(src, dest, dirs_exist_ok=True)
 # converting fsw verdict csv file to json
 df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
