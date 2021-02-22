@@ -1764,7 +1764,7 @@ df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
 df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
-logger.debug(df_j)
+#logger.debug(df_j)
 logger.debug(132 * '_')
 logger.debug("PASSED")
 
