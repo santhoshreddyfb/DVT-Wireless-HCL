@@ -1199,7 +1199,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
 
             # Check Default Bearers
-            TIMEOUT = 30
+            TIMEOUT = 15
             # changed
             tstart = time.time()
             buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
@@ -1209,8 +1209,8 @@ while row_count < int(sys.argv[3]): # stop variant
                 if (time.time() - tstart) > TIMEOUT:
                     logger.info('TIMEOUT - Default Bearers not present')
                     # Toggle airplane mode on -> off
-                    device.shell('root')
-                    time.sleep(2.0)
+                    #device.shell('root')
+                    #time.sleep(2.0)
                     device.shell('settings put global airplane_mode_on 1')
                     # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
                     device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
@@ -1233,8 +1233,8 @@ while row_count < int(sys.argv[3]): # stop variant
                         else :
                             time.sleep(1.0)
                             device.shell('reboot')
-                            time.sleep(90)
-                            #device.shell('root')
+                            time.sleep(120)
+                            device.shell('root')
 
 
                     if not registered:
