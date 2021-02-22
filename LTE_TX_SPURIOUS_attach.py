@@ -1750,7 +1750,7 @@ def csv_to_json(csvFilePath, jsonFilePath):
         jsonf.write(jsonString)
 
 
-csvFilePath = CMW_verdict
+csvFilePath = "{0}.csv".format(CMW_verdict)
 jsonFilePath = r"C:\\Test\\DVT-Wireless-HCL\\Cmw_data.json"
 csv_to_json(csvFilePath, jsonFilePath)
 #moving csv files and json files to results_run folder
