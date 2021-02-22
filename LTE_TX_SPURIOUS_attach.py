@@ -371,8 +371,8 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            #self.ul_att = 25.0
-            #self.dl_att = 25.0
+            self.ul_att = 25.0
+            self.dl_att = 25.0
             #self.imsi = '310260123456789'
             #self.band = 4
             #self.bw = 5
