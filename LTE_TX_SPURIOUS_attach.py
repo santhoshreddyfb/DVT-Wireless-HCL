@@ -1380,7 +1380,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug ("abs power msew value are {0} {1} {2} {3}".format(Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]))
                 # Measured values of ranges 1,2,3 should be less than -36 dbm
 
-                 i = 0
+                i = 0
                 while i < len(abs_fre)-1:
                     if abs_fre[i] <= float(max):
                         logger.debug("abs _power {0}".format(abs_fre[i])
