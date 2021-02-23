@@ -496,7 +496,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
         # read json file
         data = None
-        f_json = os.path.curdir + os.sep + 'config.json'
+        f_json = os.path.curdir + os.sep + 'config_Rx.json'
         # fsw_json = os.path.curdir + os.sep + 'config.json'
         if os.path.exists(f_json):
             with open(f_json) as json_file:
@@ -1168,7 +1168,7 @@ while row_count < int(sys.argv[3]): # stop variant
             #fsw.write("*CLS")
             fsw.write("*RST")
             fsw.write("INIT:CONT OFF")
-            #fsw.write("SYST:PRES:ALL")
+            fsw.write("SYST:PRES:ALL")
             time.sleep(0.5)
             fsw.write("INIT:CONT ON")
             fsw.write("INP:ATT:AUTO OFF")
