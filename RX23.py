@@ -70,7 +70,7 @@ else:
     logger.debug(" Please check the command line argument  either MAX/max or MIN/min valid, Refer to Test Description")
 
 
-inp_file = ("C:\\Test\\RX_Spurious_Emission\\10feb_RX\\{0}".format(power))
+inp_file = ("C:\\Test\\DVT-Wireless-HCL\\{0}".format(power))
 wb = xlrd.open_workbook(inp_file)
 for i in total_bands:
     if i == sys.argv[1]:
