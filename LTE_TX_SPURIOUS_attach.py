@@ -1376,24 +1376,27 @@ while row_count < int(sys.argv[3]): # stop variant
                     summary = 'PASS'
                 else:
                     summary = 'FAIL'
-                abs_fre = [Meas[1][0], Meas[1][1], Meas[1][2]]
+                abs_fre = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]]
                 logger.debug ("abs power msew value are {0} {1} {2} {3}".format(Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]))
                 # Measured values of ranges 1,2,3 should be less than -36 dbm
 
-                if Meas[1][0] < float(max):
+                 i = 0
+                while i < len(abs_fre)-1:
+                    if abspower[i] <= float(max):
+                        logger.debug("abs _power {0}".format(abspower[i])
+                        verdict = 'PASS'
+                    else :
+                        logger.debug("abs _power {0}".format(abspower[i])                        
+                        verdict ='FAIL' 
+                    i =i + 1
+                    
+                #range 4 value
+                if Meas[1][3] < float(max):
                     verdict = 'PASS'
-                elif Meas[1][1] < float(max) :
-                    verdict = 'PASS'
-                elif Meas[1][2] < float(max): # -11.49 < -36
-                    verdict = 'PASS'
-                    logger.debug("the value @ {0}".format(Meas[1][2]))
+                    logger.debug("abs _power {0}".format(abspower[3])                    
                 else:
                     verdict = 'FAIL'
-                if Meas[1][3] < float(min):
-                    verdict = 'PASS'
-                else:
-                    verdict = 'FAIL'
-
+                                 
                 logger.debug(Meas)
                 logger.debug(132 * '-')
                 logger.debug("Measurement Ranges for FSW spectrum analyzer")
