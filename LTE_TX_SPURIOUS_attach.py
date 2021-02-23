@@ -41,7 +41,7 @@ mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
 #Creating directory for results
-dest = os.path.join('{2}\\Logs_folder\\', 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0])
+dest = os.path.join('{2}\\Logs_folder\\', 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
 os.makedirs(dest)
 dest_d = dest.replace('\\', '\\\\')
                     
