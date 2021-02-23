@@ -35,12 +35,16 @@ sh.setFormatter(logging.Formatter(logger_format))
 logger.addHandler(sh)
 
 # Making a directory For the Run
-mydir = os.path.join(os.getcwd().split('D')[0], '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4]))
+mydir = os.path.join('{3}\\Logs_folder\\', '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
-
+#Creating directory for results
+dest = os.path.join('{2}\\Logs_folder\\', 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0])
+os.makedirs(dest)
+dest_d = dest.replace('\\', '\\\\')
+                    
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -50,13 +54,6 @@ fh.setFormatter(logging.Formatter(logger_format))
 # add file handle to logger instance
 logger.addHandler(fh)
 
-"""
-# Making a directory For the Run
-mydir = os.path.join(os.getcwd(), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
-os.makedirs(mydir)
-mydir_d = mydir.replace('\\', '\\\\')
-logger.debug("Result log folder created succesfully {0}".format(mydir_d))
-"""
 total_bands = ['Band2', 'Band4', 'Band5', 'Band12', 'Band13', 'Band66']
 # to pick min/max power input file from ctf command ine
 
@@ -69,8 +66,8 @@ elif sys.argv[4] == 'min' or sys.argv[4] == 'MIN':
 else:
     logger.debug(" Please check the command line argument  either MAX/max or MIN/min valid, Refer to Test Description")
 
-
-inp_file = ("C:\\Test\\LTE_TX_SPUR_EMISSIONS\\{0}".format(power))
+#pick the min/max input file from current directory
+inp_file = ("{1}\\{0}".format(power, os.getcwd()))
 wb = xlrd.open_workbook(inp_file)
 for i in total_bands:
     if i == sys.argv[1]:
@@ -431,10 +428,6 @@ while row_count < int(sys.argv[3]): # stop variant
             #self.rs_epre = -85.0
             #self.dl_total_power = -57.2
             logger.debug('print band: {0}'.format(self.band))
-            #logger.debug('print channel value: {0}'.format(self.dl_chan))
-            #logger.debug('print dl freq value: {0}'.format(self.dl_freq))
-            #logger.debug('print power level: {0}'.format(self.tx_close_loop_power))
-
 
     dl_channel = c_lte().dl_chan
     logger.debug(dl_channel)
@@ -772,6 +765,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     # Check DAU service
                     status = cmw.ask("SOURce:DATA:CONT:{0}:STATe?".format(service))[0]
+                    logger.debug("Status of DAU : {0}".format(status))
 
                     # Turn OFF
                     if status != 'OFF':
@@ -1471,9 +1465,9 @@ while row_count < int(sys.argv[3]): # stop variant
 
                 Meas = Extract(Meas_range)
 
-                min = -47.0
+                min = -30.0
 
-                max = -57.0
+                max = -36.0
 
                 if Meas[1][1] < float(min) and Meas[1][0] < float(max):
 
@@ -1759,9 +1753,9 @@ logger.debug(csvFilePath)
 jsonFilePath = r"C:\\Test\\Cmw_data.json"
 csv_to_json(csvFilePath, jsonFilePath)
 #moving csv files and json files to results_run folder
-src = mydir_d
-dest = "C:\\Test\\Results_run"
-shutil.copytree(src, dest, dirs_exist_ok=True)
+#src = mydir_d
+#dest = "C:\\Test\\Results_run"
+shutil.copytree(mydir_d, dest_d, dirs_exist_ok=True)
 # converting fsw verdict csv file to json
 df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
