@@ -1383,17 +1383,17 @@ while row_count < int(sys.argv[3]): # stop variant
                 i = 0
                 while i < len(abs_fre)-1:
                     if abs_fre[i] <= float(max):
-                        logger.debug("abs _power {0}".format(abs_fre[i])
+                        logger.debug("abs _power {0}".format(abs_fre[i]))
                         verdict = 'PASS'
                     else :
-                        logger.debug("abs _power {0}".format(abs_fre[i])                        
+                        logger.debug("abs _power {0}".format(abs_fre[i]))                       
                         verdict ='FAIL' 
                     i =i + 1
                     
                 #range 4 value
                 if Meas[1][3] < float(max):
                     verdict = 'PASS'
-                    logger.debug("abs _power {0}".format(abs_fre[3])                    
+                    logger.debug("abs _power {0}".format(abs_fre[3]))                    
                 else:
                     verdict = 'FAIL'
                                  
