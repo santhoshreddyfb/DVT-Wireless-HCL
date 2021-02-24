@@ -487,9 +487,10 @@ while row_count < int(sys.argv[3]): # stop variant
 
     try:
 
+
         # read json file
         data = None
-        f_json = os.path.curdir + os.sep + 'config_Rx.json'
+        f_json = os.path.curdir + os.sep + 'config.json'
         # fsw_json = os.path.curdir + os.sep + 'config.json'
         if os.path.exists(f_json):
             with open(f_json) as json_file:
@@ -1240,7 +1241,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
-            fsw.write("SWE:MODE LIST")
+            #fsw.write("SWE:MODE LIST")
+            fsw.write("SENS:SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
             logger.info('SCPI commands for FSW')
             logger.info('{0}'.format(132 * '-'))
