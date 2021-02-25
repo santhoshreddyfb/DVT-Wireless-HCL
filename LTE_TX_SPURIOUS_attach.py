@@ -1234,7 +1234,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     if not registered:
                         logger.error('dut did not register successfully. terminating.')
-                        sys.exit(-3)
+                        #sys.exit(-3)
 
                     logger.info('dut did register successfully.')
             logger.info('Default Bearer IMS detected')
