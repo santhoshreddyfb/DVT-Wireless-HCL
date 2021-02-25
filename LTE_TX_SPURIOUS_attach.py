@@ -1194,7 +1194,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
 
             # Check Default Bearers
-            TIMEOUT = 15
+            TIMEOUT = 30
             # changed
             tstart = time.time()
             buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
