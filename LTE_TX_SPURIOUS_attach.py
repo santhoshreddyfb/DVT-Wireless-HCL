@@ -1238,7 +1238,17 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     logger.info('dut did register successfully.')
             logger.info('Default Bearer IMS detected')
-
+            # Set Dedicated Bearer ID to 6(ims), profile Voice
+            cmw.write('PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535')
+            # Connect Dedicated Bearer
+            cmw.write('CALL:LTE:SIGN:PSWitched:ACTion CONNect')
+            # Query Dedicated Bearer
+            buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
+            while not "(->6, Voice)" in buffin:
+                buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
+                time.sleep(0.5)
+            logger.info('Dedicated Bearer Voice connected')
+            logger.debug("PASSED")
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
             #fsw.write("SWE:MODE LIST")
@@ -1569,17 +1579,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug(132 * '_')
             logger.debug(132 * '_')
         # End Init FSW
-            # Set Dedicated Bearer ID to 6(ims), profile Voice
-            cmw.write('PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535')
-            # Connect Dedicated Bearer
-            cmw.write('CALL:LTE:SIGN:PSWitched:ACTion CONNect')
-            # Query Dedicated Bearer
-            buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
-            while not "(->6, Voice)" in buffin:
-                buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
-                time.sleep(0.5)
-            logger.info('Dedicated Bearer Voice connected')
-            logger.debug("PASSED")
+
 
             # Initiate VoLTE call to UE:
             cmw.write("CONFigure:DATA:CONTrol:IMS2:VIRTualsub1:MTCall:CALL")
