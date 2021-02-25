@@ -35,12 +35,16 @@ sh.setFormatter(logging.Formatter(logger_format))
 logger.addHandler(sh)
 
 # Making a directory For the Run
-mydir = os.path.join(os.getcwd().split('D')[0], '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4]))
+mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
-
+#Creating directory for results
+dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
+#os.makedir(dest)
+dest_d = dest.replace('\\', '\\\\')
+                    
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -87,6 +91,7 @@ while row_count < int(sys.argv[3]): # stop variant
     logger.debug(132*'_')
 
     TEST_BAND = int(sheet.cell_value(1, 0))
+
 
 #for row_count in range(1, 4) :
     TEST_BW = sheet.cell_value(row_count, 1)
