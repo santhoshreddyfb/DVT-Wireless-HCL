@@ -1,0 +1,36 @@
+{
+    "ctf_data": [
+        {
+            "data_source": "FSW_VERDICT_20210223-143023.csv",
+            "data_list": [
+                {
+                    "Unnamed: 0": 0.0,
+                    "Band": 1.4,
+                    "Range": 1.0,
+                    "RBW": 100000.0,
+                    "frequency": 71499.4375,
+                    "abs_power": -48.29167175,
+                    "limit_pwr": 8.708328247
+                },
+                {
+                    "Unnamed: 0": 1.0,
+                    "Band": 2110.7,
+                    "Range": 2.0,
+                    "RBW": 1000000.0,
+                    "frequency": 1710140672.0,
+                    "abs_power": -49.06455612,
+                    "limit_pwr": -2.064556122
+                }
+            ]
+        }
+    ],
+    "ctf_tables": [
+        {
+            "title": "FSW_VERDICT_20210223-143023.csv",
+            "table_type": "static",
+            "columns": "Unnamed: 0, Band, Range, RBW, frequency, abs_power, limit_pwr",
+            "data_source_list": "FSW_VERDICT_20210223-143023.csv"
+        }
+    ],
+    "ctf_charts": []
+}

@@ -19,7 +19,7 @@ import pandas as pd
 from operator import itemgetter
 from ppadb.client import Client as AdbClient
 from glob import glob
-
+from ctf_json_data import CtfJsonData
 
 
 # create a log
@@ -40,6 +40,8 @@ os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
+#if already dest_d file exits, delete and then create
+#shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
 #os.makedir(dest)
@@ -1192,7 +1194,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
             logger.info('LTE CELL READY')
             logger.info('{0}'.format(132 * '-'))
-
+            time.sleep(30)
             # Check Default Bearers
             TIMEOUT = 30
             # changed
@@ -1366,33 +1368,39 @@ while row_count < int(sys.argv[3]): # stop variant
                 Meas = Extract(Meas_range)
                 min = -30.0
                 max = -36.0
-
+                verdict = []
                 if Meas[1][3] < float(min) and Meas[1][1] < float(max) and Meas[1][2] < float(max) and Meas[1][
                     0] < float(max):
                     summary = 'PASS'
                 else:
                     summary = 'FAIL'
                 abs_fre = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]]
-                logger.debug ("abs power msew value are {0} {1} {2} {3}".format(Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]))
+                logger.debug ("abs power msw value are {0} {1} {2} {3}".format(Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]))
                 # Measured values of ranges 1,2,3 should be less than -36 dbm
-
+                logger.debug(abs_fre)
+                logger.debug(len(abs_fre))
                 i = 0
-                while i < len(abs_fre)-1:
+                while i < len(abs_fre) - 1:
                     if abs_fre[i] <= float(max):
-                        logger.debug("abs _power {0}".format(abs_fre[i]))
-                        verdict = 'PASS'
-                    else :
-                        logger.debug("abs _power {0}".format(abs_fre[i]))                       
-                        verdict ='FAIL' 
-                    i =i + 1
-                    
-                #range 4 value
-                if Meas[1][3] < float(max):
-                    verdict = 'PASS'
-                    logger.debug("abs _power {0}".format(abs_fre[3]))                    
+                        print("abs _power {0}".format(abs_fre[i]))
+                        verdict.extend(['PASS'])
+                        print("for max values of 1 to3 ranges", verdict)
+                    else:
+                        print("abs _power {0}".format(abs_fre[i]))
+                        verdict.extend(['FAIL'])
+                        print("for max values of 1 to3 ranges", verdict)
+                    i = i + 1
+
+                # range 4 value
+                if abs_fre[3] <= float(min):
+                    verdict.extend(['PASS'])
+                    print("abs _power {0}".format(abs_fre[3]))
+                    print("for max values of 4th ranges", verdict)
                 else:
-                    verdict = 'FAIL'
-                                 
+                    verdict.extend(['FAIL'])
+                    print("for max values of 4 ranges", verdict)
+
+                logger.debug("verdict list is : \t", verdict)
                 logger.debug(Meas)
                 logger.debug(132 * '-')
                 logger.debug("Measurement Ranges for FSW spectrum analyzer")
@@ -1401,19 +1409,19 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(
                     " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} |{3}  ".format(Meas[0][0] / 1000, Meas[1][0],
                                                                                   Meas[2][0],
-                                                                                  verdict))
+                                                                                  verdict[0]))
                 logger.debug(
                     " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][1] / 1000, Meas[1][1],
                                                                                   Meas[2][1],
-                                                                                  verdict))
+                                                                                  verdict[1]))
                 logger.debug(
                     " Range3 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][2] / 1000, Meas[1][2],
                                                                                   Meas[2][2],
-                                                                                  verdict))
+                                                                                  verdict[2]))
                 logger.debug(
                     " Range4 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][3] / 1000, Meas[1][3],
                                                                                   Meas[2][3],
-                                                                                  verdict))
+                                                                                  verdict[3]))
                 logger.debug(132 * '-')
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
                 logger.debug(132 * '-')
@@ -1470,7 +1478,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 min = -30.0
 
                 max = -36.0
-
+                verdict = []
                 if Meas[1][1] < float(min) and Meas[1][0] < float(max):
 
                     summary = 'PASS'
@@ -1487,19 +1495,19 @@ while row_count < int(sys.argv[3]): # stop variant
 
                 if Meas[1][0] < float(max):
 
-                    verdict = 'PASS'
+                    verdict.extend['PASS']
 
                 else:
 
-                    verdict = 'FAIL'
+                    verdict.extend['FAIL']
 
                 if Meas[1][1] < float(min):
 
-                    verdict = 'PASS'
+                    verdict.extend['PASS']
 
                 else:
 
-                    verdict = 'FAIL'
+                    verdict.extend['FAIL']
 
                 logger.debug(Meas)
 
@@ -1694,10 +1702,7 @@ while row_count < int(sys.argv[3]): # stop variant
             cmw = None
     row_count = row_count + 1
     logger.debug( "end of {0} th loop".format(int(row_count)))
-    #logger.debug("PASSED")
-    #device.shell('settings put global airplane_mode_on 1')
-    # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
-    #device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
+
 # end of While loop
 # Storing all csv file in to single file to conclude the results summary for all runs
 timestr_out = time.strftime("%Y%m%d")
@@ -1713,57 +1718,86 @@ df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
 CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
 #writing csv files
-df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d))
+df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
 #df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
 
 FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
 fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
 df_fsw = pd.concat((pd.read_csv(f, header=0 ) for f in fsw_csv_files))
-df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d))
+df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
 
 # converting csv file to json
-#df_j = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, CMW_verdict))
 
-
-#df_j.reset_index(inplace=True)
-#df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-# printing the csv contents in run log .py for all variants
-#logger.debug(df_j)
-
-def csv_to_json(csvFilePath, jsonFilePath):
-    jsonArray = []
-
-    # read csv file
-    with open(csvFilePath, encoding='utf-8') as csvf:
-        # load csv file data using csv library's dictionary reader
-        csvReader = csv.DictReader(csvf)
-
-        # convert each csv row into python dict
-        for row in csvReader:
-            # add this python dict to json array
-            jsonArray.append(row)
-
-    # convert python jsonArray to JSON String and write to file
-    with open(jsonFilePath, 'w', encoding='utf-8') as jsonf:
-        jsonString = json.dumps(jsonArray, indent=4)
-        jsonf.write(jsonString)
-
-
-csvFilePath = r"{0}\\{1}.csv".format(mydir_d , CMW_verdict)
-logger.debug(csvFilePath)
-jsonFilePath = r"C:\\Test\\Cmw_data.json"
-csv_to_json(csvFilePath, jsonFilePath)
 #moving csv files and json files to results_run folder
-#src = mydir_d
-#dest = "C:\\Test\\Results_run"
-shutil.copytree(mydir_d, dest_d, dirs_exist_ok=True)
+#shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
+shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
+
+
 # converting fsw verdict csv file to json
 df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
 df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
 #logger.debug(df_j)
+"""
+This script:
+1. collects the test case csv filenames into a list
+2. reads each csv file into a dataframe
+3. convert Series to a dictionary, adds data sources to json
+4. adds specified charts
+5. save data series to json file for visualization
+# Sample usage
+    cv = CtfVisualization(path=<path to test case files directory>)
+    cv.create_json()
+Note: Remove any non test case csv files from directory before running to prevent conflict 
+or extraneous data from being included in the visualization.
+"""
+
+
+
+class CtfVisualization:
+    """Interface to create the visualization data json file from csv results files"""
+    _description: str  # not currently used
+    _name: str
+    _path: str
+    _data_sources: list
+
+    def __init__(self, description: str = "Visualize test case csv files", name: str = "ctf_cmw.json", path: str = ""):
+        self._description = description
+        self._name = name
+        self._path = path
+        self._data_sources = []
+
+    def create_json(self):
+        # CTF create data blob
+        ctf_json = CtfJsonData(name=self._name, path=self._path)
+
+        all_csv_files = glob(os.path.join(self._path, "CMW_VERDICT_*.csv"))
+        for fn in all_csv_files:
+            df = pd.read_csv(fn, sep=',', na_filter=False)
+
+            # CTF add data source and table
+            ctf_data_source = os.path.basename(fn)
+            self._data_sources.append(ctf_data_source)
+            ctf_json.add_data_source(ctf_data_source)
+            ctf_columns = (', '.join(df))
+            ctf_json.add_table(title=ctf_data_source, columns=ctf_columns, data_source_list=ctf_data_source)
+
+            # CTF add data to source
+            df_dict_ctf = df.T.to_dict()
+            for row in df_dict_ctf:
+                ctf_json.add_data_to_source(ctf_data_source, [df_dict_ctf[row]])
+
+        # CTF dump to JSON file
+        ctf_json.save_data()
+
+
+# Sample usage
+if __name__ == "__main__":
+    cv = CtfVisualization(path=dest_d)
+    cv.create_json()
+
 logger.debug(132 * '_')
 logger.debug("PASSED")
 

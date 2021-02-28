@@ -1,0 +1,9 @@
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    97: Band: 		 Bandwidth : (MHz) 		DL Frequency:  (MHz)		RB Allocation: 		 RB Start: 		 float(Power Level)       	 Channel type
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    98:  4	 		  :1.4 (MHz) 			: 2110.7 (MHz)				: 1	   			 : 0				  23.0  
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    99: ____________________________________________________________________________________________________________________________________
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   433: 1957
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+    1319 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   437: [5, 24, 49, 99]

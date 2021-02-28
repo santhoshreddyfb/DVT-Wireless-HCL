@@ -1,0 +1,28 @@
+{
+    "ctf_data": [
+        {
+            "data_source": "CMW_VERDICT_20210223-143023.csv",
+            "data_list": [
+                {
+                    "Unnamed: 0": 0,
+                    "band": 4,
+                    "BandWidth": 1.4,
+                    "DL Frequency": 2110.7,
+                    "RB Allocation": 1,
+                    "RB Start": 0,
+                    "@power": 23.0,
+                    "Result": "FAIL"
+                }
+            ]
+        }
+    ],
+    "ctf_tables": [
+        {
+            "title": "CMW_VERDICT_20210223-143023.csv",
+            "table_type": "static",
+            "columns": "Unnamed: 0, band, BandWidth, DL Frequency, RB Allocation, RB Start, @power, Result",
+            "data_source_list": "CMW_VERDICT_20210223-143023.csv"
+        }
+    ],
+    "ctf_charts": []
+}

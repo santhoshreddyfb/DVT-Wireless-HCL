@@ -1,0 +1,1195 @@
+     479 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    97: Band: 		 Bandwidth : (MHz) 		DL Frequency:  (MHz)		RB Allocation: 		 RB Start: 		 float(Power Level)       	 Channel type
+     479 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    98:  4	 		  :1.4 (MHz) 			: 2110.7 (MHz)				: 1	   			 : 0				  23.0  
+     479 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>    99: ____________________________________________________________________________________________________________________________________
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   433: 1957
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   437: [5, 24, 49, 99]
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   445: version of module : 39
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   452: detected : 4D123456789
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   463: connected to adb device 4D123456789
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+     485 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   569: ____________________________________________________________________________________________________________________________________
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   619: ------------------------------------------------------------------------------------------------------------------------------------
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   620: ***** Script Setup CMW for LTE VoLTE/IMS call *****
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   621: Date                 : Tue Feb 23 14:20:41 2021
+     485 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   622: Computer             : LAPTOP-TL4NCTC4
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   623: Operating System     : NT
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   624: Target OS            : WIN32
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   625: Python Version       : 3.9.0 (TAGS/V3.9.0:9CF6752, OCT  5 2020, 15:34:40) [MSC V.1927 64 BIT (AMD64)]
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   626: Python Script        : .\LTE_TX_SPURIOUS_attach.py
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   627: ------------------------------------------------------------------------------------------------------------------------------------
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   629: ------------------------------------------------------------------------------------------------------------------------------------
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   630: Get working directory
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   632: C:\Test\DVT-Wireless-HCL
+     501 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   633: ------------------------------------------------------------------------------------------------------------------------------------
+   10508 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   637: ------------------------------------------------------------------------------------------------------------------------------------
+   10508 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   638: Create a Socket Class object to remote the CMW
+   10508 DEBUG        LTE_TX_SPURIOUS_attach.py                             connect   204: Open SOCKET Connection @: 192.168.0.218:5025
+   10523 DEBUG        LTE_TX_SPURIOUS_attach.py                             connect   223: SOCKET Connection Successfully Open with: 192.168.0.218:5025 - SOCKET Handle: [<socket.socket fd=1104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.0.217', 50896), raddr=('192.168.0.218', 5025)>]
+   10523 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   648: ------------------------------------------------------------------------------------------------------------------------------------
+   10523 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:DISP:UPD ON
+   10523 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   655: ------------------------------------------------------------------------------------------------------------------------------------
+   10523 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   656: RESET CMW
+   10523 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> *CLS
+   10523 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:PRES:ALL
+   10523 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> *OPC?
+   13513 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [1]
+   13513 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   663: ------------------------------------------------------------------------------------------------------------------------------------
+   13529 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   665: ------------------------------------------------------------------------------------------------------------------------------------
+   13529 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   666: QUERY ID
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> *IDN?
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [Rohde&Schwarz,CMW,1201.0002k50/166716,3.8.10]
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   676: ['Rohde&Schwarz', 'CMW', '1201.0002k50/166716', '3.8.10']
+   13529 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   691: ------------------------------------------------------------------------------------------------------------------------------------
+   13529 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   692: QUERY CMW Option
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> *OPT?
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [H051H,H052S,H054P,H055P,H090H,H100H,H450I,H500I,H500I,H540I,H550N,H554N,H570H,H570H,H570H,H570H,H590D,H590D,H600B,H605A,H660H,H661H,H690B,KM200,KM300,KM400,KM500,KM500,KM750,KM800,KM880,KS200,KS610,KS650]
+   13529 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:BASE:OPT:LIST? HWOP,FUNC
+   13567 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["B554N,H051H,H052S,H054P,H055P,H090H,H100H,H450I,H500I,H500I,H540I,H550N,H554N,H570H,H570H,H570H,H570H,H590D,H590D,H600B,H605A,H660H,H661H,H690B,KB036,KB036,KB036,KB036"]
+   13567 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:BASE:OPT:LIST? SWOP,VALid
+   13629 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["K0,K1031,K998,K998,K998,K998,KA065,KA100,KA120,KA150,KA200,KA400,KA500,KA550,KA650,KA700,KA800,KA880,KAA10,KAA20,KAA21,KAA30,KAA40,KAA41,KAA42,KAA43,KAA44,KAA45,KAA46,KAA47,KAA48,KAA49,KAA550,KAF75,KC001,KC002,KC003,KC004,KC005,KC006,KC007,KC008,KC009,KC010,KC011,KC012,KC013,KC015,KC016,KC017,KC018,KC020,KC021,KC022,KC023,KC024,KC025,KC026,KC027,KC028,KC031,KC032,KC033,KC034,KC035,KC036,KC037,KC038,KC039,KC040,KC041,KC042,KC043,KC044,KC045,KC046,KC047,KC048,KC049,KC050,KC051,KC052,KC053,KC054,KC060,KC061,KC065,KC066,KC070,KC071,KC075,KC080,KC081,KC085,KC086,KC087,KC088,KC201,KC202,KC203,KC204,KC205,KC206,KC207,KC208,KC209,KC210,KC211,KC212,KC213,KC214,KC215,KC216,KC221,KC222,KC223,KC231,KC232,KC233,KC241,KC280,KC290,KC401,KC402,KC403,KC404,KC405,KC406,KC407,KC408,KC420,KC421,KC422,KC423,KC424,KC425,KC426,KC427,KC428,KC429,KC430,KC431,KC432,KC433,KC434,KC435,KC436,KC437,KC439,KC440,KC441,KC442,KC443,KC444,KC448,KC501,KC502,KC503,KC504,KC505,KC506,KC507,KC508,KC509,KC510,KC511,KC512,KC514,KC515,KC516,KC517,KC518,KC519,KC520,KC521,KC522,KC523,KC524,KC535,KC536,KC537,KC538,KC540,KC541,KC542,KC543,KC544,KC548,KC549,KC551,KC552,KC553,KC554,KC555,KC556,KC557,KC558,KC559,KC560,KC561,KC562,KC563,KC564,KC565,KC566,KC567,KC568,KC569,KC571,KC572,KC573,KC576,KC585,KC590,KC591,KC592,KC593,KC594,KC701,KC702,KC704,KC705,KC706,KD611,KD611,KD611,KD611,KE100,KE200,KE400,KE500,KE501,KE502,KE504,KE505,KE511,KE670,KE750,KE800,KF001,KF002,KF003,KF004,KF005,KF200,KF201,KF400,KF401,KF402,KF410,KF411,KF414,KF420,KF428,KF429,KF431,KF432,KF433,KF434,KF435,KF436,KF437,KF438,KF440,KF441,KF451,KF452,KF453,KF454,KF455,KF456,KF500,KF501,KF502,KF503,KF504,KF505,KF506,KF507,KF508,KF509,KF510,KF511,KF512,KF513,KF514,KF515,KF516,KF517,KF518,KF519,KF520,KF521,KF528,KF529,KF530,KF531,KF532,KF538,KF540,KF541,KF542,KF543,KF544,KF545,KF546,KF547,KF548,KF549,KF556,KF558,KF559,KF570,KF571,KF572,KF573,KF574,KF575,KF577,KF578,KF579,KF588,KF650,KF770,KK010,KK011,KK015,KK016,KK017,KK020,KK021,KK025,KK027,KK028,KK029,KK030,KK031,KK042,KK047,KK081,KK300,KK305,KK306,KK500,KK501,KK502,KK503,KK504,KK505,KK506,KK507,KK508,KK509,KK510,KK511,KK550,KM010,KM010,KM010,KM010,KM011,KM011,KM011,KM011,KM012,KM012,KM012,KM012,KM050,KM050,KM050,KM050,KM051,KM051,KM051,KM051,KM052,KM052,KM052,KM052,KM053,KM053,KM053,KM053,KM200,KM200,KM200,KM200,KM201,KM201,KM201,KM201,KM300,KM300,KM300,KM300,KM400,KM400,KM400,KM400,KM401,KM401,KM401,KM401,KM403,KM403,KM403,KM403,KM405,KM405,KM405,KM405,KM500,KM500,KM500,KM500,KM502,KM502,KM502,KM502,KM504,KM504,KM504,KM504,KM550,KM550,KM550,KM550,KM552,KM552,KM552,KM552,KM554,KM554,KM554,KM554,KM570,KM570,KM570,KM570,KM6000,KM6000,KM6000,KM6000,KM610,KM610,KM610,KM610,KM611,KM611,KM611,KM611,KM645,KM645,KM645,KM645,KM650,KM650,KM650,KM650,KM651,KM651,KM651,KM651,KM652,KM652,KM652,KM652,KM653,KM653,KM653,KM653,KM654,KM654,KM654,KM654,KM655,KM655,KM655,KM655,KM656,KM656,KM656,KM656,KM657,KM657,KM657,KM657,KM680,KM680,KM680,KM680,KM700,KM700,KM700,KM700,KM701,KM701,KM701,KM701,KM721,KM721,KM721,KM721,KM722,KM722,KM722,KM722,KM750,KM750,KM750,KM750,KM751,KM751,KM751,KM751,KM800,KM800,KM800,KM800,KM880,KM880,KM880,KM880,KN200,KN200,KN200,KN200,KN400,KN400,KN400,KN400,KN500,KN500,KN500,KN500,KN550,KN550,KN550,KN550,KO350,KO410,KO420,KO421,KO422,KO423,KO424,KO425,KO426,KO427,KO428,KO429,KO431,KO432,KO433,KO434,KO435,KO436,KO437,KO438,KO441,KO460,KO461,KO480,KO481,KO482,KO483,KO484,KO485,KO486,KO487,KO495,KO500,KO501,KO502,KO503,KO504,KO510,KO511,KO512,KO513,KO515,KO516,KO517,KO520,KO521,KO522,KO523,KO524,KO525,KO526,KO527,KO528,KO529,KO530,KO531,KO532,KO533,KO534,KO535,KO536,KO537,KO538,KO539,KO540,KO541,KO542,KO543,KO544,KO545,KO546,KO547,KO548,KO549,KO550,KO551,KO552,KO560,KO561,KO562,KO563,KO564,KO565,KO566,KO567,KO568,KO569,KO570,KO571,KO572,KO574,KO575,KO576,KO577,KO578,KO579,KO580,KO581,KO582,KO583,KO584,KO585,KO586,KO587,KO588,KO589,KO590,KO595,KP001,KP030,KP040,KP050,KP060,KP080,KP090,KP091,KP200,KP201,KP220,KP250,KP257,KP280,KP300,KP400,KP401,KP402,KP403,KP404,KP405,KP406,KP407,KP408,KP409,KP410,KP411,KP412,KP413,KP420,KP440,KP451,KP452,KP453,KP454,KP455,KP456,KP457,KP500,KP501,KP502,KP505,KP510,KP511,KP512,KP513,KP514,KP515,KP516,KP517,KP520,KP530,KP542,KP543,KP550,KP555,KP560,KP563,KP564,KP565,KP566,KP567,KP568,KP569,KP570,KP571,KP577,KP580,KP581,KP588,KP590,KP591,KP592,KP593,KP594,KP595,KP596,KP597,KP598,KP599,KP750,KP752,KP770,KP880,KQ001,KQ002,KQ003,KQ004,KQ005,KQ006,KQ007,KQ008,KQ009,KQ010,KR313,KR314,KR315,KR510,KR511,KR512,KR513,KR514,KR515,KR701,KS104,KS104,KS104,KS104,KS170,KS170,KS170,KS170,KS200,KS200,KS200,KS200,KS201,KS201,KS201,KS201,KS203,KS203,KS203,KS203,KS210,KS210,KS210,KS210,KS211,KS211,KS211,KS211,KS290,KS290,KS290,KS290,KS300,KS300,KS300,KS300,KS400,KS400,KS400,KS400,KS401,KS401,KS401,KS401,KS403,KS403,KS403,KS403,KS404,KS404,KS404,KS404,KS405,KS405,KS405,KS405,KS406,KS406,KS406,KS406,KS410,KS410,KS410,KS410,KS411,KS411,KS411,KS411,KS413,KS413,KS413,KS413,KS420,KS420,KS420,KS420,KS425,KS425,KS425,KS425,KS500,KS500,KS500,KS500,KS502,KS502,KS502,KS502,KS504,KS504,KS504,KS504,KS505,KS505,KS505,KS505,KS510,KS510,KS510,KS510,KS512,KS512,KS512,KS512,KS514,KS514,KS514,KS514,KS515,KS515,KS515,KS515,KS520,KS520,KS520,KS520,KS521,KS521,KS521,KS521,KS522,KS522,KS522,KS522,KS525,KS525,KS525,KS525,KS540,KS540,KS540,KS540,KS541,KS541,KS541,KS541,KS550,KS550,KS550,KS550,KS552,KS552,KS552,KS552,KS554,KS554,KS554,KS554,KS555,KS555,KS555,KS555,KS590,KS590,KS590,KS590,KS600,KS600,KS600,KS600,KS601,KS601,KS601,KS601,KS602,KS602,KS602,KS602,KS603,KS603,KS603,KS603,KS605,KS605,KS605,KS605,KS610,KS610,KS610,KS610,KS611,KS611,KS611,KS611,KS650,KS650,KS650,KS650,KS651,KS651,KS651,KS651,KS656,KS656,KS656,KS656,KS657,KS657,KS657,KS657,KS658,KS658,KS658,KS658,KS660,KS660,KS660,KS660,KS661,KS661,KS661,KS661,KS667,KS667,KS667,KS667,KS670,KS670,KS670,KS670,KS671,KS671,KS671,KS671,KS700,KS700,KS700,KS700,KS701,KS701,KS701,KS701,KS702,KS702,KS702,KS702,KS710,KS710,KS710,KS710,KS711,KS711,KS711,KS711,KS720,KS720,KS720,KS720,KS721,KS721,KS721,KS721,KS722,KS722,KS722,KS722,KS750,KS750,KS750,KS750,KS751,KS751,KS751,KS751,KS760,KS760,KS760,KS760,KS800,KS800,KS800,KS800,KS810,KS810,KS810,KS810,KS880,KS880,KS880,KS880,KS881,KS881,KS881,KS881,KS888,KS888,KS888,KS888,KS890,KS890,KS890,KS890,KT001,KT002,KT003,KT004,KT010,KT011,KT012,KT013,KT014,KT016,KT017,KT019,KT020,KT021,KT022,KT023,KT025,KT026,KT027,KT028,KT029,KT030,KT041,KT042,KT044,KT045,KT050,KT050,KT051,KT051,KT052,KT052,KT053,KT053,KT053,KT054,KT054,KT054,KT055,KT055,KT057,KT057,KT058,KT058,KT061,KT061,KT090,KT092,KT093,KT094,KT095,KT096,KT100,KT1010,KT1010,KT104,KT105,KT110,KT111,KT115,KT120,KT122,KT124,KT140,KT150,KT151,KT156,KT157,KT158,KT159,KT160,KT161,KT305,KT315,KT360,KT400,KT405,KT410,KT420,KT425,KT500,KT504,KT505,KT506,KT507,KT510,KT515,KT524,KT525,KT526,KT527,KT530,KT535,KT540,KT541,KT542,KT543,KT544,KT545,KT546,KT547,KT548,KT549,KT550,KT552,KT553,KT555,KT560,KT569,KT570,KT571,KT572,KT573,KT574,KT575,KT576,KT577,KT578,KT579,KT580,KT581,KT591,KT597,KT611,KT611,KT611,KT611,KT650,KT700,KT860,KT861,KT862,KT863,KT864,KT880,KT881,KT910,KT910,KT910,KT910,KT915,KT915,KT915,KT915,KT920,KT920,KT920,KT920,KT925,KT925,KT925,KT925,KT930,KT930,KT930,KT930,KT935,KT935,KT935,KT935,KT940,KT940,KT940,KT940,KT945,KT945,KT945,KT945,KT950,KT950,KT950,KT950,KT955,KT955,KT955,KT955,KT960,KT960,KT960,KT960,KT965,KT965,KT965,KT965,KT970,KT970,KT970,KT970,KT975,KT975,KT975,KT975,KT980,KT980,KT980,KT980,KT981,KT981,KT981,KT981,KT982,KT982,KT982,KT982,KT983,KT983,KT983,KT983,KT984,KT984,KT984,KT984,KT985,KT985,KT985,KT985,KTF11,KTF12,KTF12B,KTF13,KTF13A,KTF15,KTF16,KTF16A,KTF31,KTF32,KTF34,KTF37,KTF38,KTF53A,KTF53B,KTF53C,KTF53D,KTF55A,KTF55B,KTF55C,KTF55D,KTF56A,KTF56B,KTF56C,KTF56D,KTH11,KTH11,KTH21,KTH21,KU290,KU300,KU301,KU302,KU314,KU315,KU320,KU420,KU490,KU500,KU501,KU502,KU503,KU504,KU506,KU507,KU508,KU509,KU510,KU511,KU512,KU513,KU514,KU515,KU516,KU519,KU520,KU521,KU522,KU523,KU524,KU525,KU526,KU527,KU528,KU529,KU539,KU540,KU541,KU542,KU543,KU544,KU545,KU546,KU547,KU548,KU549,KU550,KU551,KU552,KU553,KU554,KU555,KU556,KU557,KU558,KU559,KU560,KU561,KU562,KU563,KU564,KU565,KU566,KU567,KU568,KU569,KU571,KU572,KU573,KU574,KU575,KU576,KU577,KU578,KU579,KU580,KU581,KU582,KU583,KU584,KU585,KU586,KU587,KU588,KU589,KU590,KU591,KU592,KV110,KV110,KV110,KV110,KV110A,KV110A,KV110A,KV110A,KV112,KV112,KV112,KV112,KV112A,KV112A,KV112A,KV112A,KV113,KV113,KV113,KV113,KV113A,KV113A,KV113A,KV113A,KV114,KV114,KV114,KV114,KV114A,KV114A,KV114A,KV114A,KV115,KV115,KV115,KV115,KV115A,KV115A,KV115A,KV115A,KV116,KV116,KV116,KV116,KV116A,KV116A,KV116A,KV116A,KV117,KV117,KV117,KV117,KV117A,KV117A,KV117A,KV117A,KV118,KV118,KV118,KV118,KV118A,KV118A,KV118A,KV118A,KV119,KV119,KV119,KV119,KV119A,KV119A,KV119A,KV119A,KV120,KV120,KV120,KV120,KV120A,KV120A,KV120A,KV120A,KV121,KV121,KV121,KV121,KV121A,KV121A,KV121A,KV121A,KV122,KV122,KV122,KV122,KV122A,KV122A,KV122A,KV122A,KV123,KV123,KV123,KV123,KV123A,KV123A,KV123A,KV123A,KV124,KV124,KV124,KV124,KV124A,KV124A,KV124A,KV124A,KV125,KV125,KV125,KV125,KV125A,KV125A,KV125A,KV125A,KV126,KV126,KV126,KV126,KV126A,KV126A,KV126A,KV126A,KV127,KV127,KV127,KV127,KV127A,KV127A,KV127A,KV127A,KV128,KV128,KV128,KV128,KV128A,KV128A,KV128A,KV128A,KV129,KV129,KV129,KV129,KV129A,KV129A,KV129A,KV129A,KV151,KV151,KV151,KV151,KV152,KV152,KV152,KV152,KV153,KV153,KV153,KV153,KV154,KV154,KV154,KV154,KV570,KV570,KV570,KV570,KV610,KV610,KV610,KV610,KV620,KV620,KV620,KV620,KV621,KV621,KV621,KV621,KV622,KV622,KV622,KV622,KV623,KV623,KV623,KV623,KV634,KV634,KV634,KV634,KV636,KV636,KV636,KV636,KV638,KV638,KV638,KV638,KV645,KV645,KV645,KV645,KV680,KV680,KV680,KV680,KV687,KV687,KV687,KV687,KVS627,KVS627,KVS627,KVS627,KVS628,KVS628,KVS628,KVS628,KW010,KW010,KW010,KW010,KW200,KW200,KW200,KW200,KW201,KW201,KW201,KW201,KW300,KW300,KW300,KW300,KW400,KW400,KW400,KW400,KW401,KW401,KW401,KW401,KW402,KW402,KW402,KW402,KW403,KW403,KW403,KW403,KW500,KW500,KW500,KW500,KW502,KW502,KW502,KW502,KW504,KW504,KW504,KW504,KW514,KW514,KW514,KW514,KW570,KW570,KW570,KW570,KW590,KW590,KW590,KW590,KW6000,KW6000,KW6000,KW6000,KW610,KW610,KW610,KW610,KW620,KW620,KW620,KW620,KW621,KW621,KW621,KW621,KW622,KW622,KW622,KW622,KW623,KW623,KW623,KW623,KW630,KW630,KW630,KW630,KW632,KW632,KW632,KW632,KW650,KW650,KW650,KW650,KW651,KW651,KW651,KW651,KW656,KW656,KW656,KW656,KW657,KW657,KW657,KW657,KW683,KW683,KW683,KW683,KW700,KW700,KW700,KW700,KW750,KW750,KW750,KW750,KW751,KW751,KW751,KW751,KW800,KW800,KW800,KW800,KW880,KW880,KW880,KW880,KX300,KX301,KX302,KX340,KX341,KX400,KX500,KX501,KX505,KX515,KX520,KX521,KX522,KX523,KX530,KX531,KX532,KX533,KX534,KX535,KX536,KX537,KX538,KX539,KX540,KX541,KX542,KX543,KX544,KX545,KX546,KX547,KX548,KX549,KX550,KX551,KX552,KX553,KX554,KX555,KX556,KX557,KX558,KX559,KX560,KX561,KX562,KX563,KX564,KX565,KX566,KX567,KX568,KX569,KX570,KX571,KX572,KX573,KX574,KX575,KX576,KX577,KX578,KX579,KX580,KX581,KX582,KX583,KX584,KX585,KX586,KX587,KX588,KX589,KX590,KX591,KX592,KY300,KY301,KY340,KY370,KY371,KY375,KY390,KY450,KY501,KY540,KY541,KY542,KY543,KY544,KY545,KY546,KY547,KY549,KY550,KY551,KY552,KY553,KY554,KY555,KY556,KY557,KY558,KY559,KY560,KY561,KY562,KY563,KY564,KY565,KY567,KY568,KY569,KY570,KY572,KY580,KY581,KY599,ZK651,ZK701"]
+   13629 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   706: ------------------------------------------------------------------------------------------------------------------------------------
+   13629 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   707: QUERY LTE FW Revision
+   13645 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:OPT:VERS? "CMW_LTE_Sig"
+   13645 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["V3.8.10"]
+   13645 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:OPT:VERS? "CMW_LTE_Meas"
+   13645 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["V3.8.10"]
+   13651 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   717: ------------------------------------------------------------------------------------------------------------------------------------
+   13651 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   726: ------------------------------------------------------------------------------------------------------------------------------------
+   13651 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:ERR:ALL?
+   13651 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [0,"No error"]
+   13651 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   735: ------------------------------------------------------------------------------------------------------------------------------------
+   13651 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   736: LTE Cell - TURN LTE CELL OFF
+   13651 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:SIGNaling:ALL:OFF;*OPC?
+   13768 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [1]
+   13768 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOUR:LTE:SIGN:CELL:STAT:ALL?
+   13768 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF,ADJ]
+   13768 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   755: LTE Cell - LTE CELL IS TURN OFF
+   13768 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   756: ------------------------------------------------------------------------------------------------------------------------------------
+   13768 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   761: ------------------------------------------------------------------------------------------------------------------------------------
+   13783 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   762: DAU Configure Services
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:DNS:STATe?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   768: Status of DAU : OFF
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:FTP:STATe?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   768: Status of DAU : OFF
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:HTTP:STATe?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   768: Status of DAU : OFF
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   768: Status of DAU : OFF
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:EPDG:STATe?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   768: Status of DAU : OFF
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONTrol:IPVFour:ADDRess:TYPE?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [AUT]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONTrol:IPVSix:ADDRess:TYPE?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [AUTO]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   830: DAU -  Check  IP Config  Network
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONTrol:IPVFour:ADDRess:TYPE?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [AUT]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONTrol:IPVSix:ADDRess:TYPE?
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [AUTO]
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   841: DAU -  Configure DNS Service
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc010.mcc001.pub.3gppnetwork.org", "192.168.1.201"
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc010.mcc001.pub.3gppnetwork.org", "fc01::1"
+   13783 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   850: DAU IMS2 - Configure subscriber
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:PRIVateid '001010123456063@msg.pc.t-mobile.com'
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:SCHeme AKA1
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:ALGorithm XOR
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:AMF '0x000'
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:RESLength 128
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:IPSec:ENABle ON
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:IPSec:ALGorithm:INTegrity HMMD
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:SUBScriber1:IPSec:ALGorithm:ENCRyption NOC
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>   861: DAU IMS2 - Configure Virtual Subscriber
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:BEHaviour ANSWER
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:SIGNalingtyp NOPRecondit
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:FORCemocall OFF
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:BEARer OFF
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:ADCodec:TYPE WIDeband
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:ALIGnment BANDwidtheff
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:CODec3:ENABle ON
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   880: ------------------------------------------------------------------------------------------------------------------------------------
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   881: Configure LTE Signaling
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   882: LTE Cell - Set LTE Scenario To SISO
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> ROUT:LTE:SIGN:SCEN:SCELl:FLEX SUA1,RF1C,RX1,RF1C,TX1
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   886: LTE Cell - Set input and output path
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   887:  including signal routing and Programming external attenuation.
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:RFS:PCC:EATT:OUTP 0
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:RFS:PCC:EATT:INP 25.0
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   890: ------------------------------------------------------------------------------------------------------------------------------------
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   892: ------------------------------------------------------------------------------------------------------------------------------------
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   894: LTE Cell - Set LTE MODE to FDD
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:DMODe FDD
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   896: ------------------------------------------------------------------------------------------------------------------------------------
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   904: ------------------------------------------------------------------------------------------------------------------------------------
+   13799 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   905: LTE Cell - Set System bandwidth
+   13799 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:BAND:DL B014
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   909: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   911: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   912: LTE Cell - Set Operating Band and DL channel number
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:BAND OB4
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   916: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   918: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   919: Set Down Link Channel to: 1957
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:RFS:CHAN:DL 1957
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   921: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   923: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   924: LTE Cell - CELL ID
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:PCID 0
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   926: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   929: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   930: LTE Cell - CYCLE PREFIX
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:CPR NORM
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   932: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   934: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:TIME:SATTach ON
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   936: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   938: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   939: LTE Cell - Define the RS EPRE level and the power of the DL channels and signals
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   940:  Set RS EPRE level to -85.0 dBm/FFT 15 KHz
+   13814 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:DL:RSEPre:LEVel -85.0
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   942: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   944: ------------------------------------------------------------------------------------------------------------------------------------
+   13814 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   945: Advance PRACH settings
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:UL:PCC:APPower:EASettings ON
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   947: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   949: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   950: LTE Cell - Set POWER CONTROL
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:UL:TPC:SET CLO
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   952: Set LTE PUSCH Close LOOP Power to  23.0 dBm
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:UL:PUSCh:TPC:CLTPower  23.0
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   954: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   956: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   957: LTE - Set Connection Type.
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   960: LTE - Set Connection Type to Data Connection.
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:CTYPe DAPP
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   966: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   968: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   969: LTE Cell - Set Network Parameters
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   971: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   972: LTE Cell - Specify MCC MNC, tracking area code and E-UTRAN cell ID.
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:MCC 001
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:MNC:DIG THR
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:MNC 010
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:TAC 1
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:SEC:AUTH ON
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:SEC:NAS ON
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:SEC:AS ON
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:SEC:IALG S3G
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:SEC:MIL OFF
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   982: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   984: ------------------------------------------------------------------------------------------------------------------------------------
+   13830 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   985: LTE Cell - Specify the User IMSI.
+   13830 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:UEID:IMSI '001010123456063'
+   13846 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   987: ------------------------------------------------------------------------------------------------------------------------------------
+   13846 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   989: ------------------------------------------------------------------------------------------------------------------------------------
+   13846 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   990: LTE - Set APN and CQI
+   13846 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:APN 'Test Network'
+   13846 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:QCI 5
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   993: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   995: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>   998: NAS IMS Call supported
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:NAS:EPSNetwork ON
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CELL:NAS:IMSVops SUPP
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1008: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1010: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1011: LTE - Set LTE stack to Accept Multiple Bearer.
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:AMDBearer ON
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1013: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1015: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1016: LTE - Set LTE stack to for Redirection Inter LTE Band Handover
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:OBCHange RED
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1019: LTE - Set LTE stack to for Redirection Inter LTE Channel Handover
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:FCHange RED
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1021: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1023: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1024: LTE - Reduce PDCCH
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONNection:PDCCh:RPDCch ON
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1026: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1029: ------------------------------------------------------------------------------------------------------------------------------------
+   13852 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1030:  Configure RMC Test Mode Call. (User Defined Channel)
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONN:UET UDCH
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1032: dict_values([6, 15, 25, 50, 75, 100])
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                            __init__   430: print band: 4
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1041: enter in to user RB
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONN:UDCH:DL 1,0,QPSK,9
+   13852 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONF:LTE:SIGN:CONN:UDCH:UL 1,0,QPSK,10
+   18856 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1075: ------------------------------------------------------------------------------------------------------------------------------------
+   18856 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:ERR:ALL?
+   18856 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [0,"No error"]
+   18856 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1082: ------------------------------------------------------------------------------------------------------------------------------------
+   24286 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1093: ------------------------------------------------------------------------------------------------------------------------------------
+   24286 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1096:  Start DAU service(s)
+   24286 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1100: Start DAU DNS service
+   24301 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:DNS:STATe?
+   24301 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   24301 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:DNS:STATe ON
+   24455 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:DNS:STATe?
+   24455 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+   24455 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1111: DAU service DNS is ON
+   24455 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1100: Start DAU FTP service
+   24455 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:FTP:STATe?
+   24455 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   24455 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:FTP:STATe ON
+   24624 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:FTP:STATe?
+   24624 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   24787 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:FTP:STATe?
+   24787 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+   24787 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1111: DAU service FTP is ON
+   24787 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1100: Start DAU HTTP service
+   24787 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:HTTP:STATe?
+   24787 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   24787 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:HTTP:STATe ON
+   24942 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:HTTP:STATe?
+   24942 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   25104 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:HTTP:STATe?
+   25104 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+   25104 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1111: DAU service HTTP is ON
+   25110 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1100: Start DAU IMS2 service
+   25110 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25110 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   25110 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe ON
+   25273 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25273 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   25428 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25428 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   25591 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25591 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   25744 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25744 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   25908 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   25908 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   26077 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   26077 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   26231 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   26231 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [PEND]
+   26394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:IMS2:STATe?
+   26394 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+   26394 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1111: DAU service IMS2 is ON
+   26394 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1100: Start DAU EPDG service
+   26394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:EPDG:STATe?
+   26394 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [OFF]
+   26394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:EPDG:STATe ON
+   26548 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:DATA:CONT:EPDG:STATe?
+   26548 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+   26548 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1111: DAU service EPDG is ON
+   26548 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:ERR:ALL?
+   26548 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [0,"No error"]
+   26548 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1117: ------------------------------------------------------------------------------------------------------------------------------------
+   26548 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1121: ------------------------------------------------------------------------------------------------------------------------------------
+   26563 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1122: Create a Socket Class object to remote the fsw
+   26563 DEBUG        LTE_TX_SPURIOUS_attach.py                             connect   204: Open SOCKET Connection @: 192.168.0.219:5025
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                             connect   223: SOCKET Connection Successfully Open with: 192.168.0.219:5025 - SOCKET Handle: [<socket.socket fd=1540, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.0.217', 50899), raddr=('192.168.0.219', 5025)>]
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1132: ------------------------------------------------------------------------------------------------------------------------------------
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1134: ------------------------------------------------------------------------------------------------------------------------------------
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1135: QUERY ID
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> *IDN?
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.219:5025 << [Rohde&Schwarz,FSW-26,1331.5003K26/101383,4.51]
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1145: ['Rohde&Schwarz', 'FSW-26', '1331.5003K26/101383', '4.51']
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1148: ------------------------------------------------------------------------------------------------------------------------------------
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1149: QUERY fsw Option
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> *OPT?
+   26579 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.219:5025 << [B24,B4,B25,B3,K14,K9,B28,B40,B80,B160,K161R,K30,K40,K70,K91,K91N,K91-11AC,K91AX,B99,]
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1156: ------------------------------------------------------------------------------------------------------------------------------------
+   26579 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1157: RESET FSW
+   26594 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1159: ------------------------------------------------------------------------------------------------------------------------------------
+   26594 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> *RST
+   26594 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INIT:CONT OFF
+   26594 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SYST:PRES:ALL
+   27098 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INIT:CONT ON
+   27098 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INP:ATT:AUTO OFF
+   27098 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INP:ATT 40
+   27098 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1175: ------------------------------------------------------------------------------------------------------------------------------------
+   27098 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1177: TURN LTE CELL ON
+   27098 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOUR:LTE:SIGN:CELL:STATe ON
+   27098 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOUR:LTE:SIGN:CELL:STAT:ALL?
+   27166 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   27166 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   27166 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   27669 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   27669 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   28171 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   28171 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   28676 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   28676 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   29177 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   29177 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   29679 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   29679 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,PEND]
+   30182 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SOURce:LTE:SIGN:CELL:STAT:ALL?
+   30182 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON,ADJ]
+   30686 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1192: LTE CELL READY
+   30686 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1193: ------------------------------------------------------------------------------------------------------------------------------------
+   30686 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   30686 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   30686 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   30686 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   31186 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   31186 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   31688 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   31688 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   32190 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   32190 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   32695 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   32695 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   33195 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   33195 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   33698 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   33698 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   34200 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   34200 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   34707 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   34707 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   35221 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   35221 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   35724 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   35724 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   36226 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   36226 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   36729 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   36729 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   37232 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   37232 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   37734 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   37734 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   38237 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   38237 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   38739 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   38739 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   39242 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   39242 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   39745 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   39745 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   40248 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   40248 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   40751 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   40751 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   41253 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   41253 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   41756 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   41756 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   42258 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   42258 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   42761 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   42761 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   43264 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   43264 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   43766 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   43766 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   44268 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   44268 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+   44771 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   44771 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   45273 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   45273 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   45776 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   52141 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   52141 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   52147 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   52147 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   52147 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   52147 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   52147 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   52147 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   52147 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   52665 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   57840 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   57840 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   57840 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   57840 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   58342 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   63152 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   63152 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   63152 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   63152 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   63152 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   63152 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   63152 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   63152 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   63167 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   63670 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   70762 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   70762 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   70762 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   70762 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   70762 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   70762 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   70762 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   70762 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   70778 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   71280 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   76189 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   76189 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   76189 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   76189 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   76707 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   81416 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   81416 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   81416 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   81416 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   81416 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   81416 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   81416 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   81416 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   81431 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   81934 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   87007 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   87007 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   87007 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   87007 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   87526 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   93695 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   93695 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   93695 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   93695 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   94197 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+   99185 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+   99185 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+   99185 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+   99191 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+   99191 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+   99191 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+   99191 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+   99191 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+   99191 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+   99709 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  105685 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  105685 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  105685 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  105685 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  105685 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  105685 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  105685 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  105685 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  105700 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  106204 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  111383 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  111383 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  111383 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  111383 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  111885 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  116973 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  116973 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  116973 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  116979 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  116979 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  116979 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  116979 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  116979 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  116979 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  117497 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  122401 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  122401 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  122401 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  122407 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  122407 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  122407 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  122407 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  122407 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  122407 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  122926 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  127930 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  127930 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  127937 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  127937 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  127937 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  127937 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  127937 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  127937 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  127937 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+  128455 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  133079 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  133079 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  133079 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  133079 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  133581 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  138957 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  138957 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  138957 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  138957 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  139459 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  144269 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  144269 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  144269 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  144269 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  144269 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  144269 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  144269 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  144269 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  144284 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  144786 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  149728 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  149728 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  149728 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  149728 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  150231 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  154993 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  154993 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  154993 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  154993 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  154993 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  154993 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  154993 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  154993 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  155008 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  155511 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  160521 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  160521 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  160521 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  160521 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  160521 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  160521 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  160521 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  160521 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  160536 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  161039 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  165811 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  165811 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  165811 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  165811 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  166313 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  171394 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  171394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  171394 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  171394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  171394 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  171394 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  171394 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  171394 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  171409 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+  171912 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  176566 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  176566 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  176566 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  176566 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  177069 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  182396 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  182396 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  182396 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  182396 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  182396 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  182396 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  182396 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  182396 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  182412 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  182914 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  187677 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  187677 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  187677 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  187677 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  187677 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  187677 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  187677 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  187677 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  187692 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  188195 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  192966 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  192966 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  192966 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  192973 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  192973 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  192973 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  192973 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  192973 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  192973 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  193491 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  199135 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  199135 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  199135 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  199135 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  199638 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  204425 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  204425 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  204427 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  204427 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  204427 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  204427 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  204427 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  204427 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  204427 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  204928 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  209790 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  209790 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  209790 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  209790 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  209790 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  209790 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  209790 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  209790 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  209805 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  210308 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  217229 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  217229 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  217229 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  217229 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  217731 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  224113 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  224113 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  224113 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  224113 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  224615 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  229424 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  229424 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  229424 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  229424 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  229926 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  234686 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  234686 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  234686 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  234686 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  234686 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  234686 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  234686 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  234686 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  234701 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  235201 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  240280 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  240280 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  240280 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  240280 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  240782 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  246382 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  246382 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  246382 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  246382 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  246382 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  246382 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  246382 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  246382 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  246397 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  246900 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  251656 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  251656 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  251656 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  251656 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  252159 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  257100 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  257100 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  257100 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  257100 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  257603 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  263132 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  263132 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  263132 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  263132 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  263633 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  268582 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  268582 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  268582 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  268582 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  268589 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  268589 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  268589 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  268589 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  268589 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  269106 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  274043 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  274043 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  274043 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  274043 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  274544 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  279355 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  279355 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  279355 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  279355 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  279857 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  284631 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  284631 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  284633 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  284633 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  284633 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  284633 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  284633 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  284633 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  284633 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  285160 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  290492 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  290492 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  290494 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  290494 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  290494 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  290494 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  290494 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  290494 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  290494 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  291010 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  295762 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  295762 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  295764 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  295764 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  295764 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  295764 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  295764 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  295764 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  295764 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  296291 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  301759 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  301759 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  301759 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  301759 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  302261 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  307099 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  307099 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  307099 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  307099 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  307600 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  312459 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  312459 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  312459 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  312459 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  312960 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  317847 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  317847 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  317847 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  317847 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  317847 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  317847 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  317854 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  317854 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  317854 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  318372 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  323578 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  323578 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  323584 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  323584 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  323584 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  323584 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  323584 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  323584 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  323584 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  324103 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  328927 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  328927 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  328927 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  328927 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  329430 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  334471 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  334471 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  334471 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  334471 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  334973 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  340216 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  340216 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  340216 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  340216 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  340734 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  345691 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  345691 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  345691 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  345697 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  345697 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  345697 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  345697 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  345697 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  345697 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  346216 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  351005 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  351005 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  351005 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  351005 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  351005 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  351005 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  351005 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  351005 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  351020 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  351523 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  356271 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  356271 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  356271 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  356271 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  356271 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  356271 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  356271 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  356271 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  356286 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  356789 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  363286 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  363286 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  363286 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  363286 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  363292 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  363292 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  363292 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  363292 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  363292 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  363810 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  368666 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  368667 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  368669 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  368669 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  368669 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  368669 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  368669 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  368669 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  368669 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  369185 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  374127 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  374127 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  374127 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  374127 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  374127 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  374127 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  374127 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  374127 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  374142 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  374645 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  379670 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  379670 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  379676 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  379676 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  379676 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  379676 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  379676 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  379676 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  379676 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  380194 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  384997 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  384997 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  384997 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  384997 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  385003 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  385003 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  385003 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  385003 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  385003 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  385521 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  390682 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  390682 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  390682 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  390682 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  390682 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  390682 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  390682 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  390682 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  390697 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  391212 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  395835 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  395835 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  395835 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  395835 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  395835 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  395835 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  395835 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  395835 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  395850 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  396353 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  401263 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  401263 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  401263 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  401263 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  401765 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  406489 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  406489 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  406489 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  406489 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  407006 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  411770 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  411770 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  411770 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  411770 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  411770 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  411770 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  411770 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  411770 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  411785 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  412287 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  417081 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  417081 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  417081 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  417081 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  417081 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  417081 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  417081 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  417081 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  417096 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  417599 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  422545 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  422545 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  422545 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  422545 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)"]
+  423054 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  427704 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  427704 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  427704 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ON]
+  427704 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  427710 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [IDLE]
+  427710 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ON : IDLE
+  550683 ERROR        LTE_TX_SPURIOUS_attach.py                            <module>  1235: dut did not register successfully. terminating.
+  550683 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  550683 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEFBearer?
+  550683 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["5 (Test Network)","6 (ims)"]
+  551198 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1204: TIMEOUT - Default Bearers not present
+  556170 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1216: waiting for dut to register. airplane mode on -> off
+  556170 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> FETCH:LTE:SIGN:PSW:STATe?
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [ATT]
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSE:LTE:SIGN:RRCState?
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [CONN]
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1222: connection state : ATT : CONN
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1238: dut did register successfully.
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1239: Default Bearer IMS detected
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SWE:MODE LIST
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1244: ------------------------------------------------------------------------------------------------------------------------------------
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1245: SCPI commands for FSW
+  556176 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1246: ------------------------------------------------------------------------------------------------------------------------------------
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INIT:CONT OFF
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG:COUNt?
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1264: ____________________________________________________________________________________________________________________________________
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:BAND:RES 100000
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:BAND:RES 1000000
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1269: ____________________________________________________________________________________________________________________________________
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:BAND:VID 5000000
+  556176 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:BAND:VID 5000000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1276: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1278: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1280: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:RLEV -20
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:INP:ATT 20
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:RLEV -20
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:INP:ATT 20
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:POIN 8000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:POIN 8000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1292: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:SWE:TIME:AUTO OFF
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:SWE:TIME 5
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:SWE:TIME:AUTO OFF
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:SWE:TIME 5
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1299: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG1:LIM:STAR 30000000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:FREQ:STOP 1000000000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG2:LIM:STAR 1000000000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:FREQ:STOP 12750000000
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1306: ____________________________________________________________________________________________________________________________________
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG1:LIM:STAR -57
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG1:LIM:STOP -57
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG2:LIM:STAR -47
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG2:LIM:STOP -47
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1313: ------------------------------------------------------------------------------------------------------------------------------------
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG1:DET RMS
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> SENS:LIST:RANG2:DET RMS
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> LIST:RANG:LIM:STAT ON
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> CALC:PSE:MARG 100
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> CALC:PSE:PSH ON
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> CALC:PSE:SUBR 1
+  556192 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> CALC:LIM1:FAIL?
+  556377 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.219:5025 << [0]
+  556377 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1325: result is: ['0']
+  556377 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> INIT:SPUR; *WAI
+  556377 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> TRAC:DATA? SPURIOUS
+  566608 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.219:5025 << [+7.149943750E+004,-4.829167175E+001,+8.708328247,+1.710140672E+009,-4.906455612E+001,-2.064556122]
+  566608 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> FORM:DEXP:FORM CSV
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> FORM:DEXP:DSEP POIN
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> FORM:DEXP:FORM CSV
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> FORM:DEXP:HEAD ON
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> FORM:DEXP:TRAC SING
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.219:5025 >> MMEM:STOR1:TRAC 1,'C:\R_S\instr\user\fsw_Results_2.CSV'
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1341: 6
+  566623 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1342: ['+7.149943750E+004', '-4.829167175E+001', '+8.708328247', '+1.710140672E+009', '-4.906455612E+001', '-2.064556122']
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1442: ['+7.149943750E+004', '-4.829167175E+001', '+8.708328247', '+1.710140672E+009', '-4.906455612E+001', '-2.064556122']
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1482: abs power msew value are -48.29167175 -49.06455612
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1502: ([71499.4375, 1710140672.0], [-48.29167175, -49.06455612], [8.708328247, -2.064556122])
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1504: ------------------------------------------------------------------------------------------------------------------------------------
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1506: Measurement Ranges for FSW spectrum analyzer
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1508: ------------------------------------------------------------------------------------------------------------------------------------
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1510:  Range  |  Freq  kHZ| PowerAbs(-dbm) |  limit (-db) | Verdict  
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1512:  Range1 | 71.49944     | -48.29 |  8.71 |PASS  
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1520:  Range2 | 1710140.67200     | -49.06 |  -2.06  |PASS 
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1528: ------------------------------------------------------------------------------------------------------------------------------------
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1530:  Test Summary for Frequency Measurement for all ranges : PASS  
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1532: ------------------------------------------------------------------------------------------------------------------------------------
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1556: ____________________________________________________________________________________________________________________________________
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1557: {3}\\Logs_folder\\Band4_2021-02-23_14-20-41_max
+  566629 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1558: ____________________________________________________________________________________________________________________________________
+  566645 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1567: ____________________________________________________________________________________________________________________________________
+  566645 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1568: ____________________________________________________________________________________________________________________________________
+  566645 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535
+  566645 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CALL:LTE:SIGN:PSWitched:ACTion CONNect
+  566645 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEDBearer?
+  566695 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+  566695 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEDBearer?
+  566726 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [NAV]
+  567248 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CATalog:LTE:SIGN:CONNection:DEDBearer?
+  567248 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << ["7 (->6, Voice)"]
+  567750 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1579: Dedicated Bearer Voice connected
+  567750 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1580: PASSED
+  567750 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> CONFigure:DATA:CONTrol:IMS2:VIRTualsub1:MTCall:CALL
+  569760 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSe:DATA:CONTrol:IMS2:EVENts:LAST?
+  569760 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [INV,INV,INV,INV,INV,INV]
+  571299 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1593: UE device answering incoming call from CMW
+  573310 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SENSe:DATA:CONTrol:IMS2:EVENts:LAST?
+  573310 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [INV,INV,INV,INV,INV,INV]
+  579511 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1608: UE device terminating call from CMW
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1614: PASSED
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> SYST:ERR:ALL?
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                                read   296: 192.168.0.218:5025 << [0,"No error"]
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1616: Band: 		 Bandwidth : (MHz) 		DL Frequency:  (MHz)		RB Allocation: 		 RB Start: 		 float(Power Level)       	 Channel type
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1617:  4	 		  :1.4 (MHz) 			: 2110.7 (MHz)				: 1	   			 : 0				  23.0  			 FAIL 
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1627: ____________________________________________________________________________________________________________________________________
+  581521 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1628: {3}\\Logs_folder\\Band4_2021-02-23_14-20-41_max
+  581537 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1629: ____________________________________________________________________________________________________________________________________
+  581537 INFO         LTE_TX_SPURIOUS_attach.py                            <module>  1635: ------------------------------------------------------------------------------------------------------------------------------------
+  581568 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1653: ____________________________________________________________________________________________________________________________________
+  581568 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1654: {3}\\Logs_folder\\Band4_2021-02-23_14-20-41_max
+  581568 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1655: ____________________________________________________________________________________________________________________________________
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                               write   252: 192.168.0.218:5025 >> &GTL
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                               close   173: Close Socket Handle: <socket.socket fd=1104, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('192.168.0.217', 50896), raddr=('192.168.0.218', 5025)>
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1694: end of 3 th loop
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1702: ____________________________________________________________________________________________________________________________________
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1703: {3}\\Logs_folder\\Band4_2021-02-23_14-20-41_max
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1704: ____________________________________________________________________________________________________________________________________
+  582441 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1706: ____________________________________________________________________________________________________________________________________
+  582473 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1752: {3}\\Logs_folder\\Band4_2021-02-23_14-20-41_max\\CMW_VERDICT_20210223-143023.csv
+  582511 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1765: ____________________________________________________________________________________________________________________________________
+  582511 DEBUG        LTE_TX_SPURIOUS_attach.py                            <module>  1766: PASSED

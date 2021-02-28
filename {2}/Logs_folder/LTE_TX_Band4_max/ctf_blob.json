@@ -1,0 +1,71 @@
+{
+    "ctf_data": [
+        {
+            "data_source": "test1",
+            "data_list": [
+                {
+                    "a": 1,
+                    "b": 2,
+                    "c": 3
+                },
+                {
+                    "d": 4,
+                    "e": 5,
+                    "f": 6
+                }
+            ]
+        },
+        {
+            "data_source": "test2",
+            "data_list": [
+                {
+                    "g": "4",
+                    "h": "5",
+                    "i": "6"
+                }
+            ]
+        }
+    ],
+    "ctf_tables": [
+        {
+            "title": "table1",
+            "table_type": "static",
+            "columns": "column1,column2",
+            "data_source_list": "test1,test2"
+        },
+        {
+            "title": "table2",
+            "table_type": "static",
+            "columns": "column1,column2",
+            "data_source_list": "test1,test2"
+        }
+    ],
+    "ctf_charts": [
+        {
+            "title": "chart1",
+            "chart_type": "static",
+            "options": {
+                "chart_display_type": "line",
+                "tension": "True"
+            },
+            "axes": {
+                "x_axis1": {},
+                "y_axis1": {},
+                "x_axis2": {},
+                "y_axis2": {}
+            }
+        },
+        {
+            "title": "chart2",
+            "chart_type": "static",
+            "options": {
+                "chart_display_type": "line",
+                "tension": "True"
+            },
+            "axes": {
+                "x_axis2": {},
+                "y_axis2": {}
+            }
+        }
+    ]
+}
