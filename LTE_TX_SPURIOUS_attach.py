@@ -1198,7 +1198,7 @@ while row_count < int(sys.argv[3]): # stop variant
             # changed
             tstart = time.time()
             buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
-            while not "6 (ims)" in buffin:
+            while not "5 (Test Network)" in buffin:
                 buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
                 time.sleep(0.5)
                 if (time.time() - tstart) > TIMEOUT:
@@ -1237,7 +1237,10 @@ while row_count < int(sys.argv[3]): # stop variant
                         #sys.exit(-3)
 
                     logger.info('dut did register successfully.')
-            logger.info('Default Bearer IMS detected')
+            logger.info('Default Bearer detected')
+            device.shell("ip addr")
+            #device.shell("ping 172.22.1.201 -t 60") 
+            """
             # Set Dedicated Bearer ID to 6(ims), profile Voice
             cmw.write('PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535')
             # Connect Dedicated Bearer
@@ -1249,6 +1252,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 time.sleep(0.5)
             logger.info('Dedicated Bearer Voice connected')
             logger.debug("PASSED")
+            """
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
             #fsw.write("SWE:MODE LIST")
@@ -1580,7 +1584,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug(132 * '_')
         # End Init FSW
 
-
+            """
             # Initiate VoLTE call to UE:
             cmw.write("CONFigure:DATA:CONTrol:IMS2:VIRTualsub1:MTCall:CALL")
             time.sleep(2)
@@ -1613,7 +1617,7 @@ while row_count < int(sys.argv[3]): # stop variant
             #device.shell("reboot")
             time.sleep(2.0)
             #write Summary  pass/fail with combination of input parameters
-
+        """
         logger.debug("PASSED")
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
