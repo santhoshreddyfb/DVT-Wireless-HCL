@@ -1241,7 +1241,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     logger.info('dut did register successfully.')
             logger.info('Default Bearer detected')
-            device.shell("ip addr")
+            device.shell('ip addr')
             for i in buffin:
                 if i == "5 (Test Network)":
                     result = "PASS"
