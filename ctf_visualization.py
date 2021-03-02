@@ -28,7 +28,7 @@ class CtfVisualization:
     _path: str
     _data_sources: list
 
-    def __init__(self, description: str = "Visualize test case csv files", name: str = "ctf_fsw.json", path: str = ""):
+    def __init__(self, description: str = "Visualize test case csv files", name: str = "ctf_cmw.json", path: str = ""):
         self._description = description
         self._name = name
         self._path = path
@@ -38,7 +38,7 @@ class CtfVisualization:
         # CTF create data blob
         ctf_json = CtfJsonData(name=self._name, path=self._path)
 
-        all_csv_files = glob.glob(os.path.join(self._path, "fsw_VERDICT_*.csv"))
+        all_csv_files = glob.glob(os.path.join(self._path, "CMW_VERDICT_*.csv"))
         for fn in all_csv_files:
             df = pd.read_csv(fn, sep=',', na_filter=False)
 
@@ -60,6 +60,5 @@ class CtfVisualization:
 
 # Sample usage
 if __name__ == "__main__":
-    cv = CtfVisualization(path="C:\Test\DVT-Wireless-HCL\{2}\Logs_folder\LTE_TX_Band4_max")
-    cv.create_json()
-
+    cv = CtfVisualization(path="C:\Test\DVT-Wireless-HCL\{2}\Logs_folder\LTE_*")
+    cv.create_json
