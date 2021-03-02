@@ -1200,7 +1200,11 @@ while row_count < int(sys.argv[3]): # stop variant
             # changed
             tstart = time.time()
             buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0] ##{ ["5 (Test Network)","6 (ims)"]}
-
+            logger.debug("Bearers in buffin {0}".format(buffin))
+            state = cmw.ask('SENSE:LTE:SIGN:RRCState?')[0]
+            logger.debug("cmw RRC state is : {0}".format(state))
+            device.shell('ip addr')
+            device.shell('devices')
             while not "5 (Test Network)" in buffin:
                 buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
                 time.sleep(0.5)
