@@ -1241,11 +1241,10 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     logger.info('dut did register successfully.')
             logger.info('Default Bearer detected')
-<<<<<<< HEAD
-            device.shell("shell ifconfig")
-=======
-            device.shell('ip addr')
->>>>>>> 32715c028c7e405be5f4ee7ac5cbc435e237d121
+
+            device.shell('ifconfig')
+            #device.shell('ip addr')
+
             for i in buffin:
                 if i == "5 (Test Network)":
                     result = "PASS"
