@@ -1402,21 +1402,21 @@ while row_count < int(sys.argv[3]): # stop variant
                     if abs_fre[i] <= float(max):
                         print("abs _power {0}".format(abs_fre[i]))
                         verdict.extend(['PASS'])
-                        print("for max values of 1 to3 ranges", verdict)
+                        #print("for max values of 1 to3 ranges", verdict)
                     else:
                         print("abs _power {0}".format(abs_fre[i]))
                         verdict.extend(['FAIL'])
-                        print("for max values of 1 to3 ranges", verdict)
+                        #print("for max values of 1 to3 ranges", verdict)
                     i = i + 1
 
                 # range 4 value
                 if abs_fre[3] <= float(min):
                     verdict.extend(['PASS'])
                     print("abs _power {0}".format(abs_fre[3]))
-                    print("for max values of 4th ranges", verdict)
+                    #print("for max values of 4th ranges", verdict)
                 else:
                     verdict.extend(['FAIL'])
-                    print("for max values of 4 ranges", verdict)
+                    #print("for max values of 4 ranges", verdict)
 
                 logger.debug("verdict list is : ", verdict)
                 logger.debug(Meas)
