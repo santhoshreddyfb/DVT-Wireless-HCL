@@ -1199,8 +1199,9 @@ while row_count < int(sys.argv[3]): # stop variant
             TIMEOUT = 30
             # changed
             tstart = time.time()
-            buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
-            while not "6 (ims)" in buffin:
+            buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0] ##{ ["5 (Test Network)","6 (ims)"]}
+
+            while not "5 (Test Network)" in buffin:
                 buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
                 time.sleep(0.5)
                 if (time.time() - tstart) > TIMEOUT:
@@ -1239,7 +1240,16 @@ while row_count < int(sys.argv[3]): # stop variant
                         #sys.exit(-3)
 
                     logger.info('dut did register successfully.')
-            logger.info('Default Bearer IMS detected')
+            logger.info('Default Bearer detected')
+            device.shell("ip addr")
+            for i in buffin:
+                if i == "5 (Test Network)":
+                    result = "PASS"
+                else :
+                    result = "FAIL"
+
+
+
 
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
@@ -1577,7 +1587,10 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug(132 * '_')
             logger.debug(132 * '_')
         # End Init FSW
-            # Set Dedicated Bearer ID to 6(ims), profile Voice
+
+
+            """
+           # Set Dedicated Bearer ID to 6(ims), profile Voice
             cmw.write('PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535')
             # Connect Dedicated Bearer
             cmw.write('CALL:LTE:SIGN:PSWitched:ACTion CONNect')
@@ -1622,6 +1635,7 @@ while row_count < int(sys.argv[3]): # stop variant
             #write Summary  pass/fail with combination of input parameters
 
         logger.debug("PASSED")
+        """
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, result ))
