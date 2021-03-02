@@ -1247,6 +1247,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('Default Bearer detected')
 
             device.shell('ifconfig')
+            device.shell('ifconfig')           
             #device.shell('ip addr')
 
             for i in buffin:
@@ -1417,7 +1418,7 @@ while row_count < int(sys.argv[3]): # stop variant
                     verdict.extend(['FAIL'])
                     print("for max values of 4 ranges", verdict)
 
-                logger.debug("verdict list is : \t", verdict)
+                logger.debug("verdict list is : ", verdict)
                 logger.debug(Meas)
                 logger.debug(132 * '-')
                 logger.debug("Measurement Ranges for FSW spectrum analyzer")
