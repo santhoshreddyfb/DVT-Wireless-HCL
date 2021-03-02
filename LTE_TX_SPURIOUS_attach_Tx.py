@@ -1203,7 +1203,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug("Bearers in buffin {0}".format(buffin))
             state = cmw.ask('SENSE:LTE:SIGN:RRCState?')[0]
             logger.debug("cmw RRC state is : {0}".format(state))
-            device.shell('ip addr')
+            device.shell('ip addr >DUT_ip.txt')
             device.shell('devices')
             while not "5 (Test Network)" in buffin:
                 buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
