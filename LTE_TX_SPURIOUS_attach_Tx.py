@@ -1246,8 +1246,10 @@ while row_count < int(sys.argv[3]): # stop variant
                     logger.info('dut did register successfully.')
             logger.info('Default Bearer detected')
 
-            device.shell('ifconfig')
-            device.shell('ifconfig')           
+            #device.shell('ifconfig')
+            ip_addr = device.shell('netcfg')
+            logger.debug(ip_addr)
+            
             #device.shell('ip addr')
 
             for i in buffin:
