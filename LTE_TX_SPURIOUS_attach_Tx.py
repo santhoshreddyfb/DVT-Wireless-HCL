@@ -440,7 +440,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
     # Look for UE device
     # TODO: make CLI argument
-    dut_adb_serial_number = '4D123456789'
+    dut_adb_serial_number = '11298b21'
 
     # Default is "127.0.0.1" and 5037
     client = AdbClient(host="127.0.0.1", port=5037)
