@@ -1204,32 +1204,23 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
 
             # Check Default Bearers
-            TIMEOUT = 15
+            TIMEOUT = 30
             # changed
             tstart = time.time()
-            buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
-            logger.debug(buffin[0:])
-            for i in buffin:
-                logger.debug(i)
-            #while not "5 (Test Network)" in buffin:
-
-            # Toggle airplane mode on -> off
-            device.shell('settings put global airplane_mode_on 1')
-            # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
-            device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
-            time.sleep(2.0)
-            device.shell('settings put global airplane_mode_on 0')
-            device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
-            time.sleep(2.0)
-
-            """
-
-            while not "6 (ims)" in buffin:
+            buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0] ##{ ["5 (Test Network)","6 (ims)"]}
+            logger.debug("Bearers in buffin {0}".format(buffin))
+            state = cmw.ask('SENSE:LTE:SIGN:RRCState?')[0]
+            logger.debug("cmw RRC state is : {0}".format(state))
+            device.shell('ip addr >DUT_ip.txt')
+            device.shell('devices')
+            while not "5 (Test Network)" in buffin:
                 buffin = cmw.ask('CATalog:LTE:SIGN:CONNection:DEFBearer?')[0]
                 time.sleep(0.5)
                 if (time.time() - tstart) > TIMEOUT:
                     logger.info('TIMEOUT - Default Bearers not present')
                     # Toggle airplane mode on -> off
+                    #device.shell('root')
+                    #time.sleep(2.0)
                     device.shell('settings put global airplane_mode_on 1')
                     # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
                     device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
@@ -1258,8 +1249,23 @@ while row_count < int(sys.argv[3]): # stop variant
                         #sys.exit(-3)
 
                     logger.info('dut did register successfully.')
-            logger.info('Default Bearer IMS detected')
-            # Opening BLER Window for RX Meas
+            logger.info('Default Bearer detected')
+            # device.shell('ifconfig')
+            ip_addr = device.shell('netcfg')
+            logger.debug(ip_addr)
+
+            # device.shell('ip addr')
+
+            for i in buffin:
+                if i == "5 (Test Network)":
+                    result = "PASS"
+                else:
+                    result = "FAIL"
+                    """
+	   
+	   
+	        # Opening BLER Window for RX Meas
+        
             logger.debug('Bler measurement')
             cmw.write("CONFigure:LTE:SIGN:CONNection:DLPadding ON")
             cmw.write("CONFigure:LTE:SIGN:EBLer:SCONdition CLEV")
@@ -1273,7 +1279,8 @@ while row_count < int(sys.argv[3]): # stop variant
             cmw.write("CONFigure:LTE:SIGN:EBLer:SCONdition CLEV")
             cmw.write("INITiate:LTE:SIGN:EBLer")
             cmw.write("FETCh:LTE:SIGN:EBLer:PCC:CONFidence?")
-           """
+            
+                """
 
             fsw.write("SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
@@ -1541,7 +1548,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
         logger.debug("PASSED")
         erreur = cmw.ask("SYST:ERR:ALL?")
-        result ='PASS'
+        #result ='PASS'
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, result ))
         # socket class
@@ -1709,6 +1716,67 @@ df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
 #logger.debug(df_j)
+"""
+This script:
+1. collects the test case csv filenames into a list
+2. reads each csv file into a dataframe
+3. convert Series to a dictionary, adds data sources to json
+4. adds specified charts
+5. save data series to json file for visualization
+# Sample usage
+    cv = CtfVisualization(path=<path to test case files directory>)
+    cv.create_json()
+Note: Remove any non test case csv files from directory before running to prevent conflict 
+or extraneous data from being included in the visualization.
+
+
+
+
+
+class CtfVisualization:
+    #Interface to create the visualization data json file from csv results files
+    _description: str  # not currently used
+    _name: str
+    _path: str
+    _data_sources: list
+
+    def __init__(self, description: str = "Visualize test case csv files", name: str = "ctf_cmw.json", path: str = ""):
+        self._description = description
+        self._name = name
+        self._path = path
+        self._data_sources = []
+
+    def create_json(self):
+        # CTF create data blob
+        ctf_json = CtfJsonData(name=self._name, path=self._path)
+
+        all_csv_files = glob(os.path.join(self._path, "CMW_VERDICT_*.csv"))
+        for fn in all_csv_files:
+            df = pd.read_csv(fn, sep=',', na_filter=False)
+
+            # CTF add data source and table
+            ctf_data_source = os.path.basename(fn)
+            self._data_sources.append(ctf_data_source)
+            ctf_json.add_data_source(ctf_data_source)
+            ctf_columns = (', '.join(df))
+            ctf_json.add_table(title=ctf_data_source, columns=ctf_columns, data_source_list=ctf_data_source)
+
+            # CTF add data to source
+            df_dict_ctf = df.T.to_dict()
+            for row in df_dict_ctf:
+                ctf_json.add_data_to_source(ctf_data_source, [df_dict_ctf[row]])
+
+        # CTF dump to JSON file
+        ctf_json.save_data()
+
+
+# Sample usage
+if __name__ == "__main__":
+    cv = CtfVisualization(path=dest_d)
+    cv.create_json()
+    """
+
+
 logger.debug(132 * '_')
 logger.debug("PASSED")
 
