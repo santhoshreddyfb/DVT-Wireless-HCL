@@ -41,12 +41,11 @@ mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
 #if already dest_d file exits, delete and then create
-shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
+#shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
-#os.makedir(dest)
+#os.makedir(dest)1
 dest_d = dest.replace('\\', '\\\\')
-                    
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -58,6 +57,7 @@ logger.addHandler(fh)
 
 total_bands = ['Band2', 'Band4', 'Band5', 'Band12', 'Band13', 'Band66']
 # to pick min/max power input file from ctf command ine
+
 
 if sys.argv[4] == 'max' or sys.argv[4] == 'MAX':
     power = 'Band2MaxPowerInput.xlsx'
@@ -1191,6 +1191,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 if (time.time() - tstart) > TIMEOUT:
                     # x = win32api.MessageBox(0, "TIMEOUT occurs")
                     raise ValueError('TIMEOUT - LTE Signaling Turn OFF')
+                """
 
             logger.info('LTE CELL READY')
             logger.info('{0}'.format(132 * '-'))
@@ -1259,7 +1260,7 @@ while row_count < int(sys.argv[3]): # stop variant
                     result = "FAIL"
 
 
-
+         """
 
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
@@ -1284,6 +1285,13 @@ while row_count < int(sys.argv[3]): # stop variant
             #fsw.write("SENS:LIST:RANG4:INP:GAIN:STAT 15")
             """
 
+            # Frequency start and stop
+            rbw_count = 1
+            for (strt, stp) in zip(freq_start, freq_stop):
+                fsw.write("SENS:LIST:RANG{0}:FREQ:STAR {1}".format(rbw_count, strt))
+                fsw.write("SENS:LIST:RANG{0}:FREQ:STOP {1}".format(rbw_count, stp))
+                rbw_count = rbw_count + 1
+            logger.debug(132 * '_')
             # Resolution Bandwidth and video Bandwidth
             logger.debug(132 * '_')
             count = 1
@@ -1297,6 +1305,13 @@ while row_count < int(sys.argv[3]): # stop variant
                 fsw.write("SENS:LIST:RANG{0}:BAND:VID {1}".format(count, b))
                 count = count + 1
             count = 1
+            logger.debug(132 * '_')
+            # sweep time
+            rbw_count = 1
+            for rbw in range_num:
+                fsw.write("SENS:LIST:RANG{0}:SWE:TIME:AUTO OFF".format(rbw_count))
+                fsw.write("SENS:LIST:RANG{0}:SWE:TIME {1}".format(rbw_count, sweep_time))
+                rbw_count = rbw_count + 1
             logger.debug(132 * '_')
 
             logger.debug(132 * '_')
@@ -1314,20 +1329,8 @@ while row_count < int(sys.argv[3]): # stop variant
                count = count + 1
 
             logger.debug(132 * '_')
-            #sweep time
-            rbw_count = 1
-            for rbw in range_num:
-                fsw.write("SENS:LIST:RANG{0}:SWE:TIME:AUTO OFF".format(rbw_count))
-                fsw.write("SENS:LIST:RANG{0}:SWE:TIME {1}".format(rbw_count, sweep_time))
-                rbw_count = rbw_count + 1
-            logger.debug(132 * '_')
-            #Frequency start and stop
-            rbw_count = 1
-            for (strt, stp) in zip(freq_start, freq_stop):
-                fsw.write("LIST:RANG{0}:LIM:STAR {1}".format(rbw_count, strt))
-                fsw.write("SENS:LIST:RANG{0}:FREQ:STOP {1}".format(rbw_count, stp))
-                rbw_count = rbw_count + 1
-            logger.debug(132 * '_')
+
+
             #limit powe_
             count = 1
             for i in limit:
@@ -1349,8 +1352,9 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug('result is: {0}'.format(fsw.result)) # this scpi
             fsw.write("INIT:SPUR; *WAI")
             #time.sleep(5)
-            list_of_Freq = fsw.ask("TRAC:DATA? SPURIOUS")# when it returns, at that time length of list_freq ==1
+            fsw.ask("TRAC:DATA? SPURIOUS")# when it returns, at that time length of list_freq ==1
             # only one value values
+            """
 
 
             fsw.write("FORM:DEXP:FORM CSV")
@@ -1450,11 +1454,11 @@ while row_count < int(sys.argv[3]): # stop variant
                 freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3]]
                 abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]]
                 limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3]]
-                band_info = [TEST_BAND, TEST_BAND,TEST_BAND , TEST_BAND]
+                band_info = [TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB]
 
                 # dictionary of lists
 
-                dict = {'Band':band_info, 'Range': ranges, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
+                dict = {'Band': band_info, 'Range': ranges, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                 # saving the dataframe
@@ -1596,6 +1600,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug("FSW scpi command fsw.ask(TRAC:DATA? SPURIOUS) returns either value 1  or 0 in msmt list ")
             logger.debug(132 * '_')
             logger.debug(132 * '_')
+            """
         # End Init FSW
 
 

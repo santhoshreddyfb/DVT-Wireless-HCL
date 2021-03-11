@@ -21,7 +21,6 @@ from ppadb.client import Client as AdbClient
 from glob import glob
 from ctf_json_data import CtfJsonData
 
-
 # create a log
 logger = logging.getLogger(__name__)
 # output format
@@ -35,18 +34,20 @@ sh.setFormatter(logging.Formatter(logger_format))
 logger.addHandler(sh)
 
 # Making a directory For the Run
-mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
+mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]),
+                     '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),
+                                          sys.argv[4], os.getcwd().split('D')[0]))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
-#if already dest_d file exits, delete and then create
-shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
-#Creating directory for results
-dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
-#os.makedir(dest)
+# if already dest_d file exits, delete and then create
+# shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
+# Creating directory for results
+dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]),
+                    'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
+# os.makedir(dest)1
 dest_d = dest.replace('\\', '\\\\')
-                    
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -59,6 +60,7 @@ logger.addHandler(fh)
 total_bands = ['Band2', 'Band4', 'Band5', 'Band12', 'Band13', 'Band66']
 # to pick min/max power input file from ctf command ine
 
+
 if sys.argv[4] == 'max' or sys.argv[4] == 'MAX':
     power = 'Band2MaxPowerInput.xlsx'
     logger.debug("TEST is based on 3gpp MAX power Value -23dbm")
@@ -68,26 +70,26 @@ elif sys.argv[4] == 'min' or sys.argv[4] == 'MIN':
 else:
     logger.debug(" Please check the command line argument  either MAX/max or MIN/min valid, Refer to Test Description")
 
-#pick the min/max input file from current directory
+# pick the min/max input file from current directory
 inp_file = ("{1}\\{0}".format(power, os.getcwd()))
 wb = xlrd.open_workbook(inp_file)
 for i in total_bands:
     if i == sys.argv[1]:
-        #sheet = wb.sheet_by_index(i)
-        sheet = wb.sheet_by_name(sys.argv[1]) # band
+        # sheet = wb.sheet_by_index(i)
+        sheet = wb.sheet_by_name(sys.argv[1])  # band
     else:
         logger.debug(" not valid argument to select the input band sheet")
-row_count = int(sys.argv[2]) # start variant
+row_count = int(sys.argv[2])  # start variant
 loop_rst = 1
-while row_count < int(sys.argv[3]): # stop variant
+while row_count < int(sys.argv[3]):  # stop variant
     pos = 0
     ##Loop startes for
-    #time.sleep(120)
-    logger.debug(132*'_')
+    # time.sleep(120)
+    logger.debug(132 * '_')
 
     TEST_BAND = int(sheet.cell_value(1, 0))
 
-#for row_count in range(1, 4) :
+    # for row_count in range(1, 4) :
     TEST_BW = sheet.cell_value(row_count, 1)
     TEST_FREQ_DL = float(sheet.cell_value(row_count, 2))
     TEST_RB = int(sheet.cell_value(row_count, 3))
@@ -96,9 +98,14 @@ while row_count < int(sys.argv[3]): # stop variant
     TEST_CH_TYPE = str(sheet.cell_value(row_count, 6))
     # set log level
     logger.setLevel(logging.DEBUG)
-    logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
-    logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE))
+    logger.debug(
+        "Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
+    logger.debug(
+        " {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  ".format(
+            TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE))
     logger.debug(132 * '_')
+
+
     # socket class
     class c_socket(object):
 
@@ -288,7 +295,8 @@ while row_count < int(sys.argv[3]): # stop variant
                         self._logger.warning('Timeout while reading socket.')
                         return ''
 
-                if (buffin[0] == '"' and buffin[-1] == '"') or (buffin[0] == '"' and buffin[-1] == '"' and ';' in buffin):
+                if (buffin[0] == '"' and buffin[-1] == '"') or (
+                        buffin[0] == '"' and buffin[-1] == '"' and ';' in buffin):
                     buffout = [buffin]
                 elif ',' in buffin:
                     buffout = buffin.split(',')
@@ -372,14 +380,14 @@ while row_count < int(sys.argv[3]): # stop variant
             self.converter = 1
             self.ul_att = 25.0
             self.dl_att = 25.0
-            #self.imsi = '310260123456789'
-            #self.band = 4
-            #self.bw = 5
+            # self.imsi = '310260123456789'
+            # self.band = 4
+            # self.bw = 5
 
-            #self.nrb = 50
-            #self.tx_close_loop_power = 0.0
-            #self.rs_epre = -85.0
-            #self.apn = 'fast.t-mobile.com'
+            # self.nrb = 50
+            # self.tx_close_loop_power = 0.0
+            # self.rs_epre = -85.0
+            # self.apn = 'fast.t-mobile.com'
             self.qci = 5
             self.rb_d = {1.4: 6, 3: 15, 5: 25, 10: 50, 15: 75, 20: 100}
             self.bw_d = {2: [1.4, 3, 5, 10, 15, 20],
@@ -402,24 +410,25 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            #self.ul_att = 0.0
-            #self.dl_att = 0.0
-            #self.imsi = '0010010123456063'
+            # self.ul_att = 0.0
+            # self.dl_att = 0.0
+            # self.imsi = '0010010123456063'
             self.opc_key = "00000000000000000000000000000000"
             self.secret_key = "000102030405060708090A0B0C0D0E0F"
             self.milenage = False
             self.band = TEST_BAND
             self.tx_close_loop_power = Power_level_TYPE
-            if TEST_CH_TYPE == 'low' or TEST_CH_TYPE == 'mid' or TEST_CH_TYPE == 'high' :
+            if TEST_CH_TYPE == 'low' or TEST_CH_TYPE == 'mid' or TEST_CH_TYPE == 'high':
                 self.chanel_type = TEST_CH_TYPE
-                #logger.debug(self.chanel_type)
-            else :
+                # logger.debug(self.chanel_type)
+            else:
                 logger.debug("CHOOSE the low or mid or high ")
             # Calculating the channel values:
             if self.chanel_type == 'low':
                 self.dl_chan = int(self.band_d[self.band][0] + int(10 * TEST_BW / 2))
             elif self.chanel_type == 'mid':
-                self.dl_chan = int((self.band_d[self.band][0] + (self.band_d[self.band][0] + self.band_d[self.band][1])) / 2)
+                self.dl_chan = int(
+                    (self.band_d[self.band][0] + (self.band_d[self.band][0] + self.band_d[self.band][1])) / 2)
             elif self.chanel_type == 'high':
                 self.dl_chan = int(self.band_d[self.band][0] + self.band_d[self.band][1] - int(10 * TEST_BW / 2))
 
@@ -427,9 +436,10 @@ while row_count < int(sys.argv[3]): # stop variant
             self.dl_freq = TEST_FREQ_DL
             self.duplex_freq = self.band_d[self.band][-1]
             self.ul_freq = self.dl_freq - self.duplex_freq
-            #self.rs_epre = -85.0
-            #self.dl_total_power = -57.2
+            # self.rs_epre = -85.0
+            # self.dl_total_power = -57.2
             logger.debug('print band: {0}'.format(self.band))
+
 
     dl_channel = c_lte().dl_chan
     logger.debug(dl_channel)
@@ -489,7 +499,6 @@ while row_count < int(sys.argv[3]): # stop variant
 
     try:
 
-
         # read json file
         data = None
         f_json = os.path.curdir + os.sep + 'config.json'
@@ -531,9 +540,9 @@ while row_count < int(sys.argv[3]): # stop variant
             # Reading FSw spurious msmt settings from config.json
             if 'fsw_params' in data:
                 if 'sweep_points' in data['fsw_params']:
-                    sweep_point_value = data['fsw_params']['sweep_points'] # [ 800, 5000, 3300, 34000 ]
+                    sweep_point_value = data['fsw_params']['sweep_points']  # [ 800, 5000, 3300, 34000 ]
                 if 'ranges' in data['fsw_params']:
-                    range_num = data['fsw_params']['ranges'] # [ 800, 5000, 3300, 34000 ]
+                    range_num = data['fsw_params']['ranges']  # [ 800, 5000, 3300, 34000 ]
                 if 'ref_lev' in data['fsw_params']:
                     ref_lev = data['fsw_params']['ref_lev']
                 if 'att_rf' in data['fsw_params']:
@@ -588,7 +597,6 @@ while row_count < int(sys.argv[3]): # stop variant
                 if 'qci' in data['lte']:
                     lte.qci = data['lte']['qci']
 
-
         MCC = lte.imsi[0:3]
         MNC = lte.imsi[3:6]
         IMSI = lte.imsi[6:]
@@ -604,7 +612,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug(TEST_BAND)
 
         if '--lte_bw' in sys.argv:
-             TEST_BW = float(sys.argv[sys.argv.index("--lte_bw") + 1])
+            TEST_BW = float(sys.argv[sys.argv.index("--lte_bw") + 1])
 
         if '--lte_dl_chan' in sys.argv:
             dl_channel = int(sys.argv[sys.argv.index("--dl_channel") + 1])
@@ -617,7 +625,6 @@ while row_count < int(sys.argv[3]): # stop variant
 
         if '--dau_ipv6_external' in sys.argv:
             dau_ipv6_config = 'external'
-
 
         logger.info('{0}'.format(132 * '-'))
         logger.info('***** Script Setup CMW for LTE VoLTE/IMS call *****')
@@ -650,18 +657,18 @@ while row_count < int(sys.argv[3]): # stop variant
             # set CMW display
             logger.info('{0}'.format(132 * '-'))
 
-            #cmw.write("CALL:LTE:SIGN:PSWitched:ACTion DETach")
-            #time.sleep(5)
+            # cmw.write("CALL:LTE:SIGN:PSWitched:ACTion DETach")
+            # time.sleep(5)
             cmw.write('SYST:DISP:UPD ON')
 
-            #if loop_rst == 1:
+            # if loop_rst == 1:
             logger.info('{0}'.format(132 * '-'))
             logger.info('RESET CMW')
             cmw.timeout = 1080.0
             cmw.write("*CLS")
             cmw.write("SYST:PRES:ALL")
             cmw.ask("*OPC?")
-            #cmw.timeout = 10.0
+            # cmw.timeout = 10.0
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -709,7 +716,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
             logger.info('QUERY LTE FW Revision')
             if not hasattr(cmw, 'lte_sign_fw'):
-                 setattr(cmw, 'lte_sign_fw', [])
+                setattr(cmw, 'lte_sign_fw', [])
             cmw.lte_sign_fw = cmw.ask("SYST:OPT:VERS? \"CMW_LTE_Sig\"")[0][1:-1]
 
             if not hasattr(cmw, 'lte_mev_fw'):
@@ -718,7 +725,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
             # Check presence of DAU
             logger.info('{0}'.format(132 * '-'))
-            if cmw.hw_list.count("H450A") != 0 or cmw.hw_list.count("H450B") != 0 or cmw.hw_list.count("H450D") != 0 or cmw.hw_list.count("H450H") != 0 or cmw.hw_list.count("H450I") != 0:
+            if cmw.hw_list.count("H450A") != 0 or cmw.hw_list.count("H450B") != 0 or cmw.hw_list.count(
+                    "H450D") != 0 or cmw.hw_list.count("H450H") != 0 or cmw.hw_list.count("H450I") != 0:
                 DAU_PRESENT = True
 
             else:
@@ -790,7 +798,7 @@ while row_count < int(sys.argv[3]): # stop variant
                     logger.debug('DAU -  Configure IP COnfig to External Network')
 
                     if ('external' in dau_ipv4_config and not 'DHCPv4' in buffipv4) or (
-                                'external' in dau_ipv6_config and 'ACONf' not in buffipv6):
+                            'external' in dau_ipv6_config and 'ACONf' not in buffipv6):
                         logger.debug('DAU -  Turn OFF DAU')
 
                         # turn DAU OFF
@@ -843,15 +851,18 @@ while row_count < int(sys.argv[3]): # stop variant
                 # DAU -  Configure DNS Service
                 logger.debug('DAU -  Configure DNS Service')
                 cmw.write(
-                        'CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc{0}.mcc{1}.pub.3gppnetwork.org", "{2}"'.format(MNC, MCC,
-                                                                                                                       epdg_ip_v4))
+                    'CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc{0}.mcc{1}.pub.3gppnetwork.org", "{2}"'.format(MNC,
+                                                                                                                   MCC,
+                                                                                                                   epdg_ip_v4))
                 cmw.write(
-                        'CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc{0}.mcc{1}.pub.3gppnetwork.org", "{2}"'.format(MNC, MCC,
-                                                                                                                       epdg_ip_v6))
+                    'CONFigure:DATA:CONT:DNS:LOCal:ADD "epdg.epc.mnc{0}.mcc{1}.pub.3gppnetwork.org", "{2}"'.format(MNC,
+                                                                                                                   MCC,
+                                                                                                                   epdg_ip_v6))
 
                 # DAU IMS2 - Configure subscriber
                 logger.debug('DAU IMS2 - Configure subscriber')
-                cmw.write("CONF:DATA:CONT:IMS2:SUBScriber1:PRIVateid '{0}{1}{2}@msg.pc.t-mobile.com'".format(MCC, MNC, IMSI))
+                cmw.write(
+                    "CONF:DATA:CONT:IMS2:SUBScriber1:PRIVateid '{0}{1}{2}@msg.pc.t-mobile.com'".format(MCC, MNC, IMSI))
                 cmw.write("CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:SCHeme AKA1")
                 cmw.write("CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:ALGorithm XOR")
                 cmw.write("CONF:DATA:CONT:IMS2:SUBScriber1:AUTHenticati:AMF '0x000'")
@@ -872,14 +883,14 @@ while row_count < int(sys.argv[3]): # stop variant
                 # cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:ALIGnment OCTetaligned")
                 cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:CODec3:ENABle ON")
                 # cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:CODec8:ENABle ON")
-            else :
+            else:
                 logger.debug(" with  not Turning off the LTE signalling, DAU, Again ")
 
             loop_rst = loop_rst + 1
 
         # Configure LTE Signaling
         if 1:
-            #time.sleep()
+            # time.sleep()
             logger.info('{0}'.format(132 * '-'))
             logger.info('Configure LTE Signaling')
             logger.info('LTE Cell - Set LTE Scenario To SISO')
@@ -908,7 +919,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('LTE Cell - Set System bandwidth')
             for k in lte.bw:
                 if k == TEST_BW:
-                     cmw.write("CONF:LTE:SIGN:CELL:BAND:DL B{0:03d}".format(int(10 * TEST_BW)))
+                    cmw.write("CONF:LTE:SIGN:CELL:BAND:DL B{0:03d}".format(int(10 * TEST_BW)))
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
@@ -1036,29 +1047,30 @@ while row_count < int(sys.argv[3]): # stop variant
                 for k in lte.bw:
                     if k == TEST_BW:
                         if k not in list(c_lte().rb_d.keys()):
-                            raise ValueError('{0} not a valid BW - [{1}]'.format(TEST_BW, ",".join(str(b) for b in list(c_lte().rb_d.keys()))))
+                            raise ValueError('{0} not a valid BW - [{1}]'.format(TEST_BW, ",".join(
+                                str(b) for b in list(c_lte().rb_d.keys()))))
                         # this condition is for low value of RB
                         elif TEST_RB == 1 and Start_RB == 0:
                             # Set Starting Position to high
                             lte.nrb = TEST_RB
                             logger.debug("enter in to user RB")
                             pos = Start_RB
-                            #cmw.write("CONF:LTE:SIGN:CONN:UDCH:DL {0},{0},QPSK,9".format(pos, lte.nrb))
-                            #cmw.write("CONF:LTE:SIGN:CONN:UDCH:UL {0},{0},QPSK,10".format(pos, lte.nrb))
+                            # cmw.write("CONF:LTE:SIGN:CONN:UDCH:DL {0},{0},QPSK,9".format(pos, lte.nrb))
+                            # cmw.write("CONF:LTE:SIGN:CONN:UDCH:UL {0},{0},QPSK,10".format(pos, lte.nrb))
                         # this condition is for high value
-                        elif TEST_RB == 1 and Start_RB >0:
-                                lte.nrb =TEST_RB
-                                for i in srb :
-                                    if i == Start_RB:
-                                        lte.nrb = TEST_RB
-                                        pos = Start_RB
+                        elif TEST_RB == 1 and Start_RB > 0:
+                            lte.nrb = TEST_RB
+                            for i in srb:
+                                if i == Start_RB:
+                                    lte.nrb = TEST_RB
+                                    pos = Start_RB
 
                         elif TEST_RB is not c_lte().rb_d[TEST_BW]:
-                            logger.debug(132*'_')
+                            logger.debug(132 * '_')
                             logger.debug(" Please refer Test Document page, select supported RB for Selected BW  ")
                             logger.debug(132 * '_')
 
-                        else :
+                        else:
                             lte.nrb = TEST_RB
                             pos = Start_RB
 
@@ -1080,7 +1092,6 @@ while row_count < int(sys.argv[3]): # stop variant
             erreur = cmw.ask("SYST:ERR:ALL?")
             if erreur[0] != '0':
                 raise ValueError(erreur)
-
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -1162,7 +1173,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug(132 * '-')
             fsw.timeout = 30.0
 
-            #fsw.write("*CLS")
+            # fsw.write("*CLS")
             fsw.write("*RST")
             fsw.write("INIT:CONT OFF")
             fsw.write("SYST:PRES:ALL")
@@ -1170,7 +1181,6 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.write("INIT:CONT ON")
             fsw.write("INP:ATT:AUTO OFF")
             fsw.write("INP:ATT 40")
-
 
         # Turn LTE Cell ON
         if 1:
@@ -1191,6 +1201,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 if (time.time() - tstart) > TIMEOUT:
                     # x = win32api.MessageBox(0, "TIMEOUT occurs")
                     raise ValueError('TIMEOUT - LTE Signaling Turn OFF')
+                """
 
             logger.info('LTE CELL READY')
             logger.info('{0}'.format(132 * '-'))
@@ -1249,7 +1260,7 @@ while row_count < int(sys.argv[3]): # stop variant
             #device.shell('ifconfig')
             ip_addr = device.shell('netcfg')
             logger.debug(ip_addr)
-            
+
             #device.shell('ip addr')
 
             for i in buffin:
@@ -1259,11 +1270,10 @@ while row_count < int(sys.argv[3]): # stop variant
                     result = "FAIL"
 
 
-
-
+         """
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
-            #fsw.write("SWE:MODE LIST")
+            # fsw.write("SWE:MODE LIST")
             fsw.write("SENS:SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
             logger.info('SCPI commands for FSW')
@@ -1307,28 +1317,28 @@ while row_count < int(sys.argv[3]): # stop variant
                 fsw.write("SENS:LIST:RANG{0}:INP:ATT {1}".format(count, att_rf))
                 count = count + 1
 
-            #SWEEP POINTS
+            # SWEEP POINTS
             count = 1
             for p in sweep_point_value:
-               fsw.write("SENS:LIST:RANG{0}:POIN {1}".format(count, p))
-               count = count + 1
+                fsw.write("SENS:LIST:RANG{0}:POIN {1}".format(count, p))
+                count = count + 1
 
             logger.debug(132 * '_')
-            #sweep time
+            # sweep time
             rbw_count = 1
             for rbw in range_num:
                 fsw.write("SENS:LIST:RANG{0}:SWE:TIME:AUTO OFF".format(rbw_count))
                 fsw.write("SENS:LIST:RANG{0}:SWE:TIME {1}".format(rbw_count, sweep_time))
                 rbw_count = rbw_count + 1
             logger.debug(132 * '_')
-            #Frequency start and stop
+            # Frequency start and stop
             rbw_count = 1
             for (strt, stp) in zip(freq_start, freq_stop):
                 fsw.write("LIST:RANG{0}:LIM:STAR {1}".format(rbw_count, strt))
                 fsw.write("SENS:LIST:RANG{0}:FREQ:STOP {1}".format(rbw_count, stp))
                 rbw_count = rbw_count + 1
             logger.debug(132 * '_')
-            #limit powe_
+            # limit powe_
             count = 1
             for i in limit:
                 fsw.write("LIST:RANG{0}:LIM:STAR {1}".format(count, i))
@@ -1336,21 +1346,22 @@ while row_count < int(sys.argv[3]): # stop variant
                 count = count + 1
             logger.debug(132 * '-')
             count = 1
-            #setting detector type pos/RMS/.....
+            # setting detector type pos/RMS/.....
             for c in range_num:
-                    fsw.write("SENS:LIST:RANG{0}:DET {1}".format(count, detector_type))
-                    count = count + 1
+                fsw.write("SENS:LIST:RANG{0}:DET {1}".format(count, detector_type))
+                count = count + 1
 
             fsw.write("LIST:RANG:LIM:STAT ON")
             fsw.write("CALC:PSE:MARG 100")
             fsw.write("CALC:PSE:PSH ON")
             fsw.write("CALC:PSE:SUBR 1")
             fsw.result = fsw.ask("CALC:LIM1:FAIL?")
-            logger.debug('result is: {0}'.format(fsw.result)) # this scpi
+            logger.debug('result is: {0}'.format(fsw.result))  # this scpi
             fsw.write("INIT:SPUR; *WAI")
-            #time.sleep(5)
-            list_of_Freq = fsw.ask("TRAC:DATA? SPURIOUS")# when it returns, at that time length of list_freq ==1
+            # time.sleep(5)
+            fsw.ask("TRAC:DATA? SPURIOUS")  # when it returns, at that time length of list_freq ==1
             # only one value values
+            """
 
 
             fsw.write("FORM:DEXP:FORM CSV")
@@ -1450,11 +1461,11 @@ while row_count < int(sys.argv[3]): # stop variant
                 freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3]]
                 abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3]]
                 limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3]]
-                band_info = [TEST_BAND, TEST_BAND,TEST_BAND , TEST_BAND]
+                band_info = [TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB]
 
                 # dictionary of lists
 
-                dict = {'Band':band_info, 'Range': ranges, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
+                dict = {'Band': band_info, 'Range': ranges, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                 # saving the dataframe
@@ -1596,8 +1607,8 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug("FSW scpi command fsw.ask(TRAC:DATA? SPURIOUS) returns either value 1  or 0 in msmt list ")
             logger.debug(132 * '_')
             logger.debug(132 * '_')
-        # End Init FSW
-
+            """
+            # End Init FSW
 
             """
            # Set Dedicated Bearer ID to 6(ims), profile Voice
@@ -1647,23 +1658,28 @@ while row_count < int(sys.argv[3]): # stop variant
         logger.debug("PASSED")
         """
         erreur = cmw.ask("SYST:ERR:ALL?")
-        logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
-        logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, result ))
+        logger.debug(
+            "Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
+        logger.debug(
+            " {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(
+                TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, result))
         # socket class
 
-        lte_tx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Result': [result]}
+        lte_tx_result = {'band': [TEST_BAND], 'BandWidth': [TEST_BW], 'DL Frequency': [TEST_FREQ_DL],
+                         'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power': [Power_level_TYPE],
+                         'Result': [result]}
 
         output = pd.DataFrame(lte_tx_result)
-        #now_re = datetime.(now)
+        # now_re = datetime.(now)
         timestr_cmw = time.strftime("%Y%m%d-%H%M%S")
-        #dt_re_string = now.strftime("%d_%m_%Y_%H_%M_%S")
+        # dt_re_string = now.strftime("%d_%m_%Y_%H_%M_%S")
         # saving the dataframe
         logger.debug(132 * '_')
         logger.debug(mydir_d)
         logger.debug(132 * '_')
         output.to_csv('{1}\\CMW_logsresult_{0}.csv'.format(timestr_cmw, mydir_d), index=False, mode='a')
 
-        #row_count = row_count + 1
+        # row_count = row_count + 1
         if erreur[0] != '0':
             raise ValueError(erreur)
         logger.info('{0}'.format(132 * '-'))
@@ -1680,15 +1696,15 @@ while row_count < int(sys.argv[3]): # stop variant
         # select file format
         # (WMF | GDI | EWMF | BMP | PNG | JPEG | JPG | PDF | SVG | DOC | RTF)
         instr.write('HCOP:DEV:LANG PNG')
-        #rth.write_str("HCOP:LANG PNG")
+        # rth.write_str("HCOP:LANG PNG")
 
         # set print to file
         instr.write('HCOP:DEST "MMEM"')
         logger.debug(132 * '_')
         logger.debug(mydir_d)
         logger.debug(132 * '_')
-        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw)# size of 18kb
-        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw, mydir_d)# no data
+        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw)  # size of 18kb
+        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw, mydir_d)  # no data
 
         # file path on instrument
         instr.write('MMEM:NAME "{}"'.format(filePathInstr))
@@ -1699,7 +1715,7 @@ while row_count < int(sys.argv[3]): # stop variant
         # ask for file data from instrument
         fileData = instr.query_binary_values('MMEM:DATA? "{}"'.format(filePathInstr), datatype='s')[0]
         # print(type(fileData))
-        #time.sleep(20)
+        # time.sleep(20)
 
         rth.write_str(f"MMEM:NAME '{filePathInstr}'")
         rth.write_str_with_opc("HCOP:IMM")
@@ -1725,105 +1741,10 @@ while row_count < int(sys.argv[3]): # stop variant
             cmw.close()
             cmw = None
     row_count = row_count + 1
-    logger.debug( "end of {0} th loop".format(int(row_count)))
-
-# end of While loop
-# Storing all csv file in to single file to conclude the results summary for all runs
-timestr_out = time.strftime("%Y%m%d")
-logger.debug(132*'_')
-logger.debug(mydir_d)
-logger.debug(132 * '_')
-#defining glob function to aggregate the CMW, FSW CSV files
-logger.debug(132 * '_')
-
-cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
-#creating pandas data frame dict for cmw csv files
-df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
-timestr_f = time.strftime("%Y%m%d-%H%M%S")
-CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
-#writing csv files
-df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
-#writing on to csv files content to json file
-#df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
-
-FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
-fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
-df_fsw = pd.concat((pd.read_csv(f, header=0 ) for f in fsw_csv_files))
-df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
-
-# converting csv file to json
-
-#moving csv files and json files to results_run folder
-#shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
-shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
-
-
-# converting fsw verdict csv file to json
-df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
-#df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
-# printing the csv contents in run log .py for all variants
-#logger.debug(df_j)
-"""
-This script:
-1. collects the test case csv filenames into a list
-2. reads each csv file into a dataframe
-3. convert Series to a dictionary, adds data sources to json
-4. adds specified charts
-5. save data series to json file for visualization
-# Sample usage
-    cv = CtfVisualization(path=<path to test case files directory>)
-    cv.create_json()
-Note: Remove any non test case csv files from directory before running to prevent conflict 
-or extraneous data from being included in the visualization.
-"""
+    logger.debug("end of {0} th loop".format(int(row_count)))
 
 
 
-class CtfVisualization:
-    """Interface to create the visualization data json file from csv results files"""
-    _description: str  # not currently used
-    _name: str
-    _path: str
-    _data_sources: list
-
-    def __init__(self, description: str = "Visualize test case csv files", name: str = "ctf_cmw.json", path: str = ""):
-        self._description = description
-        self._name = name
-        self._path = path
-        self._data_sources = []
-
-    def create_json(self):
-        # CTF create data blob
-        ctf_json = CtfJsonData(name=self._name, path=self._path)
-
-        all_csv_files = glob(os.path.join(self._path, "CMW_VERDICT_*.csv"))
-        for fn in all_csv_files:
-            df = pd.read_csv(fn, sep=',', na_filter=False)
-
-            # CTF add data source and table
-            ctf_data_source = os.path.basename(fn)
-            self._data_sources.append(ctf_data_source)
-            ctf_json.add_data_source(ctf_data_source)
-            ctf_columns = (', '.join(df))
-            ctf_json.add_table(title=ctf_data_source, columns=ctf_columns, data_source_list=ctf_data_source)
-
-            # CTF add data to source
-            df_dict_ctf = df.T.to_dict()
-            for row in df_dict_ctf:
-                ctf_json.add_data_to_source(ctf_data_source, [df_dict_ctf[row]])
-
-        # CTF dump to JSON file
-        ctf_json.save_data()
-
-
-# Sample usage
-if __name__ == "__main__":
-    cv = CtfVisualization(path=dest_d)
-    cv.create_json()
-
-logger.debug(132 * '_')
-logger.debug("PASSED")
 
 # THE END
 
