@@ -492,7 +492,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
         # read json file
         data = None
-        f_json = os.path.curdir + os.sep + 'config.json'
+        f_json = os.path.curdir + os.sep + 'config_range5.json'
         # fsw_json = os.path.curdir + os.sep + 'config.json'
         if os.path.exists(f_json):
             with open(f_json) as json_file:
@@ -528,7 +528,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 rbw_value = data['fsw_param']['rbw'] # [ 1, 10 ,20 ,30 ]
                 logger.
             """
-            # Reading FSw spurious msmt settings from config.json
+            # Reading FSw spurious msmt settings from config_r.json
             if 'fsw_params' in data:
                 if 'sweep_points' in data['fsw_params']:
                     sweep_point_value = data['fsw_params']['sweep_points'] # [ 800, 5000, 3300, 34000 ]
