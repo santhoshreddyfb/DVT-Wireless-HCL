@@ -16,7 +16,7 @@
 
 		"socket_port": 5025,
 
-		"timeout": 6
+		"timeout": 30
 
 	},
 
