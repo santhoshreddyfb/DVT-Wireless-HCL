@@ -1460,7 +1460,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3], Meas[1][4]]
                 limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3], Meas[2][4]]
                 band_info = [TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND]
-                DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']                margin = []
+                DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']   
                 #initialization of result list
                 margin=[]
                 zip_object = zip(abs_power, limit)
