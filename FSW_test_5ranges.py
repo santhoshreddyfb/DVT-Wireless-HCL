@@ -1475,23 +1475,23 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(132 * '-')
                 logger.debug(" Range  |  Freq  kHZ| PowerAbs(-dbm) |  limit (-db) | Margin(-dbm) | Verdict  ")
                 logger.debug(
-                    " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} |{3}  ".format(Meas[0][0] / 1000, Meas[1][0],
+                    " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} ||  {3:.02f} |{4}  ".format(Meas[0][0] / 1000, Meas[1][0],
                                                                                   Meas[2][0],margin[0],
                                                                                   verdict[0]))
                 logger.debug(
-                    " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][1] / 1000, Meas[1][1],
+                    " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |  {3:.02f} |{4} ".format(Meas[0][1] / 1000, Meas[1][1],
                                                                                   Meas[2][1],margin[1],
                                                                                   verdict[1]))
                 logger.debug(
-                    " Range3 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][2] / 1000, Meas[1][2],
-                                                                                  Meas[2][2],argin[2],
+                    " Range3 | {0:.05f}     | {1:.02f} |  {2:.02f}  |  {3:.02f} |{4} ".format(Meas[0][2] / 1000, Meas[1][2],
+                                                                                  Meas[2][2],margin[2],
                                                                                   verdict[2]))
                 logger.debug(
-                    " Range4 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][3] / 1000, Meas[1][3],
+                    " Range4 | {0:.05f}     | {1:.02f} |  {2:.02f}  |  {3:.02f} |{4} ".format(Meas[0][3] / 1000, Meas[1][3],
                                                                                   Meas[2][3],margin[3],
                                                                                   verdict[3]))
                 logger.debug(
-                    " Range5 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][4] / 1000, Meas[1][4],
+                    " Range5 | {0:.05f}     | {1:.02f} |  {2:.02f}  |  {3:.02f} |{4} ".format(Meas[0][4] / 1000, Meas[1][4],
                                                                                   Meas[2][4],margin[4],
                                                                                   verdict[4]))
                 logger.debug(132 * '-')
