@@ -1455,47 +1455,54 @@ while row_count < int(sys.argv[3]): # stop variant
                 else:
                     verdict.extend(['FAIL'])
                     #print("for max values of 4 ranges", verdict)
-
-                #logger.debug("verdict list is : ", verdict)
-                logger.debug(Meas)
-                logger.debug(132 * '-')
-                logger.debug("Measurement Ranges for FSW spectrum analyzer")
-                logger.debug(132 * '-')
-                logger.debug(" Range  |  Freq  kHZ| PowerAbs(-dbm) |  limit (-db) | Verdict  ")
-                logger.debug(
-                    " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} |{3}  ".format(Meas[0][0] / 1000, Meas[1][0],
-                                                                                  Meas[2][0],
-                                                                                  verdict[0]))
-                logger.debug(
-                    " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][1] / 1000, Meas[1][1],
-                                                                                  Meas[2][1],
-                                                                                  verdict[1]))
-                logger.debug(
-                    " Range3 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][2] / 1000, Meas[1][2],
-                                                                                  Meas[2][2],
-                                                                                  verdict[2]))
-                logger.debug(
-                    " Range4 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][3] / 1000, Meas[1][3],
-                                                                                  Meas[2][3],
-                                                                                  verdict[3]))
-                logger.debug(
-                    " Range5 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][4] / 1000, Meas[1][4],
-                                                                                  Meas[2][4],
-                                                                                  verdict[4]))
-                logger.debug(132 * '-')
-                logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
-                logger.debug(132 * '-')
-                # writing to file Fsw measuremnt
                 ranges = [1, 2, 3, 4, 5]
                 freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3],Meas[0][4] ]
                 abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3], Meas[1][4]]
                 limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3], Meas[2][4]]
                 band_info = [TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND]
-                DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']
+                DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']                margin = []
+                #initialization of result list
+                margin=[]
+                zip_object = zip(abs_power, limit)
+                for list1_i, list2_i in zip_object:
+                    margin.append(list1_i-list2_i)
+                #append each difference to list
+                logger.debug(margin)
+                #logger.debug("verdict list is : ", verdict)
+                logger.debug(Meas)
+                logger.debug(132 * '-')
+                logger.debug("Measurement Ranges for FSW spectrum analyzer")
+                logger.debug(132 * '-')
+                logger.debug(" Range  |  Freq  kHZ| PowerAbs(-dbm) |  limit (-db) | Margin(-dbm) | Verdict  ")
+                logger.debug(
+                    " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} |{3}  ".format(Meas[0][0] / 1000, Meas[1][0],
+                                                                                  Meas[2][0],margin[0],
+                                                                                  verdict[0]))
+                logger.debug(
+                    " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][1] / 1000, Meas[1][1],
+                                                                                  Meas[2][1],margin[1],
+                                                                                  verdict[1]))
+                logger.debug(
+                    " Range3 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][2] / 1000, Meas[1][2],
+                                                                                  Meas[2][2],argin[2],
+                                                                                  verdict[2]))
+                logger.debug(
+                    " Range4 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][3] / 1000, Meas[1][3],
+                                                                                  Meas[2][3],margin[3],
+                                                                                  verdict[3]))
+                logger.debug(
+                    " Range5 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][4] / 1000, Meas[1][4],
+                                                                                  Meas[2][4],margin[4]
+                                                                                  verdict[4]))
+                logger.debug(132 * '-')
+                logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
+                logger.debug(132 * '-')
+                # writing to file Fsw measuremnt
+                
 
                 # dictionary of lists
 
-                dict = {'Range': ranges,'Band': band_info,'DL_freq':DL_freq, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
+                dict = {'Range': ranges,'Band': band_info,'DL_freq':DL_freq, 'RBW':rbw_in, 'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit, 'margin(-dbm)':margin}
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                 # saving the dataframe
