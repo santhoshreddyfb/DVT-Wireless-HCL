@@ -1492,7 +1492,7 @@ while row_count < int(sys.argv[3]): # stop variant
                                                                                   verdict[3]))
                 logger.debug(
                     " Range5 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][4] / 1000, Meas[1][4],
-                                                                                  Meas[2][4],margin[4]
+                                                                                  Meas[2][4],margin[4],
                                                                                   verdict[4]))
                 logger.debug(132 * '-')
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
