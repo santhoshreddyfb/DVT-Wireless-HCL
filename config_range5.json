@@ -36,7 +36,7 @@
 		"detector_type": "RMS",
 
 		"limit": [-36, -36, -36, -30, -30],
-		"sweep_time": 10
+		"sweep_time": 0.01
 
 
 	},

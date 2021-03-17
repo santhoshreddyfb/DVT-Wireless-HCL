@@ -1755,7 +1755,7 @@ df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
 
 #moving csv files and json files to results_run folder
 #shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
-#shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
+shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
 
 
 # converting fsw verdict csv file to json
