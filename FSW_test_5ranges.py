@@ -41,6 +41,17 @@ mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
 #if already dest_d file exits, delete and then create
+#path = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]))
+#files = os.listdir(path)
+"""
+for f in files:
+    if f == 'LTE_TX_Band2_max':
+         logger.debug("file exists, replacing with new file log")
+
+    else:
+        priint(os.path.join('C:\\Test\\Logs_folder\\{0}'.format(f)))
+        print("folder created")
+"""
 #shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
@@ -63,7 +74,7 @@ if sys.argv[4] == 'max' or sys.argv[4] == 'MAX':
     power = 'Band2MaxPowerInput1_FrequencySweepRanges.xlsx'
     logger.debug("TEST is based on 3gpp MAX power Value -23dbm")
 elif sys.argv[4] == 'min' or sys.argv[4] == 'MIN':
-    power = 'Band2MinPowerInput.xlsx'
+    power = 'Band2MinPowerInput1_FrequencySweepRanges.xlsx'
     logger.debug("TEST is based on 3gpp  min power Value -20dbm")
 else:
     logger.debug(" Please check the command line argument  either MAX/max or MIN/min valid, Refer to Test Description")
