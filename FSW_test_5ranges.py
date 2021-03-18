@@ -1428,6 +1428,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 min = -30.0
                 max = -36.0
                 verdict = []
+                #summary =[]
                 if Meas[1][3] < float(min) and Meas[1][1] < float(max) and Meas[1][2] < float(max) and Meas[1][
                     0] < float(max) and Meas[1][4] < float(min):
                     summary = 'PASS'
@@ -1709,10 +1710,10 @@ while row_count < int(sys.argv[3]): # stop variant
 
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
-        logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, result ))
+        logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, summary ))
         # socket class
 
-        lte_tx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Result': [result]}
+        lte_tx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Summary': [summary]}
 
         output = pd.DataFrame(lte_tx_result)
         #now_re = datetime.(now)
