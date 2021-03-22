@@ -41,7 +41,7 @@ mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 # get a logging file handle
 #Creating directory for results
-dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
+dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_RX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
 #os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
                     
@@ -1289,7 +1289,7 @@ while row_count < int(sys.argv[3]): # stop variant
             cmw.write("INITiate:LTE:SIGN:EBLer")
             cmw.write("FETCh:LTE:SIGN:EBLer:PCC:CONFidence?")
             
-            """
+            
             cmw.write("INIT:LTE:SIGN:EBLer")
             Bler_State= cmw.write("FETCh:LTE:SIGN:EBLer:STATe:ALL?")
             logger.debug("Bler State is {0}".format(Bler_State))
@@ -1297,6 +1297,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.debug("Bler PCC absolute is {0}".format(Bler_PCC_Abs))
             Bler_PCC_Rel= cmw.write("FETCh:INTermediate:LTE:SIGN:EBLer:PCC:RELative?")
             logger.debug("Bler PCC relative is {0}".format(Bler_PCC_Rel))
+            """
 
             fsw.write("SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
@@ -1569,9 +1570,9 @@ while row_count < int(sys.argv[3]): # stop variant
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, summary ))
         # socket class
 
-        lte_tx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Summary': [summary]}
+        lte_Rx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Summary': [summary]}
 
-        output = pd.DataFrame(lte_tx_result)
+        output = pd.DataFrame(lte_Rx_result)
         #now_re = datetime.(now)
         timestr_cmw = time.strftime("%Y%m%d-%H%M%S")
         #dt_re_string = now.strftime("%d_%m_%Y_%H_%M_%S")
