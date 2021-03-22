@@ -6,6 +6,12 @@ import shutil
 path = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]))
 files = os.listdir(path)
 for f in files:
+        print(f)
+
+
+
+
+ """" 
     if f == 'LTE_TX_Band4_max':
          print("file exists, removing the file log")
          shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_Band4_max'))
@@ -19,6 +25,8 @@ for f in files:
                             'LTE_TX_Band4_max')
         # os.makedir(dest)1
         dest_d = dest.replace('\\', '\\\\')
+        
+"""
 
 
 
