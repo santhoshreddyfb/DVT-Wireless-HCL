@@ -1290,7 +1290,8 @@ while row_count < int(sys.argv[3]): # stop variant
                     result = "PASS"
                 else :
                     result = "FAIL"
-
+            cmw.write("INITiate:LTE:MEASurement1:MEValuation")
+            CMW.write("READ:LTE:MEASurement1:MEValuation:EVMagnitude:AVERage")
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
             #fsw.write("SWE:MODE LIST")
