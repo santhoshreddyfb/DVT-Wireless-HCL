@@ -566,6 +566,8 @@ while row_count < int(sys.argv[3]): # stop variant
                     ref_lev = data['fsw_params']['ref_lev']
                 if 'att_rf' in data['fsw_params']:
                     att_rf = data['fsw_params']['att_rf']
+                if 'tranceducer' in data['fsw_params']:
+                    tranceducer = data['fsw_params']['tranceducer']
                 """
                 if 'freq_start' in data['fsw_params']:
                     freq_start = data['fsw_params']['freq_start']
@@ -1351,6 +1353,7 @@ while row_count < int(sys.argv[3]): # stop variant
             for rbw in range_num:
                 fsw.write("SENS:LIST:RANG{0}:RLEV {1}".format(count, ref_lev))
                 fsw.write("SENS:LIST:RANG{0}:INP:ATT {1}".format(count, att_rf))
+                fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, tranceducer))
                 count = count + 1
 
             #SWEEP POINTS
