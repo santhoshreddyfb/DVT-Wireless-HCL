@@ -61,7 +61,7 @@
 		"ranges": [1, 2],
 		"ref_lev": -20,
 		"att_rf": 20,
-           "tranceducer": None
+           "tranceducer": "None"
 		"freq_start": [30000000, 1000000000],
 		"freq_stop": [1000000000, 12750000000],
 		"rbw_in": [100000, 1000000],
