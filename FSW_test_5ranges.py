@@ -1717,8 +1717,23 @@ while row_count < int(sys.argv[3]): # stop variant
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, summary ))
         # socket class
-
-        lte_tx_result = {'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE], 'Summary': [summary]}
+        """"
+        freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3], Meas[0][4]]
+        abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3], Meas[1][4]]
+        limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3], Meas[2][4]]
+        """
+        Build_info = "facebook/mos/mos:8.1.0/OPM1.171019.026/15771000000000000"
+        if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
+            range4_msmt = str(Meas[0][3]) +' ' + str(Meas[1][3]) + ' ' + Meas[2][3]
+            range5_msmt = str(Meas[0][4]) + ' ' + str(Meas[1][4]) + ' ' + Meas[2][4]
+            lte_tx_result = {"Build_info":[Build_info],'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE],"Rang4":range4_msmt, "Rang5":range5_msmt, 'Summary': [summary]}
+        else:
+            range3_msmt = str(Meas[0][2]) + ' ' + str(Meas[1][2]) + ' ' + Meas[2][2]
+            range4_msmt = str(Meas[0][3]) + ' ' + str(Meas[1][3]) + ' ' + Meas[2][3]
+            lte_tx_result = {"Build_info": [Build_info], 'band': [TEST_BAND], 'BandWidth': [TEST_BW],
+                             'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB],
+                             '@power': [Power_level_TYPE], "Rang3": range3_msmt, "Rang4": range4_msmt,
+                             'Summary': [summary]}
 
         output = pd.DataFrame(lte_tx_result)
         #now_re = datetime.(now)

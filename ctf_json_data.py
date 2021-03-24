@@ -99,7 +99,7 @@ class CtfJsonData:
 
 # Sample usage
 if __name__ == "__main__":
-    ctf_blob = CtfJsonData(name="ctf_blob.json", path="C:\Test\DVT-Wireless-HCL\{2}\Logs_folder\LTE_TX_Band4_max")
+    ctf_blob = CtfJsonData(name="ctf_blob.json", path="C:\Test\Logs_folder\*")
     ctf_blob.add_data_source("test1")
     ctf_blob.add_data_to_source("test1", {"a": 1, "b": 2, "c": 3})
     ctf_blob.add_data_to_source("test1", [{"a": 1, "b": 2, "c": 3}])
