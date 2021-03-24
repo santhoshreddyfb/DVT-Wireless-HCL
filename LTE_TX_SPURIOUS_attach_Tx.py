@@ -1224,6 +1224,9 @@ while row_count < int(sys.argv[3]): # stop variant
                     logger.info('waiting for dut to register. airplane mode on -> off')
                     start_register_time = time.time()
                     registered = False
+                    if registered==False:
+                   break
+
                     while not registered and time.time() < start_register_time + REGISTER_TIMEOUT:
                         register_state = cmw.ask('FETCH:LTE:SIGN:PSW:STATe?')[0]
                         rrc_state = cmw.ask('SENSE:LTE:SIGN:RRCState?')[0]
@@ -1241,6 +1244,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
                     if not registered:
                         logger.error('dut did not register successfully. terminating.')
+                        break
                         #sys.exit(-3)
 
                     logger.info('dut did register successfully.')
