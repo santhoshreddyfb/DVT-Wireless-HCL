@@ -1304,6 +1304,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
             logger.debug("run the Transducer file before Measurement")
             fsw.write("MMEM:LOAD:TFAC 'C:\test\dummy_FSW_pathloss.csv'")
+            time.sleep(30)
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
 
