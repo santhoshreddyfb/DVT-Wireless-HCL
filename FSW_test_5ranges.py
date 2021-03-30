@@ -1362,7 +1362,7 @@ while row_count < int(sys.argv[3]): # stop variant
             for rbw in range_num:
                 fsw.write("SENS:LIST:RANG{0}:RLEV {1}".format(count, ref_lev))
                 fsw.write("SENS:LIST:RANG{0}:INP:ATT {1}".format(count, att_rf))
-                #fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, transducer))
+                fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, transducer))
                 count = count + 1
 
             #SWEEP POINTS
