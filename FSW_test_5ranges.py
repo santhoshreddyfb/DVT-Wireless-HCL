@@ -566,8 +566,8 @@ while row_count < int(sys.argv[3]): # stop variant
                     ref_lev = data['fsw_params']['ref_lev']
                 if 'att_rf' in data['fsw_params']:
                     att_rf = data['fsw_params']['att_rf']
-                if 'tranceducer' in data['fsw_params']:
-                    tranceducer = data['fsw_params']['tranceducer']
+                if 'transducer' in data['fsw_params']:
+                    transducer = data['fsw_params']['transducer']
                 """
                 if 'freq_start' in data['fsw_params']:
                     freq_start = data['fsw_params']['freq_start']
@@ -1199,6 +1199,12 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.write("INIT:CONT OFF")
             fsw.write("SYST:PRES:ALL")
             time.sleep(0.5)
+            fsw.write("SENSe:CORRection:TRANsducer:SELect 'dummy_FSW_pathloss'")
+            fsw.write("SENSe:CORRection:TRANsducer:ON")
+            fsw.write("SENSe:CORRection:TRANsducer:UNIT 'DB'")
+            fsw.write("SENSe:CORRection:TRANsducer:COMMent 'Test Transducer'")
+            fsw.write("SENSe:CORRection:TRANsducer:DATA 30e6,5, 13e9, 3")
+            time.sleep(10)
             fsw.write("INIT:CONT ON")
             fsw.write("INP:ATT:AUTO OFF")
             fsw.write("INP:ATT 40")
@@ -1356,7 +1362,7 @@ while row_count < int(sys.argv[3]): # stop variant
             for rbw in range_num:
                 fsw.write("SENS:LIST:RANG{0}:RLEV {1}".format(count, ref_lev))
                 fsw.write("SENS:LIST:RANG{0}:INP:ATT {1}".format(count, att_rf))
-                fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, tranceducer))
+                #fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, transducer))
                 count = count + 1
 
             #SWEEP POINTS
