@@ -923,8 +923,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
             logger.info('LTE Cell - Set input and output path')
             logger.info(' including signal routing and Programming external attenuation.')
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {0:.2f}".format(dl_att,'.2f'))# 779 __<VAR
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {0:.2f}".format(ul_att,'.2f'))#741
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {0}".format(dl_att,'.2f'))# 779 __<VAR
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {0}".format(ul_att,'.2f'))#741
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
