@@ -689,84 +689,84 @@ while row_count < int(sys.argv[3]): # stop variant
             #time.sleep(5)
             cmw.write('SYST:DISP:UPD ON')
 
-            if loop_rst == 1:
-                logger.info('{0}'.format(132 * '-'))
-                logger.info('RESET CMW')
-                cmw.timeout = 1080.0
-                cmw.write("*CLS")
-                cmw.write("SYST:PRES:ALL")
-                cmw.ask("*OPC?")
-                #cmw.timeout = 10.0
+            #if loop_rst == 1:
+            logger.info('{0}'.format(132 * '-'))
+            logger.info('RESET CMW')
+            cmw.timeout = 1080.0
+            cmw.write("*CLS")
+            cmw.write("SYST:PRES:ALL")
+            cmw.ask("*OPC?")
+            #cmw.timeout = 10.0
 
-                logger.info('{0}'.format(132 * '-'))
+            logger.info('{0}'.format(132 * '-'))
 
-                logger.info('{0}'.format(132 * '-'))
-                logger.info('QUERY ID')
+            logger.info('{0}'.format(132 * '-'))
+            logger.info('QUERY ID')
 
-                if not hasattr(cmw, 'id'):
-                    setattr(cmw, 'id', 'CMW')
-                if not hasattr(cmw, 'sn'):
-                    setattr(cmw, 'sn', '000000')
-                if not hasattr(cmw, 'BASE_FW'):
-                    setattr(cmw, 'BASE_FW', 'CMW')
+            if not hasattr(cmw, 'id'):
+                setattr(cmw, 'id', 'CMW')
+            if not hasattr(cmw, 'sn'):
+                setattr(cmw, 'sn', '000000')
+            if not hasattr(cmw, 'BASE_FW'):
+                setattr(cmw, 'BASE_FW', 'CMW')
 
-                buffin = cmw.ask("*IDN?")
-                logger.debug(buffin)
-                if 'k50' in buffin[2]:
-                    cmw.id = 'CMW500'
-                elif 'k55' in buffin[2]:
-                    cmw.id = 'CMWC'
-                elif 'k29' in buffin[2]:
-                    cmw.id = 'CMW290'
+            buffin = cmw.ask("*IDN?")
+            logger.debug(buffin)
+            if 'k50' in buffin[2]:
+                cmw.id = 'CMW500'
+            elif 'k55' in buffin[2]:
+                cmw.id = 'CMWC'
+            elif 'k29' in buffin[2]:
+                cmw.id = 'CMW290'
 
-                # get serial number
-                cmw.sn = buffin[2].split('/')[1]
+            # get serial number
+            cmw.sn = buffin[2].split('/')[1]
 
-                # Get BASE FW revision
-                cmw.BASE_FW = buffin[3]
+            # Get BASE FW revision
+            cmw.BASE_FW = buffin[3]
 
-                # get cmw options
-                logger.info('{0}'.format(132 * '-'))
-                logger.info('QUERY CMW Option')
-                if not hasattr(cmw, 'opt'):
-                    setattr(cmw, 'opt', [])
-                cmw.opt = cmw.ask("*OPT?")
+            # get cmw options
+            logger.info('{0}'.format(132 * '-'))
+            logger.info('QUERY CMW Option')
+            if not hasattr(cmw, 'opt'):
+                setattr(cmw, 'opt', [])
+            cmw.opt = cmw.ask("*OPT?")
 
-                if not hasattr(cmw, 'hw_list'):
-                    setattr(cmw, 'hw_list', [])
-                cmw.hw_list = cmw.ask('SYST:BASE:OPT:LIST? HWOP,FUNC')[0][1:-1].split(',')
+            if not hasattr(cmw, 'hw_list'):
+                setattr(cmw, 'hw_list', [])
+            cmw.hw_list = cmw.ask('SYST:BASE:OPT:LIST? HWOP,FUNC')[0][1:-1].split(',')
 
-                if not hasattr(cmw, 'sw_list'):
-                    setattr(cmw, 'sw_list', [])
-                cmw.sw_list = cmw.ask('SYST:BASE:OPT:LIST? SWOP,VALid')[0][1:-1].split(',')
+            if not hasattr(cmw, 'sw_list'):
+                setattr(cmw, 'sw_list', [])
+            cmw.sw_list = cmw.ask('SYST:BASE:OPT:LIST? SWOP,VALid')[0][1:-1].split(',')
 
-                # get CMW LTE FW revision
-                logger.info('{0}'.format(132 * '-'))
-                logger.info('QUERY LTE FW Revision')
-                if not hasattr(cmw, 'lte_sign_fw'):
-                     setattr(cmw, 'lte_sign_fw', [])
-                cmw.lte_sign_fw = cmw.ask("SYST:OPT:VERS? \"CMW_LTE_Sig\"")[0][1:-1]
+            # get CMW LTE FW revision
+            logger.info('{0}'.format(132 * '-'))
+            logger.info('QUERY LTE FW Revision')
+            if not hasattr(cmw, 'lte_sign_fw'):
+                 setattr(cmw, 'lte_sign_fw', [])
+            cmw.lte_sign_fw = cmw.ask("SYST:OPT:VERS? \"CMW_LTE_Sig\"")[0][1:-1]
 
-                if not hasattr(cmw, 'lte_mev_fw'):
-                    setattr(cmw, 'lte_mev_fw', [])
-                cmw.lte_mev_fw = cmw.ask("SYST:OPT:VERS? \"CMW_LTE_Meas\"")[0][1:-1]
+            if not hasattr(cmw, 'lte_mev_fw'):
+                setattr(cmw, 'lte_mev_fw', [])
+            cmw.lte_mev_fw = cmw.ask("SYST:OPT:VERS? \"CMW_LTE_Meas\"")[0][1:-1]
 
-                # Check presence of DAU
-                logger.info('{0}'.format(132 * '-'))
-                if cmw.hw_list.count("H450A") != 0 or cmw.hw_list.count("H450B") != 0 or cmw.hw_list.count("H450D") != 0 or cmw.hw_list.count("H450H") != 0 or cmw.hw_list.count("H450I") != 0:
-                    DAU_PRESENT = True
+            # Check presence of DAU
+            logger.info('{0}'.format(132 * '-'))
+            if cmw.hw_list.count("H450A") != 0 or cmw.hw_list.count("H450B") != 0 or cmw.hw_list.count("H450D") != 0 or cmw.hw_list.count("H450H") != 0 or cmw.hw_list.count("H450I") != 0:
+                DAU_PRESENT = True
 
-                else:
-                    DAU_PRESENT = False
-                    logger.debug('Error: VoLTE call requires DAU option CMW-B450 ')
-                    raise ValueError('VoLTE call requires DAU option CMW-B450')
+            else:
+                DAU_PRESENT = False
+                logger.debug('Error: VoLTE call requires DAU option CMW-B450 ')
+                raise ValueError('VoLTE call requires DAU option CMW-B450')
 
-                logger.info('{0}'.format(132 * '-'))
+            logger.info('{0}'.format(132 * '-'))
 
-                erreur = cmw.ask("SYST:ERR:ALL?")
-                if erreur[0] != '0':
-                    raise ValueError(erreur)
-                    # End Init CMW
+            erreur = cmw.ask("SYST:ERR:ALL?")
+            if erreur[0] != '0':
+                raise ValueError(erreur)
+                # End Init CMW
                 # Configure CMW LTE CELL CMW DAU IMS2 server and VoLTE subscriber
             if 1:
 
@@ -910,7 +910,7 @@ while row_count < int(sys.argv[3]): # stop variant
             else :
                 logger.debug(" with  not Turning off the LTE signalling, DAU, Again ")
 
-            #loop_rst = loop_rst + 1
+            loop_rst = loop_rst + 1
 
         # Configure LTE Signaling
         if 1:
@@ -1276,9 +1276,9 @@ while row_count < int(sys.argv[3]): # stop variant
 
 
                         else :
-                            time.sleep(0.5)
+                            time.sleep(1.0)
                             device.shell('reboot')
-                            time.sleep(90)
+                            time.sleep(120)
                             device.shell('root')
 
 
@@ -1301,8 +1301,8 @@ while row_count < int(sys.argv[3]): # stop variant
                     result = "PASS"
                 else :
                     result = "FAIL"
-            #cmw.write("INITiate:LTE:MEASurement1:MEValuation")
-            #evm = cmw.write("READ:LTE:MEASurement1:MEValuation:EVMagnitude:AVERage")
+            cmw.write("INITiate:LTE:MEASurement1:MEValuation")
+            evm = cmw.write("READ:LTE:MEASurement1:MEValuation:EVMagnitude:AVERage")
             logger.debug(evm)
 
             # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
@@ -1313,7 +1313,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
             logger.debug("run the Transducer file before Measurement")
             fsw.write("MMEM:LOAD:TFAC 'C:\dummy_FSW_pathloss.csv'")
-            time.sleep(10)
+            time.sleep(30)
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
 
