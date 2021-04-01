@@ -117,8 +117,8 @@ while row_count < int(sys.argv[3]): # stop variant
     freq_stop_r3 = int(sheet.cell_value(row_count, 14))
     freq_stop_r4 = int(sheet.cell_value(row_count, 15))
     freq_stop_r5 = int(sheet.cell_value(row_count, 16))
-    ul_att = int(sheet.cell_value(row_count, 18))
-    dl_att = int(sheet.cell_value(row_count, 19))
+    ul_att = float(sheet.cell_value(row_count, 18))
+    dl_att = float(sheet.cell_value(row_count, 19))
 
 
     freq_start = [freq_start_r1, freq_start_r2, freq_start_r3, freq_start_r4, freq_start_r5]
@@ -401,8 +401,8 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            self.ul_att = 25.0
-            self.dl_att = 25.0
+            #self.ul_att = 25.0
+            #self.dl_att = 25.0
             #self.imsi = '310260123456789'
             #self.band = 4
             #self.bw = 5
@@ -599,11 +599,11 @@ while row_count < int(sys.argv[3]): # stop variant
                 if 'converter' in data['lte']:
                     lte.converter = data['lte']['converter']
 
-                if 'dl_att' in data['lte']:
-                    lte.dl_att = data['lte']['dl_att']
+                #if 'dl_att' in data['lte']:
+                #   lte.dl_att = data['lte']['dl_att']
 
-                if 'ul_att' in data['lte']:
-                    lte.dl_att = data['lte']['ul_att']
+                #if 'ul_att' in data['lte']:
+                    #lte.dl_att = data['lte']['ul_att']
                 logger.debug(132 * '_')
                 if 'band' in data['lte']:
                     lte.band = data['lte']['band']
@@ -923,8 +923,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
             logger.info('LTE Cell - Set input and output path')
             logger.info(' including signal routing and Programming external attenuation.')
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {:.2f}".format(float(dl_att, '.2f')))# 779 __<VAR
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {:.2f}".format(float(ul_att, '.2f')))#741
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {0:0.2f}".format(float(dl_att)))# 779 __<VAR
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {0:0.2f}".format(float(ul_att)))#741
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
