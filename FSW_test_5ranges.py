@@ -117,6 +117,9 @@ while row_count < int(sys.argv[3]): # stop variant
     freq_stop_r3 = int(sheet.cell_value(row_count, 14))
     freq_stop_r4 = int(sheet.cell_value(row_count, 15))
     freq_stop_r5 = int(sheet.cell_value(row_count, 16))
+    ul_att = int(sheet.cell_value(row_count, 18))
+    dl_att = int(sheet.cell_value(row_count, 19))
+
 
     freq_start = [freq_start_r1, freq_start_r2, freq_start_r3, freq_start_r4, freq_start_r5]
     freq_stop = [freq_stop_r1, freq_stop_r2, freq_stop_r3,freq_stop_r4, freq_stop_r5]
@@ -920,8 +923,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
             logger.info('LTE Cell - Set input and output path')
             logger.info(' including signal routing and Programming external attenuation.')
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {0}".format(lte.dl_att))
-            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {0}".format(lte.ul_att))
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:OUTP {0:.2f}".format(float(dl_att)))# 779 __<VAR
+            cmw.write("CONF:LTE:SIGN:RFS:PCC:EATT:INP {0:.2f}".format(float(ul_att)))#741
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
