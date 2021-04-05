@@ -1,0 +1,12 @@
+     528 DEBUG        RX_ATTACH_TEST.py                                    <module>    98: Band: 		 Bandwidth : (MHz) 		DL Frequency:  (MHz)		RB Allocation: 		 RB Start: 		 float(Power Level)       	 Channel type
+     528 DEBUG        RX_ATTACH_TEST.py                                    <module>    99:  13	 		  :10.0 (MHz) 			: 751.0 (MHz)				: 50	   			 : 0				  23.0  
+     528 DEBUG        RX_ATTACH_TEST.py                                    <module>   100: ____________________________________________________________________________________________________________________________________
+     538 DEBUG        RX_ATTACH_TEST.py                                    __init__   431: print band: 13
+     538 DEBUG        RX_ATTACH_TEST.py                                    <module>   438: 5230
+     538 DEBUG        RX_ATTACH_TEST.py                                    __init__   431: print band: 13
+     538 DEBUG        RX_ATTACH_TEST.py                                    __init__   431: print band: 13
+     538 DEBUG        RX_ATTACH_TEST.py                                    __init__   431: print band: 13
+     538 DEBUG        RX_ATTACH_TEST.py                                    <module>   442: [5, 24, 49, 99]
+     548 INFO         RX_ATTACH_TEST.py                                    <module>   450: version of module : 41
+     548 INFO         RX_ATTACH_TEST.py                                    <module>   457: detected : 225c2b92
+     558 ERROR        RX_ATTACH_TEST.py                                    <module>   463: could not find 4D123456789. terminating script
