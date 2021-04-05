@@ -1226,7 +1226,7 @@ try:
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                df.to_csv('{3}\\cmw_logsresult_{0}_std{1}_{2}.csv'.format(RAT_info, std, timestr, mydir_d),
+                df.to_csv('{3}\\cmw_logsresult_{0}_stnd{1}_{2}.csv'.format(RAT_info, stnd, timestr, mydir_d),
                           index=False)
 
                  # writing to file Fsw measuremnt
