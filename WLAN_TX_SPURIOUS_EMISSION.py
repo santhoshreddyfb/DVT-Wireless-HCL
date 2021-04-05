@@ -46,7 +46,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 #if already dest_d file exits, delete and then create
 #shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
-dest = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_RX_{0}'.format(sys.argv[1]))
+dest = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_TX_{0}'.format(sys.argv[1]))
 #os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
                     
