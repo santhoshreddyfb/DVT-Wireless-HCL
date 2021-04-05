@@ -38,7 +38,7 @@ name_file = 'wifi'
 std_wifi = '802.11g'
 # Making a directory For the Run
 #mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
-mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
+mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),os.getcwd().split('D')[0]))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
@@ -46,7 +46,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 #if already dest_d file exits, delete and then create
 #shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
-dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_RX_{0}'.format(sys.argv[1]))
+dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_RX_{0}'.format(sys.argv[1],os.getcwd().split('D')[0]))
 #os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
                     
