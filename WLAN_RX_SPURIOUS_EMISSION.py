@@ -991,9 +991,9 @@ try:
                     RAT_info = 'WIFI'
                     std1 = '802_11g'
 
-                    dict = {'STANDARD':std1,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+                    dictionary = {'STANDARD':std1,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
 
-                    df=pd.DataFrame(dict,index=[0])
+                    df=pd.DataFrame(dictionary,index=[0])
                     timestr = time.strftime("%Y%m%d-%H%M%S")
 
                     df.to_csv('{3}\\CMW_output_{0}_std1{1}_{2}.csv'.format(RAT_info, std1, timestr, mydir_d))
