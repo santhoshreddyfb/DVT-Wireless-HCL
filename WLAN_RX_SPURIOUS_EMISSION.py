@@ -1216,7 +1216,7 @@ try:
                 RAT_info = 'WIFI'
                 stnd= sys.argv[1]
                 opchannelwidth = '20MHz'
-
+                """
                 dict = {'STANDARD': stnd, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower, 'OPERATING CHANNEL WIDTH': opchannelwidth, 'STATE': state,
                         'MAC ADDRESS': mac_address, 'RI': RI, 'PER': Per,
@@ -1228,7 +1228,7 @@ try:
 
                 df.to_csv('{3}\\cmw_logsresult_{0}_stnd{1}_{2}.csv'.format(RAT_info, stnd, timestr, mydir_d),
                           index=False)
-
+                """
                  # writing to file Fsw measuremnt
                 ranges = [1]
 
