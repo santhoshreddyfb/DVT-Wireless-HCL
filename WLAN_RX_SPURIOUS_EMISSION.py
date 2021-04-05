@@ -1232,7 +1232,7 @@ try:
                  # writing to file Fsw measuremnt
                 ranges = [1]
 
-
+                """
                 # dictionary of lists
 
                 dict1 = {'RAT': RAT_info, 'IEEE STANDARD':standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
@@ -1248,7 +1248,7 @@ try:
                 df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, standard , timestr, mydir_d),
                               index=False,
                               mode='a')
-
+                """
 
                     # dictionary of lists
 
