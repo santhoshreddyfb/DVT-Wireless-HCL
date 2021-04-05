@@ -62,6 +62,7 @@ logger.addHandler(fh)
 # set log level
 logger.setLevel(logging.DEBUG)
 
+wlan_standard = sys.argv[1]
 
 # socket class
 class c_socket(object):
@@ -986,15 +987,15 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-                    std = sys.argv[1]
 
 
-                    dict = {'STANDARD':std,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+
+                    dict = {'STANDARD':wlan_standard,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
 
                     df=pd.DataFrame(dict,index=[0])
                     timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                    df.to_csv('{3}\\CMW_output_{0}_std{1}_{2}.csv'.format(RAT_info, std, timestr, mydir_d))
+                    df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d))
 
 
                     tx_mev = True
@@ -1216,24 +1217,24 @@ try:
                 logger.debug(132 * '-')
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
                 logger.debug(132 * '-')
-                """
-                dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
+
+                dict = {'STANDARD': wlan_standard, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower,'STATE': state,
                         'MAC ADDRESS': mac_address,'RXBurstPower': RXbpower,'SUMMARY': summary}
 
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                df.to_csv('{3}\\cmw_logsresult_{0}_std{1}_{2}.csv'.format(RAT_info, std, timestr, mydir_d),
+                df.to_csv('{3}\\cmw_logsresult_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
                           index=False)
-                """
+
                  # writing to file Fsw measuremnt
                 ranges = [1]
 
 
                 # dictionary of lists
 
-                dict = {'RAT': RAT_info, 'IEEE STANDARD':standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
+                dict = {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
                             'abs_power': float(list_of_Freq[1]), 'limit_pwr': float(list_of_Freq[2]),'PASS/FAIL':verdict }
 
                 df = pd.DataFrame(dict)
@@ -1243,7 +1244,7 @@ try:
                 logger.debug(mydir_d)
                 logger.debug(132 * '_')
                 #logger.debug(df)
-                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, standard , timestr, mydir_d),
+                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, wlan_standard , timestr, mydir_d),
                               index=False,
                               mode='a')
 
@@ -1286,8 +1287,8 @@ try:
         logger.debug(mydir_d)
         logger.debug(132 * '_')
         timestr_fsw = time.strftime("%Y%m%d-%H%M%S")
-        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(RAT_info, standard, timestr_fsw)  # size of 18kb
-        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(RAT_info, standard, timestr_fsw, mydir_d)  # no data
+        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(RAT_info, wlan_standard, timestr_fsw)  # size of 18kb
+        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(RAT_info, wlan_standard, timestr_fsw, mydir_d)  # no data
 
 
         # file path on instrument
