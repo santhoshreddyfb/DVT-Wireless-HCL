@@ -1235,10 +1235,10 @@ try:
 
                 # dictionary of lists
 
-                dict = {'RAT': RAT_info, 'IEEE STANDARD':standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
+                dict1 = {'RAT': RAT_info, 'IEEE STANDARD':standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
                             'abs_power': float(list_of_Freq[1]), 'limit_pwr': float(list_of_Freq[2]),'PASS/FAIL':verdict }
 
-                df = pd.DataFrame(dict)
+                df = pd.DataFrame(dict1)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                     # saving the dataframe
                 logger.debug(132 * '_')
