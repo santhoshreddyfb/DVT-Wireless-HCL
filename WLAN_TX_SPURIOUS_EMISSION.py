@@ -962,7 +962,7 @@ try:
                     #cmw.query("SENSe:WLAN:SIGN:UESinfo:CMWaddress:IPV?")
                     #device.shell('ping -c 10 172.22.1.201')
                     """
-                    device.shell('ping -c 5 172.22.1.201')
+                    #device.shell('ping -c 5 172.22.1.201')
                     # RX Statistics
                     RXbpower = cmw.ask('SENSe:WLAN:SIGN:UESinfo:RXBPower?')
                     logger.debug("RX Power is {0}".format(RXbpower))
@@ -1219,7 +1219,7 @@ try:
 
                 dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower,'STATE': state,
-                        'MAC ADDRESS': mac_address,'RXBurstPower': RXBurstPower,'SUMMARY': summary}
+                        'MAC ADDRESS': mac_address,'RXBurstPower': RXbpower,'SUMMARY': summary}
 
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
