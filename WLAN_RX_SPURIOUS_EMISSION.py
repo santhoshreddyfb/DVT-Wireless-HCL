@@ -996,7 +996,7 @@ try:
                     df=pd.DataFrame(dict,index=[0])
                     timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                    df.to_csv('{3}\\CMW_output_{0}_std1{1}_{2}.csv'.format(RAT_info, standard, timestr, mydir_d))
+                    df.to_csv('{3}\\CMW_output_{0}_std1{1}_{2}.csv'.format(RAT_info, std1, timestr, mydir_d))
 
                     rx_per = True
                     if rx_per:
