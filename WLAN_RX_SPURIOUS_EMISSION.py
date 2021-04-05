@@ -34,8 +34,7 @@ sh = logging.StreamHandler()
 sh.setFormatter(logging.Formatter(logger_format))
 
 logger.addHandler(sh)
-name_file = 'wifi'
-std_wifi = '802.11g'
+
 # Making a directory For the Run
 #mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
 mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),os.getcwd().split('D')[0]))
@@ -61,7 +60,7 @@ logger.addHandler(fh)
 
 # set log level
 logger.setLevel(logging.DEBUG)
-
+wlan_standard = sys.argv[1]
 
 # socket class
 class c_socket(object):
@@ -989,14 +988,14 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-                    std1 = '802_11g'
+                    #std1 = '802_11g'
 
-                    dictionary = {'STANDARD':std1,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+                    dictionary = {'STANDARD':wlan_standard,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
 
                     df=pd.DataFrame(dictionary,index=[0])
                     timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                    df.to_csv('{3}\\CMW_output_{0}_std1{1}_{2}.csv'.format(RAT_info, std1, timestr, mydir_d))
+                    df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d))
 
                     rx_per = True
                     if rx_per:
@@ -1214,10 +1213,10 @@ try:
                 logger.debug(132 * '-')
 
                 RAT_info = 'WIFI'
-                stnd= sys.argv[1]
+                #stnd= sys.argv[1]
                 opchannelwidth = '20MHz'
-                """
-                dict = {'STANDARD': stnd, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
+
+                dict = {'STANDARD': wlan_standard, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower, 'OPERATING CHANNEL WIDTH': opchannelwidth, 'STATE': state,
                         'MAC ADDRESS': mac_address, 'RI': RI, 'PER': Per,
                         'CurrentNoPackets': Noofpackets, 'PacketsLost': packetlost, 'RXBurstPower': RXBurstPower,
@@ -1226,16 +1225,16 @@ try:
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                df.to_csv('{3}\\cmw_logsresult_{0}_stnd{1}_{2}.csv'.format(RAT_info, stnd, timestr, mydir_d),
+                df.to_csv('{3}\\cmw_logsresult_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
                           index=False)
-                """
+
                  # writing to file Fsw measuremnt
                 ranges = [1]
 
-                """
+
                 # dictionary of lists
 
-                dict1 = {'RAT': RAT_info, 'IEEE STANDARD':standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
+                dict1 = {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
                             'abs_power': float(list_of_Freq[1]), 'limit_pwr': float(list_of_Freq[2]),'PASS/FAIL':verdict }
 
                 df = pd.DataFrame(dict1)
@@ -1245,10 +1244,10 @@ try:
                 logger.debug(mydir_d)
                 logger.debug(132 * '_')
                 #logger.debug(df)
-                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, standard , timestr, mydir_d),
+                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, wlan_standard , timestr, mydir_d),
                               index=False,
                               mode='a')
-                """
+
 
                     # dictionary of lists
 
@@ -1288,8 +1287,8 @@ try:
         logger.debug(mydir_d)
         logger.debug(132 * '_')
         timestr_fsw = time.strftime("%Y%m%d-%H%M%S")
-        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(RAT_info, standard, timestr_fsw)  # size of 18kb
-        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(RAT_info, standard, timestr_fsw, mydir_d)  # no data
+        filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(RAT_info, wlan_standard, timestr_fsw)  # size of 18kb
+        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(RAT_info, wlan_standard, timestr_fsw, mydir_d)  # no data
 
 
         # file path on instrument
