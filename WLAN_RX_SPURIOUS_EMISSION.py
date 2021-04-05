@@ -989,8 +989,10 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-                    standard = '802_11g'
-                    dict = {'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+                    std = sys.argv[1]
+
+
+                    dict = {'STANDARD':std,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
 
                     df=pd.DataFrame(dict,index=[0])
                     timestr = time.strftime("%Y%m%d-%H%M%S")

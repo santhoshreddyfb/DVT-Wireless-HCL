@@ -37,7 +37,8 @@ logger.addHandler(sh)
 name_file = 'wifi'
 std_wifi = '802.11g'
 # Making a directory For the Run
-mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
+#mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
+mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
@@ -45,9 +46,9 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 #if already dest_d file exits, delete and then create
 #shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
-#dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4]))
+dest = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_RX_{0}'.format(sys.argv[1]))
 #os.makedir(dest)
-#dest_d = dest.replace('\\', '\\\\')
+dest_d = dest.replace('\\', '\\\\')
                     
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
@@ -1218,12 +1219,12 @@ try:
 
                 dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower, 'OPERATING CHANNEL WIDTH': opchannelwidth, 'STATE': state,
-                        'MAC ADDRESS': mac_address,'SUMMARY': summary}
+                        'MAC ADDRESS': mac_address,'RXBurstPower': RXBurstPower,'SUMMARY': summary}
 
                 df = pd.DataFrame(dict)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
 
-                df.to_csv('{3}\\CMW_TX_Wlan_MEASUREMENT_{0}_std{1}_{2}.csv'.format(RAT_info, standard, timestr, mydir_d),
+                df.to_csv('{3}\\cmw_logsresult_{0}_std{1}_{2}.csv'.format(RAT_info, std, timestr, mydir_d),
                           index=False)
 
                  # writing to file Fsw measuremnt
@@ -1336,34 +1337,46 @@ logger.debug(132 * '_')
 # defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-#cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
-# creating pandas data frame dict for cmw csv files
-#df = pd.concat((pd.read_csv(f, header=0) for f in cmw_csv_files))
+cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
+#creating pandas data frame dict for cmw csv files
+df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
-#CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)  # CMW_VERDICT_20210221-221813
-# writing csv files
-#df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
-# writing on to csv files content to json file
-# df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
+CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
+#writing csv files
+df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
+#writing on to csv files content to json file
+#df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
 
-#FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
-#fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
-#df_fsw = pd.concat((pd.read_csv(f, header=0) for f in fsw_csv_files))
-#df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
+FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
+fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
+df_fsw = pd.concat((pd.read_csv(f, header=0 ) for f in fsw_csv_files))
+df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
 
 # converting csv file to json
 
-# moving csv files and json files to results_run folder
-# shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
-# shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
+#moving csv files and json files to results_run folder
+#shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
+shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
 
 
 # converting fsw verdict csv file to json
-#df_f = pd.read_csv(r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
-# df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-df.to_json(r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
-# printing the csv
-
+df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
+#df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
+df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
+# printing the csv contents in run log .py for all variants
+#logger.debug(df_j)
+"""
+This script:
+1. collects the test case csv filenames into a list
+2. reads each csv file into a dataframe
+3. convert Series to a dictionary, adds data sources to json
+4. adds specified charts
+5. save data series to json file for visualization
+# Sample usage
+    cv = CtfVisualization(path=<path to test case files directory>)
+    cv.create_json()
+Note: Remove any non test case csv files from directory before running to prevent conflict 
+or extraneous data from being included in the visualization.
 """
 
 class CtfVisualization:
@@ -1406,7 +1419,7 @@ class CtfVisualization:
 if __name__ == "__main__":
     cv = CtfVisualization(path=dest_d)
     cv.create_json()
-"""
+
 logger.debug(132 * '_')
 logger.debug("PASSED")
 # THE END
