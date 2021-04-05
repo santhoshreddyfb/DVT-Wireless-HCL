@@ -38,7 +38,7 @@ name_file = 'wifi'
 std_wifi = '802.11g'
 # Making a directory For the Run
 #mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
-mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),os.getcwd().split('D')[0]))
+mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S')))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
