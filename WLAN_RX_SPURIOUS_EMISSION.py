@@ -1082,9 +1082,7 @@ try:
                             
                          """
 
-                        RAT_info = 'WIFI'
-                        std = sys.argv[1]
-                        opchannelwidth = '20MHz'
+
 
 
                         """
@@ -1215,7 +1213,11 @@ try:
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
                 logger.debug(132 * '-')
 
-                dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
+                RAT_info = 'WIFI'
+                stnd= sys.argv[1]
+                opchannelwidth = '20MHz'
+
+                dict = {'STANDARD': stnd, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower, 'OPERATING CHANNEL WIDTH': opchannelwidth, 'STATE': state,
                         'MAC ADDRESS': mac_address, 'RI': RI, 'PER': Per,
                         'CurrentNoPackets': Noofpackets, 'PacketsLost': packetlost, 'RXBurstPower': RXBurstPower,
