@@ -1216,7 +1216,7 @@ try:
                 logger.debug(132 * '-')
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
                 logger.debug(132 * '-')
-
+                """
                 dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
                         'RXEXPECTEDPOWER': RxExpectedpower,'STATE': state,
                         'MAC ADDRESS': mac_address,'RXBurstPower': RXbpower,'SUMMARY': summary}
@@ -1226,7 +1226,7 @@ try:
 
                 df.to_csv('{3}\\cmw_logsresult_{0}_std{1}_{2}.csv'.format(RAT_info, std, timestr, mydir_d),
                           index=False)
-
+                """
                  # writing to file Fsw measuremnt
                 ranges = [1]
 

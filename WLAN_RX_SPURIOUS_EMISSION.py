@@ -989,8 +989,7 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-                    std = sys.argv[1]
-
+                    std = '802_11g'
 
                     dict = {'STANDARD':std,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
 
