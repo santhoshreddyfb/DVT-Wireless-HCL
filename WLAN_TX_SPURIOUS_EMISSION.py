@@ -1218,7 +1218,7 @@ try:
                 logger.debug(132 * '-')
 
                 dict = {'STANDARD': std, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
-                        'RXEXPECTEDPOWER': RxExpectedpower, 'OPERATING CHANNEL WIDTH': opchannelwidth, 'STATE': state,
+                        'RXEXPECTEDPOWER': RxExpectedpower,'STATE': state,
                         'MAC ADDRESS': mac_address,'RXBurstPower': RXBurstPower,'SUMMARY': summary}
 
                 df = pd.DataFrame(dict)
