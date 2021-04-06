@@ -1128,6 +1128,7 @@ try:
             logger.info('{0}'.format(132 * '-'))
             logger.info('SCPI commands for FSW')
             logger.info('{0}'.format(132 * '-'))
+            fsw.write("SENS:LIST:RANG:TRAN 'dummy_FSW_pathloss'")
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
 

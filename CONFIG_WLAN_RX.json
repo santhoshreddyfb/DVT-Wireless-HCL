@@ -44,35 +44,6 @@
 
 
 
-	"lte": {
-
-		"sua": 1,
-
-		"rf_port": "RF1C",
-
-		"converter": 1,
-
-		"dl_att": 0,
-
-		"ul_att": 0,
-
-		"dl_chan": 5230,
-
-		"bw": [1.4, 3, 5, 10, 15, 20],
-
-		"nrb": 50,
-
-		"rs_epre": -85.0,
-
-		"tx_close_loop_power": 23.0,
-
-		"imsi": "001010123456063",
-
-		"apn": "Test Network",
-
-		"qci": 5
-
-	},
 
 	"dau": {
 
