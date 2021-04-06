@@ -444,9 +444,9 @@ try:
             wlan.imsi = data['wlan']['imsi']
         """
 
-        MCC = wlan.imsi[0:3]
-        MNC = wlan.imsi[3:6]
-        IMSI = wlan.imsi[6:]
+  #      MCC = wlan.imsi[0:3]
+   #     MNC = wlan.imsi[3:6]
+   #     IMSI = wlan.imsi[6:]
 
         if 'fsw' in data:
             if 'host' in data['fsw']:
