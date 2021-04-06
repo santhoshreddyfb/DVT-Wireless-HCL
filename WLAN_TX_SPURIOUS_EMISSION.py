@@ -1378,7 +1378,7 @@ CMW_verdict = 'cmw_verdict_{0}'.format(timestr_f)#_20210221-221813CMW_VERDICT
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
-df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
+#df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
 
 FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
 fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
