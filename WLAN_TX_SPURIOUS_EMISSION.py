@@ -49,7 +49,6 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 dest = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), 'WLAN_TX_{0}'.format(sys.argv[1]))
 #os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
-                    
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -327,7 +326,7 @@ class c_socket(object):
         return self.__timeout
 
     timeout = property(__get_timeout, __set_timeout, None, """ timeout """)
-
+"""
 class c_wlan(object):
 
     def __init__(self):
@@ -342,7 +341,7 @@ class c_wlan(object):
         self.channel = 1
         self.Tx_Burst_power = -40.0
         self.Rx_expected_power = 0.0
-
+"""
 # Look for UE device
 # TODO: make CLI argument
 dut_adb_serial_number = '225c2b92'
@@ -394,7 +393,7 @@ epdg_ip_v4 = "192.168.1.201"
 epdg_ip_v6 = "fc01::1"
 dau_ipv4_config = 'internal'
 dau_ipv6_config = 'internal'
-
+"""
 wlan = c_wlan()
 
 wlan.sua = "012"
@@ -407,7 +406,7 @@ wlan.bw = 20
 wlan.channel = 1
 wlan.Tx_Burst_power = -70.0
 wlan.Rx_expected_power = 30.0
-
+"""
 try:
 
     # read json file
@@ -430,6 +429,7 @@ try:
 
             if 'socket_termchar' in data['cmw']:
                 cmw_socket_termchar = data['cmw']['socket_termchar']
+        """
         if 'wlan' in data:
             wlan.sua = data['wlan']['sua']
             wlan.rf_port = data['wlan']['rf_port']
@@ -442,7 +442,7 @@ try:
             wlan.Tx_Burst_power = data['wlan']['Tx_Burst_power']
             wlan.Rx_expected_power = data['wlan']['Rx_expected_power']
             wlan.imsi = data['wlan']['imsi']
-
+        """
 
         MCC = wlan.imsi[0:3]
         MNC = wlan.imsi[3:6]
@@ -460,11 +460,6 @@ try:
 
             if 'socket_termchar' in data['fsw']:
                 fsw_socket_termchar = data['fsw']['socket_termchar']
-        """
-        if fsw_param' in data :
-            rbw_value = data['fsw_param']['rbw'] # [ 1, 10 ,20 ,30 ]
-            logger.
-        """
         # Reading FSw spurious msmt settings from config.json
         if 'fsw_params' in data:
             if 'sweep_points' in data['fsw_params']:
@@ -489,9 +484,6 @@ try:
                 limit = data['fsw_params']['limit']
             if 'sweep_time' in data['fsw_params']:
                 sweep_time = data['fsw_params']['sweep_time']
-
-
-
             if 'wlan' in data:
                 wlan.sua = data['wlan']['sua']
                 wlan.rf_port = data['wlan']['rf_port']
@@ -511,13 +503,28 @@ try:
     # get argument parsed
     if '--cmw' in sys.argv:
         cmw_host = sys.argv[sys.argv.index("--cmw") + 1]
+    if '--dau_ipv4_external' in sys.argv:
+        dau_ipv4_config = 'external'
+
+    if '--dau_ipv6_external' in sys.argv:
+        dau_ipv6_config = 'external'
+
+    logger.info('{0}'.format(132 * '-'))
+    logger.info('***** Script Setup CMW for LTE VoLTE/IMS call *****')
+    logger.info('{0:<20} : {1}'.format('Date', time.asctime()))
+    logger.info('{0:<20} : {1}'.format('Computer', socket.gethostname().upper()))
+    logger.info('{0:<20} : {1}'.format('Operating System', os.name.upper()))
+    logger.info('{0:<20} : {1}'.format('Target OS', sys.platform.upper()))
+    logger.info('{0:<20} : {1}'.format('Python Version', sys.version.upper()))
+    logger.info('{0:<20} : {1}'.format('Python Script', sys.argv[0]))
+    logger.info('{0}'.format(132 * '-'))
 
     logger.info('{0}'.format(132 * '-'))
     logger.info('Get working directory')
     workdir = os.getcwd()
     logger.info('{0}'.format(workdir))
     logger.info('{0}'.format(132 * '-'))
-    time.sleep(10)
+    time.sleep(5)
 
     # Init CMW
     #Create a Socket Class object to remote the CMW
@@ -534,8 +541,6 @@ try:
 
         # set CMW display
         logger.info('{0}'.format(132 * '-'))
-
-
         time.sleep(5)
         cmw.write('SYST:DISP:UPD ON')
         logger.info('{0}'.format(132 * '-'))
@@ -627,19 +632,16 @@ try:
             logger.info('wlan - TURN WLAN CELL OFF')
             buffin = cmw.ask("SYST:SIGNaling:ALL:OFF;*OPC?")
 
-            TIMEOUT = 120.0
+            TIMEOUT = 60.0
 
             tstart = time.time()
 
             buffin = cmw.ask("SOUR:WLAN:SIGN:STAT:ALL?")
             while not (buffin[0] == "OFF" and buffin[1] == "ADJ"):
-
                 # wait 500 ms
                 time.sleep(0.5)
-
                 # query WLAN CELL state
                 buffin = cmw.ask("SOURce:WLAN:SIGN:STAT:ALL?")
-
                 # check TIMEOUT
                 if (time.time() - tstart) > TIMEOUT:
                     # x = win32api.MessageBox(0, "TIMEOUT occurs")
@@ -647,9 +649,6 @@ try:
                 #
             logger.info('WLAN Cell - WLAN  IS TURN OFF')
             logger.info('{0}'.format(132 * '-'))
-
-
-
 
         # Configure DAU
         if DAU_PRESENT:
@@ -801,23 +800,25 @@ try:
             elif choice == standard['key9']:
                 logger.info('WLAN Cell - Set 802.11ax standard')
                 cmw.write("CONFigure:WLAN:SIGN:CONNection:STANdard AXSTd")
+            else :
+                logger.debug("IEEE standard not found, Please enter correct format")
 
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set WLAN Signaling  AP Output Power')
-            RxExpectedpower=cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EPEPower {0:5.1f}".format(wlan.Rx_expected_power))
+            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EPEPower {0:5.1f}".format(wlan.Rx_expected_power))
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set WLAN Signaling AP  TX Expected Power')
-            TxBurstpower=cmw.write("CONF:WLAN:SIGN:RFS:BOPower {0:5.1f}".format(wlan.Tx_Burst_power))
+            cmw.write("CONF:WLAN:SIGN:RFS:BOPower {0:5.1f}".format(wlan.Tx_Burst_power))
             logger.info('{0}'.format(132 * '-'))
-            Bdw=cmw.write('CONFigure:WLAN:SIGN:RFSettings:OCWidth BW20')
+            cmw.write('CONFigure:WLAN:SIGN:RFSettings:OCWidth BW20')
 
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set channel: {0}'.format(wlan.channel))
-            RF_channel=cmw.write("CONF:WLAN:SIGN:RFS:CHANnel {0}".format(wlan.channel))
+            cmw.write("CONF:WLAN:SIGN:RFS:CHANnel {0}".format(wlan.channel))
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -830,10 +831,8 @@ try:
             # Start DAU services
             if DAU_PRESENT:
                 logger.info('{0}'.format(132 * '-'))
-
                 # Start DAU service
                 logger.info(' Start DAU service(s)'.format(132 * '-'))
-
                 for service in dau_service_l:
 
                     logger.info('Start DAU {0} service'.format(service))
@@ -955,14 +954,14 @@ try:
                     # MAC address
                     mac_address = cmw.ask('SENSe:WLAN:SIGN:UECapability:MAC:ADDRess?')
                     logger.debug("mac address is{0}".format(mac_address))
-                    """
+
                     # IP Address
                     ip_address = cmw.query("SENSe:WLAN:SIGN:UESinfo:UEADdress:IPV?")
 
                     logger.debug("ip address is {0}".format(ip_address))
                     #cmw.query("SENSe:WLAN:SIGN:UESinfo:CMWaddress:IPV?")
-                    #device.shell('ping -c 10 172.22.1.201')
-                    """
+                    device.shell('ping -c 10 172.22.1.201')
+
                     #device.shell('ping -c 5 172.22.1.201')
                     # RX Statistics
                     RXbpower = cmw.ask('SENSe:WLAN:SIGN:UESinfo:RXBPower?')
@@ -972,8 +971,8 @@ try:
                     logger.debug("Data rate is {0}".format(Datarate))
                     ABSReport = cmw.ask("SENSe:WLAN:SIGN<i>:UESinfo:ABSReport?")
                     logger.debug("ABS Report is {0}".format(ABSReport))
-                    
-                    
+                    """
+                    """
                     #saveing screenshot
                     # captured area AWINdow | MWINdow | FSCReen
                     cmw.write("HCOPy:AWINdow")
@@ -987,17 +986,10 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-
-
-
-                    dict = {'STANDARD':wlan_standard,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
-
-                    df=pd.DataFrame(dict,index=[0])
+                    dict = {'STANDARD':wlan_standard,'SUA':wlan.sua ,'RF_Port':wlan.rf_port,'RF_converter': wlan.converter,'DL_ATT': wlan.dl_att,'UL_ATT': wlan.ul_att,'BW': wlan.bw,'Channel': wlan.channel,'TX_BPOWER': wlan.Tx_Burst_power,'RX_EPOWER': wlan.Rx_expected_power ,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+                    df=pd.DataFrame(dict,index = False)
                     timestr = time.strftime("%Y%m%d-%H%M%S")
-
                     df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d))
-
-
                     tx_mev = True
 
                     if tx_mev:
@@ -1067,13 +1059,13 @@ try:
 
 
                         logger.debug('Trig WLAN MEV')
-                        #cmw.write('ABORt:WLAN:MEAS:MEValuation')
+                        cmw.write('ABORt:WLAN:MEAS:MEValuation')
                         cmw.write('INIT:WLAN:MEAS:MEValuation')
 
                         logger.debug('Wait for WLAN MEV analyzer to complete the TX measurements')
                         while True:
 
-                            time.sleep(20)
+                            time.sleep(0.25)
                             #device.shell('svc wifi enable')
 
                             Connection_state = cmw.ask('FETCh:WLAN:SIGN:PSWitched:STATe?')
@@ -1095,18 +1087,29 @@ try:
                                '17_EVMDataCarr', '18_EVMPilotCarr', '19_FreqError', '20_ClockError',
                                '21_IQOffset', '22_DCPower', '23_GainImbalance', '24QuadError',
                                '25_LTFPower', '26_DataPower']
+                        Scalar_tx = {}
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
+                            Scalar_tx2 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
+                            Scalar_tx.update(Scalar_tx2)
 
                         logger.debug('Get TX WLAN TSM results')
+
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:AVERage?')
                         res = ['1_RI', '2_OutOfTol', '3_AB', '4_BC', '5_CD', '6_DE', '7_ED', '8_DC', '9_CB', '10_BA']
+                        tsm_mask= {}
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
+                            tsm_mask2 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
+                            tsm_mask.update(tsm_mask2)
+                        # Scalar_tx + tsm_mask disctinaries to scalar_tx
+                        Scalar_tx.update(tsm_mask)
+
+
 
                         logger.debug('Get TX WLAN OBW results')
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:OBW?')
@@ -1115,8 +1118,21 @@ try:
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
+                            Scalar_tx3 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
+                            Scalar_tx.update(Scalar_tx3)
 
+            logger.debug(Scalar_tx)
 
+            df = pd.DataFrame(Scalar_tx)
+            timestr = time.strftime("%Y%m%d-%H%M%S")
+            # saving the dataframe
+            logger.debug(132 * '_')
+            logger.debug(mydir_d)
+            logger.debug(132 * '_')
+            # logger.debug(df)
+            df.to_csv('{3}\\cmw_logsresult_{0}_{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
+                      index=False,
+                      mode='a')
 
             fsw.write("SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
@@ -1218,15 +1234,7 @@ try:
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
                 logger.debug(132 * '-')
 
-                dict = {'STANDARD': wlan_standard, 'BANDWIDTH': Bdw, 'RFCHANNEL': RF_channel, 'TXBURSTPOWER': TxBurstpower,
-                        'RXEXPECTEDPOWER': RxExpectedpower,'STATE': state,
-                        'MAC ADDRESS': mac_address,'RXBurstPower': RXbpower,'SUMMARY': summary}
 
-                df = pd.DataFrame(dict)
-                timestr = time.strftime("%Y%m%d-%H%M%S")
-
-                df.to_csv('{3}\\cmw_logsresult_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
-                          index=False)
 
                  # writing to file Fsw measuremnt
                 ranges = [1]
@@ -1338,7 +1346,7 @@ logger.debug(132 * '_')
 # defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\cmw_logsresult*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")

@@ -37,7 +37,7 @@ logger.addHandler(sh)
 
 # Making a directory For the Run
 #mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('W')[0]), '{0}_{1}_{2}'.format(name_file, datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), std_wifi))
-mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'),os.getcwd().split('D')[0]))
+mydir = os.path.join('{0}\\Wifi_Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), os.getcwd().split('D')[0]))
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
@@ -326,20 +326,20 @@ class c_socket(object):
 
     timeout = property(__get_timeout, __set_timeout, None, """ timeout """)
 
-class c_wlan(object):
+#class c_wlan(object):
 
-    def __init__(self):
-        self.sua = "012"
-        self.rf_port = "RF2C"  # For WIFI
-        self.converter = 1
+    #def __init__(self):
+        #self.sua = "012"
+        #self.rf_port = "RF2C"  # For WIFI
+        #self.converter = 1
         #self.imsi = '310260123456789'
         #self.dl_att = 0.0
         #self.ul_att = 0.0
-        self.std = "IEEE 802.11g"
-        self.bw = 20
-        self.channel = 1
-        self.Tx_Burst_power = -40.0
-        self.Rx_expected_power = 0.0
+        #self.std = "IEEE 802.11g"
+        #self.bw = 20
+        #self.channel = 1
+        #self.Tx_Burst_power = -40.0
+        #self.Rx_expected_power = 0.0
 
 # Look for UE device
 # TODO: make CLI argument
@@ -395,16 +395,16 @@ dau_ipv6_config = 'internal'
 
 wlan = c_wlan()
 
-wlan.sua = "012"
-wlan.rf_port = "RF2C"
-wlan.converter = 1
-wlan.dl_att = 1.0
-wlan.ul_att = 1.0
-wlan.std = "IEEE 802.11g"
-wlan.bw = 20
-wlan.channel = 1
-wlan.Tx_Burst_power = -70.0
-wlan.Rx_expected_power = 30.0
+#wlan.sua = "012"
+#wlan.rf_port = "RF2C"
+#wlan.converter = 1
+#wlan.dl_att = 1.0
+#wlan.ul_att = 1.0
+#wlan.std = "IEEE 802.11g"
+#wlan.bw = 20
+#wlan.channel = 1
+#wlan.Tx_Burst_power = -70.0
+#wlan.Rx_expected_power = 30.0
 
 try:
 
@@ -487,35 +487,31 @@ try:
                 limit = data['fsw_params']['limit']
             if 'sweep_time' in data['fsw_params']:
                 sweep_time = data['fsw_params']['sweep_time']
-
-
-
-            if 'wlan' in data:
-                wlan.sua = data['wlan']['sua']
-                wlan.rf_port = data['wlan']['rf_port']
-                wlan.converter = data['wlan']['converter']
-                wlan.dl_att = data['wlan']['dl_att']
-                wlan.ul_att = data['wlan']['ul_att']
-                wlan.std = data['wlan']['std']
-                wlan.bw = data['wlan']['bw']
-                wlan.channel = data['wlan']['channel']
-                wlan.Tx_Burst_power = data['wlan']['Tx_Burst_power']
-                wlan.Rx_expected_power = data['wlan']['Rx_expected_power']
-
-#       MNC = wlan.imsi[3:6]
-#       IMSI = wlan.imsi[6:]
-#      #SIM = 'TMO'
-
     # get argument parsed
     if '--cmw' in sys.argv:
         cmw_host = sys.argv[sys.argv.index("--cmw") + 1]
+    if '--dau_ipv4_external' in sys.argv:
+        dau_ipv4_config = 'external'
+
+    if '--dau_ipv6_external' in sys.argv:
+        dau_ipv6_config = 'external'
+
+    logger.info('{0}'.format(132 * '-'))
+    logger.info('***** Script Setup CMW for LTE VoLTE/IMS call *****')
+    logger.info('{0:<20} : {1}'.format('Date', time.asctime()))
+    logger.info('{0:<20} : {1}'.format('Computer', socket.gethostname().upper()))
+    logger.info('{0:<20} : {1}'.format('Operating System', os.name.upper()))
+    logger.info('{0:<20} : {1}'.format('Target OS', sys.platform.upper()))
+    logger.info('{0:<20} : {1}'.format('Python Version', sys.version.upper()))
+    logger.info('{0:<20} : {1}'.format('Python Script', sys.argv[0]))
+    logger.info('{0}'.format(132 * '-'))
 
     logger.info('{0}'.format(132 * '-'))
     logger.info('Get working directory')
     workdir = os.getcwd()
     logger.info('{0}'.format(workdir))
     logger.info('{0}'.format(132 * '-'))
-    time.sleep(10)
+    time.sleep(5)
 
     # Init CMW
     #Create a Socket Class object to remote the CMW
@@ -1309,8 +1305,6 @@ try:
         print(instr.query('SYST:ERR?'))
         logger.debug("at the end of screenshot");
         instr.close()
-
-
 
 # catch error
 except Exception as Err:
