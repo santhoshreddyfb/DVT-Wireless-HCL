@@ -991,7 +991,7 @@ try:
                     dict4 = {'STANDARD':wlan_standard,'SUA':wlan_sua ,'RF_Port':wlan_rf_port,'RF_converter': wlan_converter,'DL_ATT': wlan_dl_att,'UL_ATT': wlan_ul_att,'BW': wlan_bw,'Channel': wlan_channel,'TX_BPOWER': wlan_Tx_Burst_power,'RX_EPOWER': wlan_Rx_expected_power ,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
                     df=pd.DataFrame(dict4)
                     timestr = time.strftime("%Y%m%d-%H%M%S")
-                    df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),index = False)
+                    df.to_csv('{3}\\CMW_Input_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),index = False)
                     tx_mev = True
 
                     if tx_mev:
@@ -1091,39 +1091,62 @@ try:
                                '21_IQOffset', '22_DCPower', '23_GainImbalance', '24QuadError',
                                '25_LTFPower', '26_DataPower']
 
-
-                        TX_scalar_values = {'1_RI':buffin[0],'2_OutOfTol':buffin[1],'3_MCSIndex':buffin[2],'4_Modulation':buffin[3],'5PayLoadSym':buffin[4],'6_MeasuredSym':buffin[5],'7_PayloadBytes':buffin[6],'8_GuardInterval':buffin[7],'9_NoSS':buffin[8],'10_NoSTS':buffin[9],'11_BurstRate':buffin[10],'12_PowerBackOff':buffin[11],'13_BurstPower':buffin[12],'14_PeakPower':buffin[13],'15_CrestFactor':buffin[14],'16_EVMAllCarr':buffin[15],'17_EVMDataCarr':buffin[16],'18_EVMPilotCarr':buffin[17],'19_FreqError':buffin[18],'20_ClockError':buffin[ 19],'21_IQOffset':buffin[20],'22_DCPower':buffin[21],'23_GainImbalance':buffin[22],'24QuadError':buffin[ 23],'25_LTFPower':buffin[24],'26_DataPower':buffin[25]}
-                        df = pd.DataFrame(TX_scalar_values,index=[0])
-                        timestr = time.strftime("%Y%m%d-%H%M%S")
-                        # saving the dataframe
-                        logger.debug(132 * '_')
-                        logger.debug(mydir_d)
-                        logger.debug(132 * '_')
-                        # logger.debug(df)
-                        df.to_csv('{3}\\cmw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
-                            mode='a')
+                        dict1 = {}
 
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
+                            dict2 = {'{0}'.format(res[i_meas]): (buffin[i_meas])}
+                            dict1.update(dict2)
 
                         logger.debug('Get TX WLAN TSM results')
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:AVERage?')
-                        res = ['1_RI', '2_OutOfTol', '3_AB', '4_BC', '5_CD', '6_DE', '7_ED', '8_DC', '9_CB', '10_BA']
+                        res1 = ['1_RI', '2_OutOfTol', '3_AB', '4_BC', '5_CD', '6_DE', '7_ED', '8_DC', '9_CB', '10_BA']
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
-                            logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
-
-
+                            logger.debug('{0}:{1:>8}'.format(res1[i_meas], buffin[i_meas]))
+                            dict3 = {'{0}'.format(res1[i_meas]): (buffin[i_meas])}
+                            dict1.update(dict3)
+                        logger.debug(dict1)
                         logger.debug('Get TX WLAN OBW results')
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:OBW?')
-                        res = ['1_RI', '2_OBW_cur', '3_OBW_avg', '4_OBW_max', '5_OBW_sdev', '6_OBW_left', '7_OBW_right']
+                        res2 = ['1_RI', '2_OBW_cur', '3_OBW_avg', '4_OBW_max', '5_OBW_sdev', '6_OBW_left', '7_OBW_right']
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
-                            logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
+                            logger.debug('{0}:{1:>8}'.format(res2[i_meas], buffin[i_meas]))
+                            dict4 = {'{0}'.format(res2[i_meas]): (buffin[i_meas])}
+                            dict1.update(dict4)
+
+                        def extractDigits(lst):
+                            res = []
+                            for el in lst:
+                                sub = el.split(', ')
+                                res.append(sub)
+                            return (res)
+                        # Driver code
+                        lst = dict1.values()
+                        lst2 = extractDigits(lst)
+                        logger.debug(lst2)
+                        Dict_dataframe = dict(zip(res, lst2))
+                        print(Dict_dataframe)
+                        """
+                        TX_scalar_values = {'1_RI': buffin[0], '2_OutOfTol': buffin[1], '3_MCSIndex': buffin[2],
+                                            '4_Modulation': buffin[3], '5PayLoadSym': buffin[4],
+                                            '6_MeasuredSym': buffin[5], '7_PayloadBytes': buffin[6],
+                                            '8_GuardInterval': buffin[7], '9_NoSS': buffin[8], '10_NoSTS': buffin[9],
+                                            '11_BurstRate': buffin[10], '12_PowerBackOff': buffin[11],
+                                            '13_BurstPower': buffin[12], '14_PeakPower': buffin[13],
+                                            '15_CrestFactor': buffin[14], '16_EVMAllCarr': buffin[15],
+                                            '17_EVMDataCarr': buffin[16], '18_EVMPilotCarr': buffin[17],
+                                            '19_FreqError': buffin[18], '20_ClockError': buffin[19],
+                                            '21_IQOffset': buffin[20], '22_DCPower': buffin[21],
+                                            '23_GainImbalance': buffin[22], '24QuadError': buffin[23],
+                                            '25_LTFPower': buffin[24], '26_DataPower': buffin[25]}
+                        """
+
 
             fsw.write("SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
@@ -1234,10 +1257,10 @@ try:
 
                 # dictionary of lists
 
-                dict3= {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
+                dict_fsw= {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
                             'abs_power': float(list_of_Freq[1]), 'limit_pwr': float(list_of_Freq[2]),'PASS/FAIL':verdict }
 
-                df = pd.DataFrame(dict3)
+                df = pd.DataFrame(dict_fsw)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                     # saving the dataframe
                 logger.debug(132 * '_')
@@ -1259,6 +1282,15 @@ try:
             logger.debug(132 * '_')
             # End Init FSW
         logger.info('{0}'.format(132 * '-'))
+        df = pd.DataFrame(Dict_dataframe)
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        # saving the dataframe
+        logger.debug(132 * '_')
+        logger.debug(mydir_d)
+        logger.debug(132 * '_')
+        # logger.debug(df)
+        df.to_csv('{3}\\cmw_output_{0}_{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
+                  mode='a')
 
         """
         if erreur[0] != '0':
@@ -1338,15 +1370,15 @@ logger.debug(132 * '_')
 # defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\cmw_logsresult*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\cmw_ouput*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
-CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
+CMW_verdict = 'cmw_output_{0}'.format(timestr_f)#_20210221-221813CMW_VERDICT
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
-#df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
+df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
 
 FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
 fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
@@ -1361,9 +1393,9 @@ shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
 
 
 # converting fsw verdict csv file to json
-df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
+df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, CMW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
+df.to_json (r'{0}\\ctf_cmw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
 #logger.debug(df_j)
 """
