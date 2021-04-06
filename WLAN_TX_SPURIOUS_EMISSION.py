@@ -1058,7 +1058,7 @@ try:
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:BTYPe NHTBursts')
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:RATE Q6M34')
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:RREStriction ON')
-                        cmw.write("TRIGger:WLAN:MEAS<i>:MEValuation:TOUT ON")
+                        cmw.write("TRIGger:WLAN:MEAS<i>:MEValuation:TOUT OFF")
 
 
                         logger.debug('Trig WLAN MEV')
