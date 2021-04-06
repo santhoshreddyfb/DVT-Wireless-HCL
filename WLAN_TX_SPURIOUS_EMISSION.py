@@ -396,16 +396,16 @@ dau_ipv6_config = 'internal'
 """
 wlan = c_wlan()
 
-wlan.sua = "012"
-wlan.rf_port = "RF2C"
-wlan.converter = 1
-wlan.dl_att = 1.0
-wlan.ul_att = 1.0
-#wlan.std = "IEEE 802.11g"
-wlan.bw = 20
-wlan.channel = 1
-wlan.Tx_Burst_power = -70.0
-wlan.Rx_expected_power = 30.0
+wlan_sua = "012"
+wlan_rf_port = "RF2C"
+wlan_converter = 1
+wlan_dl_att = 1.0
+wlan_ul_att = 1.0
+#wlan_std = "IEEE 802.11g"
+wlan_bw = 20
+wlan_channel = 1
+wlan_Tx_Burst_power = -70.0
+wlan_Rx_expected_power = 30.0
 """
 try:
 
@@ -431,22 +431,20 @@ try:
                 cmw_socket_termchar = data['cmw']['socket_termchar']
         """
         if 'wlan' in data:
-            wlan.sua = data['wlan']['sua']
-            wlan.rf_port = data['wlan']['rf_port']
-            wlan.converter = data['wlan']['converter']
-            wlan.dl_att = data['wlan']['dl_att']
-            wlan.ul_att = data['wlan']['ul_att']
-            wlan.std = data['wlan']['std']
-            wlan.bw = data['wlan']['bw']
-            wlan.channel = data['wlan']['channel']
-            wlan.Tx_Burst_power = data['wlan']['Tx_Burst_power']
-            wlan.Rx_expected_power = data['wlan']['Rx_expected_power']
-            wlan.imsi = data['wlan']['imsi']
+            wlan_sua = data['wlan']['sua']
+            wlan_rf_port = data['wlan']['rf_port']
+            wlan_converter = data['wlan']['converter']
+            wlan_dl_att = data['wlan']['dl_att']
+            wlan_ul_att = data['wlan']['ul_att']
+            wlan_std = data['wlan']['std']
+            wlan_bw = data['wlan']['bw']
+            wlan_channel = data['wlan']['channel']
+            wlan_Tx_Burst_power = data['wlan']['Tx_Burst_power']
+            wlan_Rx_expected_power = data['wlan']['Rx_expected_power']
+            wlan_imsi = data['wlan']['imsi']
         """
 
-  #      MCC = wlan.imsi[0:3]
-   #     MNC = wlan.imsi[3:6]
-   #     IMSI = wlan.imsi[6:]
+
 
         if 'fsw' in data:
             if 'host' in data['fsw']:
@@ -485,19 +483,21 @@ try:
             if 'sweep_time' in data['fsw_params']:
                 sweep_time = data['fsw_params']['sweep_time']
             if 'wlan' in data:
-                wlan.sua = data['wlan']['sua']
-                wlan.rf_port = data['wlan']['rf_port']
-                wlan.converter = data['wlan']['converter']
-                wlan.dl_att = data['wlan']['dl_att']
-                wlan.ul_att = data['wlan']['ul_att']
-                wlan.std = data['wlan']['std']
-                wlan.bw = data['wlan']['bw']
-                wlan.channel = data['wlan']['channel']
-                wlan.Tx_Burst_power = data['wlan']['Tx_Burst_power']
-                wlan.Rx_expected_power = data['wlan']['Rx_expected_power']
+                wlan_sua = data['wlan']['sua']
+                wlan_rf_port = data['wlan']['rf_port']
+                wlan_converter = data['wlan']['converter']
+                wlan_dl_att = data['wlan']['dl_att']
+                wlan_ul_att = data['wlan']['ul_att']
+                wlan_std = data['wlan']['std']
+                wlan_bw = data['wlan']['bw']
+                wlan_channel = data['wlan']['channel']
+                wlan_Tx_Burst_power = data['wlan']['Tx_Burst_power']
+                wlan_Rx_expected_power = data['wlan']['Rx_expected_power']
+                wlan_imsi = data['wlan']['imsi']
 
-#       MNC = wlan.imsi[3:6]
-#       IMSI = wlan.imsi[6:]
+    MCC = wlan_imsi[0:3]
+    MNC = wlan_imsi[3:6]
+    IMSI = wlan_imsi[6:]
 #      #SIM = 'TMO'
 
     # get argument parsed
@@ -510,7 +510,7 @@ try:
         dau_ipv6_config = 'external'
 
     logger.info('{0}'.format(132 * '-'))
-    logger.info('***** Script Setup CMW for LTE VoLTE/IMS call *****')
+    logger.info('***** Script Setup CMW for WLAN call *****')
     logger.info('{0:<20} : {1}'.format('Date', time.asctime()))
     logger.info('{0:<20} : {1}'.format('Computer', socket.gethostname().upper()))
     logger.info('{0:<20} : {1}'.format('Operating System', os.name.upper()))
@@ -751,7 +751,7 @@ try:
 
 
             logger.info('WLAN - Routing WLAN Configuration')
-            cmw.write("ROUT:WLAN:SIGN:SCEN:SCEL1:FLEXible SUA{0},{1},RX{2},{1},TX{2}".format(wlan.sua, wlan.rf_port,wlan.converter))
+            cmw.write("ROUT:WLAN:SIGN:SCEN:SCEL1:FLEXible SUA{0},{1},RX{2},{1},TX{2}".format(wlan_sua, wlan_rf_port,wlan_converter))
 
 
             logger.info('{0}'.format(132 * '-'))
@@ -759,8 +759,8 @@ try:
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set Attenuation Path Compensation')
 
-            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EATT:OUTP {0}".format(wlan.dl_att))
-            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EATT:INP {0}".format(wlan.ul_att))
+            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EATT:OUTP {0}".format(wlan_dl_att))
+            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EATT:INP {0}".format(wlan_ul_att))
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
@@ -805,20 +805,20 @@ try:
 
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set WLAN Signaling  AP Output Power')
-            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EPEPower {0:5.1f}".format(wlan.Rx_expected_power))
+            cmw.write("CONF:WLAN:SIGN:RFS:ANT1:EPEPower {0:5.1f}".format(wlan_Rx_expected_power))
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
             logger.info('WLAN - Set WLAN Signaling AP  TX Expected Power')
-            cmw.write("CONF:WLAN:SIGN:RFS:BOPower {0:5.1f}".format(wlan.Tx_Burst_power))
+            cmw.write("CONF:WLAN:SIGN:RFS:BOPower {0:5.1f}".format(wlan_Tx_Burst_power))
             logger.info('{0}'.format(132 * '-'))
             cmw.write('CONFigure:WLAN:SIGN:RFSettings:OCWidth BW20')
 
             logger.info('{0}'.format(132 * '-'))
 
             logger.info('{0}'.format(132 * '-'))
-            logger.info('WLAN - Set channel: {0}'.format(wlan.channel))
-            cmw.write("CONF:WLAN:SIGN:RFS:CHANnel {0}".format(wlan.channel))
+            logger.info('WLAN - Set channel: {0}'.format(wlan_channel))
+            cmw.write("CONF:WLAN:SIGN:RFS:CHANnel {0}".format(wlan_channel))
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -954,13 +954,15 @@ try:
                     # MAC address
                     mac_address = cmw.ask('SENSe:WLAN:SIGN:UECapability:MAC:ADDRess?')
                     logger.debug("mac address is{0}".format(mac_address))
-
+                    """
                     # IP Address
                     ip_address = cmw.query("SENSe:WLAN:SIGN:UESinfo:UEADdress:IPV?")
 
                     logger.debug("ip address is {0}".format(ip_address))
                     #cmw.query("SENSe:WLAN:SIGN:UESinfo:CMWaddress:IPV?")
-                    device.shell('ping -c 10 172.22.1.201')
+                    """
+                    device.shell('ping -c 5 172.22.1.201')
+                    time.sleep(10)
 
                     #device.shell('ping -c 5 172.22.1.201')
                     # RX Statistics
@@ -986,10 +988,10 @@ try:
                     """
 
                     RAT_info = 'WIFI'
-                    dict = {'STANDARD':wlan_standard,'SUA':wlan.sua ,'RF_Port':wlan.rf_port,'RF_converter': wlan.converter,'DL_ATT': wlan.dl_att,'UL_ATT': wlan.ul_att,'BW': wlan.bw,'Channel': wlan.channel,'TX_BPOWER': wlan.Tx_Burst_power,'RX_EPOWER': wlan.Rx_expected_power ,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
-                    df=pd.DataFrame(dict,index = False)
+                    dict4 = {'STANDARD':wlan_standard,'SUA':wlan_sua ,'RF_Port':wlan_rf_port,'RF_converter': wlan_converter,'DL_ATT': wlan_dl_att,'UL_ATT': wlan_ul_att,'BW': wlan_bw,'Channel': wlan_channel,'TX_BPOWER': wlan_Tx_Burst_power,'RX_EPOWER': wlan_Rx_expected_power ,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
+                    df=pd.DataFrame(dict4)
                     timestr = time.strftime("%Y%m%d-%H%M%S")
-                    df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d))
+                    df.to_csv('{3}\\CMW_output_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),index = False)
                     tx_mev = True
 
                     if tx_mev:
@@ -1065,7 +1067,7 @@ try:
                         logger.debug('Wait for WLAN MEV analyzer to complete the TX measurements')
                         while True:
 
-                            time.sleep(0.25)
+                            time.sleep(20)
                             #device.shell('svc wifi enable')
 
                             Connection_state = cmw.ask('FETCh:WLAN:SIGN:PSWitched:STATe?')
@@ -1087,28 +1089,31 @@ try:
                                '17_EVMDataCarr', '18_EVMPilotCarr', '19_FreqError', '20_ClockError',
                                '21_IQOffset', '22_DCPower', '23_GainImbalance', '24QuadError',
                                '25_LTFPower', '26_DataPower']
-                        Scalar_tx = {}
+
+
+                        TX_scalar_values = {'1_RI':buffin[0],'2_OutOfTol':buffin[1],'3_MCSIndex':buffin[2],'4_Modulation':buffin[3],'5PayLoadSym':buffin[4],'6_MeasuredSym':buffin[5],'7_PayloadBytes':buffin[6],'8_GuardInterval':buffin[7],'9_NoSS':buffin[8],'10_NoSTS':buffin[9],'11_BurstRate':buffin[10],'12_PowerBackOff':buffin[11],'13_BurstPower':buffin[12],'14_PeakPower':buffin[13],'15_CrestFactor':buffin[14],'16_EVMAllCarr':buffin[15],'17_EVMDataCarr':buffin[16],'18_EVMPilotCarr':buffin[17],'19_FreqError':buffin[18],'20_ClockError':buffin[ 19],'21_IQOffset':buffin[20],'22_DCPower':buffin[21],'23_GainImbalance':buffin[22],'24QuadError':buffin[ 23],'25_LTFPower':buffin[24],'26_DataPower':buffin[25]}
+                        df = pd.DataFrame(TX_scalar_values,index=[0])
+                        timestr = time.strftime("%Y%m%d-%H%M%S")
+                        # saving the dataframe
+                        logger.debug(132 * '_')
+                        logger.debug(mydir_d)
+                        logger.debug(132 * '_')
+                        # logger.debug(df)
+                        df.to_csv('{3}\\cmw_logsresult_{0}_band{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
+                            mode='a')
+
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
-                            Scalar_tx2 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
-                            Scalar_tx.update(Scalar_tx2)
 
                         logger.debug('Get TX WLAN TSM results')
-
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:AVERage?')
                         res = ['1_RI', '2_OutOfTol', '3_AB', '4_BC', '5_CD', '6_DE', '7_ED', '8_DC', '9_CB', '10_BA']
-                        tsm_mask= {}
                         for i_meas, meas in enumerate(buffin):
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
-                            tsm_mask2 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
-                            tsm_mask.update(tsm_mask2)
-                        # Scalar_tx + tsm_mask disctinaries to scalar_tx
-                        Scalar_tx.update(tsm_mask)
-
 
 
                         logger.debug('Get TX WLAN OBW results')
@@ -1118,21 +1123,6 @@ try:
                             if 'E+' in meas or 'E-' in meas:
                                 buffin[i_meas] = '{0:8.3f}'.format(float(meas))
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
-                            Scalar_tx3 = {'{0}'.format(res[i_meas]): '{}'.format(buffin[i_meas])}
-                            Scalar_tx.update(Scalar_tx3)
-
-            logger.debug(Scalar_tx)
-
-            df = pd.DataFrame(Scalar_tx)
-            timestr = time.strftime("%Y%m%d-%H%M%S")
-            # saving the dataframe
-            logger.debug(132 * '_')
-            logger.debug(mydir_d)
-            logger.debug(132 * '_')
-            # logger.debug(df)
-            df.to_csv('{3}\\cmw_logsresult_{0}_{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),
-                      index=False,
-                      mode='a')
 
             fsw.write("SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
@@ -1174,7 +1164,7 @@ try:
             fsw.result = fsw.ask("CALC:LIM1:FAIL?")
             logger.debug('result is: {0}'.format(fsw.result)) # this scpi
             fsw.write("INIT:SPUR; *WAI")
-            #time.sleep(5)
+            time.sleep(10)
             list_of_Freq = fsw.ask("TRAC:DATA? SPURIOUS")# when it returns, at that time length of list_freq ==1
             # only one value values
 
@@ -1242,10 +1232,10 @@ try:
 
                 # dictionary of lists
 
-                dict = {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
+                dict3= {'RAT': RAT_info, 'IEEE STANDARD':wlan_standard, 'Range': ranges, 'RBW': rbw_in, 'frequency': float(list_of_Freq[0]),
                             'abs_power': float(list_of_Freq[1]), 'limit_pwr': float(list_of_Freq[2]),'PASS/FAIL':verdict }
 
-                df = pd.DataFrame(dict)
+                df = pd.DataFrame(dict3)
                 timestr = time.strftime("%Y%m%d-%H%M%S")
                     # saving the dataframe
                 logger.debug(132 * '_')
