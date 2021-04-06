@@ -991,7 +991,7 @@ try:
                     dict4 = {'STANDARD':wlan_standard,'SUA':wlan_sua ,'RF_Port':wlan_rf_port,'RF_converter': wlan_converter,'DL_ATT': wlan_dl_att,'UL_ATT': wlan_ul_att,'BW': wlan_bw,'Channel': wlan_channel,'TX_BPOWER': wlan_Tx_Burst_power,'RX_EPOWER': wlan_Rx_expected_power ,'STATE':state,'MAC ADDRESS': mac_address,'RXBPOWER': RXbpower}
                     df=pd.DataFrame(dict4)
                     timestr = time.strftime("%Y%m%d-%H%M%S")
-                    df.to_csv('{3}\\CMW_Input_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),index = False)
+                    df.to_csv('{3}\\Input_cmw_{0}_wlan_standard{1}_{2}.csv'.format(RAT_info, wlan_standard, timestr, mydir_d),index = False)
                     tx_mev = True
 
                     if tx_mev:
@@ -1370,11 +1370,11 @@ logger.debug(132 * '_')
 # defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\cmw_ouput*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\cmw_*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
-CMW_verdict = 'cmw_output_{0}'.format(timestr_f)#_20210221-221813CMW_VERDICT
+CMW_verdict = 'cmw_verdict_{0}'.format(timestr_f)#_20210221-221813CMW_VERDICT
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
@@ -1429,7 +1429,7 @@ class CtfVisualization:
         # CTF create data blob
         ctf_json = CtfJsonData(name=self._name, path=self._path)
 
-        all_csv_files = glob(os.path.join(self._path, "FSW_verdict_*.csv"))
+        all_csv_files = glob(os.path.join(self._path, "cmw_output_*.csv"))
         for fn in all_csv_files:
             df = pd.read_csv(fn, sep=',', na_filter=False)
 
