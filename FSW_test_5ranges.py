@@ -1689,17 +1689,6 @@ while row_count < int(sys.argv[3]): # stop variant
 
         # End Init FSW
 
-        # Tx multievaluation results
-        df = pd.DataFrame(Tx_MultiEval_Res)
-        timestr = time.strftime("%Y%m%d-%H%M%S")
-        # saving the dataframe
-        logger.debug(132 * '_')
-        logger.debug(mydir_d)
-        logger.debug(132 * '_')
-        # logger.debug(df)
-        df.to_csv('{3}\\cmw_output_{0}_{1}_{2}.csv'.format(TEST_BAND, TEST_BW, timestr, mydir_d),mode='a')
-
-
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE ))
