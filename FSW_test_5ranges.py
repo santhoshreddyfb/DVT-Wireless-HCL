@@ -1702,7 +1702,7 @@ while row_count < int(sys.argv[3]): # stop variant
         if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
             range4_msmt = str(Meas[0][3]/1000000) +'/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
             range5_msmt = str(Meas[0][4]/1000000) + '/ ' + str(Meas[1][4]) + '/ ' + str(Meas[2][4])
-            lte_tx_result = {"Build_info":[Build_info],'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE],"Rang4/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range4_msmt, "Rang5/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range5_msmt, 'Summary': [summary]}
+            lte_tx_result = {"Build_info":[Build_info],'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_MultiEval_Res],"Rang4/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range4_msmt, "Rang5/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range5_msmt, 'Summary': [summary]}
         else:
             range3_msmt = str(Meas[0][2]/1000000) + '/ ' + str(Meas[1][2]) + '/' + str(Meas[2][2])
             range4_msmt = str(Meas[0][3]/1000000) + '/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
