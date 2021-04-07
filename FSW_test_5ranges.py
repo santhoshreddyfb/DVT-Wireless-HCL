@@ -39,20 +39,7 @@ mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
-# get a logging file handle
-#if already dest_d file exits, delete and then create
-#path = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]))
-#files = os.listdir(path)
-"""
-for f in files:
-    if f == 'LTE_TX_Band2_max':
-         logger.debug("file exists, replacing with new file log")
 
-    else:
-        priint(os.path.join('C:\\Test\\Logs_folder\\{0}'.format(f)))
-        print("folder created")
-"""
-#shutil.rmtree(os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4])))
 #Creating directory for results
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
 #os.makedir(dest)
@@ -326,7 +313,8 @@ while row_count < int(sys.argv[3]): # stop variant
                 else:
                     buffout = [buffin]
 
-                self._logger.debug('{0}:{1} << [{2}]'.format(self.host, self.port, ','.join(buffout)))
+                self._logger.debug('values are {0}:{1} << [{2}]'.format(self.host, self.port, ','.join(buffout)))
+
 
                 return buffout
 
@@ -655,7 +643,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
 
         logger.info('{0}'.format(132 * '-'))
-        logger.info('***** Script Setup CMW for LTE VoLTE/IMS call *****')
+        logger.info('***** Script Setup CMW for LTE call *****')
         logger.info('{0:<20} : {1}'.format('Date', time.asctime()))
         logger.info('{0:<20} : {1}'.format('Computer', socket.gethostname().upper()))
         logger.info('{0:<20} : {1}'.format('Operating System', os.name.upper()))
@@ -1078,8 +1066,7 @@ while row_count < int(sys.argv[3]): # stop variant
                             lte.nrb = TEST_RB
                             logger.debug("enter in to user RB")
                             pos = Start_RB
-                            #cmw.write("CONF:LTE:SIGN:CONN:UDCH:DL {0},{0},QPSK,9".format(pos, lte.nrb))
-                            #cmw.write("CONF:LTE:SIGN:CONN:UDCH:UL {0},{0},QPSK,10".format(pos, lte.nrb))
+
                         # this condition is for high value
                         elif TEST_RB == 1 and Start_RB >0:
                                 lte.nrb =TEST_RB
@@ -1115,7 +1102,6 @@ while row_count < int(sys.argv[3]): # stop variant
             erreur = cmw.ask("SYST:ERR:ALL?")
             if erreur[0] != '0':
                 raise ValueError(erreur)
-
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -1211,9 +1197,9 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.write("INIT:CONT ON")
             fsw.write("INP:ATT:AUTO OFF")
             fsw.write("INP:ATT 40")
+            logger.info('{0}'.format(132 * '-'))
 
-
-        # Turn LTE Cell ON
+            # Turn LTE Cell ON
         if 1:
             #
             logger.info('{0}'.format(132 * '-'))
@@ -1301,12 +1287,60 @@ while row_count < int(sys.argv[3]): # stop variant
                     result = "PASS"
                 else :
                     result = "FAIL"
-            cmw.write("INITiate:LTE:MEASurement1:MEValuation")
-            evm = cmw.write("READ:LTE:MEASurement1:MEValuation:EVMagnitude:AVERage")
-            logger.debug(evm)
 
-            # fsw.write("SENS:LIST:INP:FILT:HPAS ON")
-            #fsw.write("SWE:MODE LIST")
+            # Enabling TX Measurement
+            tx_mev = True
+            if tx_mev:
+                logger.debug("LTE TX Multi-Evaluation TEST")
+                logger.debug("INFO:*** Route LTE MEV in Combine Signal Path")
+                cmw.write("ROUTe:LTE:MEAS<i>:SCENario:CSPath")
+                cmw.write("ROUTe:LTE:MEAS:SCENario:CSP 'LTE Sig1'")
+                cmw.write('ABORt:LTE:MEAS:MEValuation')
+                cmw.write('INIT:LTE:MEAS:MEValuation')
+                time.sleep(0.25)
+
+                TX_buffin = cmw.ask('FETCh:LTE:MEAS:MEValuation:LIST:SEGMent1:MODulation:DALLocation?')
+                logger.debug('TX Meas is: {0}'.format(TX_buffin))
+                TX_demodulation = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:DMODulation?")
+                logger.debug('TX demodulation is: {0}'.format(TX_demodulation))
+                TX_DCHType = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:DCHType?")
+                logger.debug('TX DCHType is: {0}'.format(TX_DCHType))
+                Txmeas = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:CURRent?")
+                logger.debug('TX Meas is: {0}'.format(Txmeas))
+                res = ['1_Reliability','2_OutOfTol','3_EVM_RMSlow','4_EVM_RMShigh','5_EVMpeakLow','6_EVMpeakHigh','7_MErr_RMSlow','8_MErr_RMShigh','9_MErrPeakLow','10_MErrPeakHigh','11_PErr_RMSlow','12_PErr_RMSh','13_PErrPeakLow','14_PErrPeakHigh','15_IQoffset','16_FreqError','17_TimingError','18_TXpower','19_PeakPower','20_RBpower','21_EVM_DMRSl','22_EVM_DMRSh','23_MErr_DMRSl','24_MErr_DMRSh','25_PErr_DMRS','26_PErr_DMRSh','27_GainImbal','28_QuadError','29_EVM_SRS']
+                dict1 = {}
+
+                for i_meas, meas in enumerate(Txmeas):
+                    if 'E+' in meas or 'E-' in meas:
+                        Txmeas[i_meas] = '{0:8.3f}'.format(float(meas))
+                    logger.debug('{0}:{1:>8}'.format(res[i_meas], Txmeas[i_meas]))
+                    dict2 = {'{0}'.format(res[i_meas]): (Txmeas[i_meas])}
+                    dict1.update(dict2)
+
+                logger.debug("dict1 is here",dict1)
+                def extractDigits(lst):
+                    res = []
+                    for el in lst:
+                        sub = el.split(', ')
+                        res.append(sub)
+                    return (res)
+                # Driver code
+                lst = dict1.values()
+                lst2 = extractDigits(lst)
+                logger.debug(lst2)
+                Dict_dataframe = dict(zip(res, lst2))
+                Tx_MultiEval_Res = {}
+                for key, v in Dict_dataframe.items():
+                    if key == '18_TXpower' or key == '4_EVM_RMShigh' or key == '15_IQoffset' or key =='16_FreqError':
+                        Tx_MultiEval_Res[key] = v
+                logger.debug("multivaluation result is ",Tx_MultiEval_Res)
+
+                Tx_multi_avg_result = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:AVERage?")
+                logger.debug("Tx multievaluation average:{0}".format(Tx_multi_avg_result))
+                Tx_multi_extreme_result = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:EXTReme?")
+                logger.debug("Tx multievaluation extreme:{0}".format(Tx_multi_extreme_result))
+
+            logger.debug(132 * '_')
             fsw.write("SENS:SWE:MODE LIST")
             logger.info('{0}'.format(132 * '-'))
             logger.info('SCPI commands for FSW')
@@ -1316,20 +1350,6 @@ while row_count < int(sys.argv[3]): # stop variant
             time.sleep(30)
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
-
-            """
-            #PreAmplifire
-            fsw.write("SENS:LIST:RANG1:INP:GAIN:STAT OFF")
-            fsw.write("SENS:LIST:RANG2:INP:GAIN:STAT OFF")
-            fsw.write("SENS:LIST:RANG3:INP:GAIN:STAT OFF")
-            fsw.write("SENS:LIST:RANG4:INP:GAIN:STAT OFF")
-
-            #fsw.write("SENS:LIST:RANG1:INP:GAIN:STAT 15")
-            #fsw.write("SENS:LIST:RANG2:INP:GAIN:STAT 15")
-            #fsw.write("SENS:LIST:RANG3:INP:GAIN:STAT 15")
-            #fsw.write("SENS:LIST:RANG4:INP:GAIN:STAT 15")
-            """
-
             # Frequency start and stop
             rbw_count = 1
             for (strt, stp) in zip(freq_start, freq_stop):
@@ -1358,7 +1378,6 @@ while row_count < int(sys.argv[3]): # stop variant
                 fsw.write("SENS:LIST:RANG{0}:SWE:TIME {1}".format(rbw_count, sweep_time))
                 rbw_count = rbw_count + 1
             logger.debug(132 * '_')
-
             logger.debug(132 * '_')
             # Ref_level and atten_ RF
             logger.debug(132 * '_')
@@ -1367,16 +1386,12 @@ while row_count < int(sys.argv[3]): # stop variant
                 fsw.write("SENS:LIST:RANG{0}:INP:ATT {1}".format(count, att_rf))
                 fsw.write("SENS:LIST:RANG{0}:TRAN {1}".format(count, transducer))
                 count = count + 1
-
             #SWEEP POINTS
             count = 1
             for p in sweep_point_value:
                fsw.write("SENS:LIST:RANG{0}:POIN {1}".format(count, p))
                count = count + 1
-
             logger.debug(132 * '_')
-
-
             #limit powe_
             count = 1
             for i in limit:
@@ -1402,9 +1417,7 @@ while row_count < int(sys.argv[3]): # stop variant
             # when it returns, at that time length of list_freq ==1
             logger.debug(len(list_of_Freq))
             logger.debug(list_of_Freq)
-            # only one value values
-
-
+            # FSW instrument screeshot
 
             fsw.write("FORM:DEXP:FORM CSV")
             fsw.write("FORM:DEXP:DSEP POIN")
@@ -1676,58 +1689,20 @@ while row_count < int(sys.argv[3]): # stop variant
 
         # End Init FSW
 
+        # Tx multievaluation results
+        df = pd.DataFrame(Tx_MultiEval_Res)
+        timestr = time.strftime("%Y%m%d-%H%M%S")
+        # saving the dataframe
+        logger.debug(132 * '_')
+        logger.debug(mydir_d)
+        logger.debug(132 * '_')
+        # logger.debug(df)
+        df.to_csv('{3}\\cmw_output_{0}_{1}_{2}.csv'.format(TEST_BAND, TEST_BW, timestr, mydir_d),mode='a')
 
-            """
-           # Set Dedicated Bearer ID to 6(ims), profile Voice
-            cmw.write('PREPare:LTE:SIGN:CONN:DEDBearer "6 (ims)", VOICE, 1, 65535')
-            # Connect Dedicated Bearer
-            cmw.write('CALL:LTE:SIGN:PSWitched:ACTion CONNect')
-            # Query Dedicated Bearer
-            buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
-            while not "(->6, Voice)" in buffin:
-                buffin = cmw.ask("CATalog:LTE:SIGN:CONNection:DEDBearer?")[0]
-                time.sleep(0.5)
-            logger.info('Dedicated Bearer Voice connected')
-            logger.debug("PASSED")
-
-            # Initiate VoLTE call to UE:
-            cmw.write("CONFigure:DATA:CONTrol:IMS2:VIRTualsub1:MTCall:CALL")
-            time.sleep(2)
-            buffin = cmw.ask("SENSe:DATA:CONTrol:IMS2:EVENts:LAST?")
-            if 'RING' in buffin:
-                logger.info('VoLTE call to UE initiated')
-            else:
-                pass
-
-            # Answer call in UE
-            device.shell("input keyevent 5")
-            logger.info('UE device answering incoming call from CMW')
-            time.sleep(2)
-
-            buffin = cmw.ask("SENSe:DATA:CONTrol:IMS2:EVENts:LAST?")
-            if 'EST' in buffin:
-                logger.info('VoLTE call established')
-                result = 'PASS'
-            else:
-                result = 'FAIL'
-                #pass
-
-            time.sleep(5)
-
-            # Terminate call in UE
-            device.shell("input keyevent 6")
-            logger.info('UE device terminating call from CMW')
-            #
-            #device.shell("reboot")
-            time.sleep(2.0)
-            #write Summary  pass/fail with combination of input parameters
-
-        logger.debug("PASSED")
-        """
 
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
-        logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  \t\t\t {6} ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE, summary ))
+        logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE ))
         # socket class
         """"
         freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3], Meas[0][4]]
@@ -1744,8 +1719,9 @@ while row_count < int(sys.argv[3]): # stop variant
             range4_msmt = str(Meas[0][3]/1000000) + '/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
             lte_tx_result = {"Build_info": [Build_info], 'band': [TEST_BAND], 'BandWidth': [TEST_BW],
                              'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB],
-                             '@power': [Power_level_TYPE], "Rang3//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range3_msmt, "Rang4//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range4_msmt,
+                             '@power': [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_MultiEval_Res], "Rang3//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range3_msmt, "Rang4//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range4_msmt,
                              'Summary': [summary]}
+
 
         output = pd.DataFrame(lte_tx_result)
         #now_re = datetime.(now)
