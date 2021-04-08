@@ -39,8 +39,26 @@ mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0
 os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
-
+"""
 #Creating directory for results
+# if dest_(LTE_TX_Band13_max) == found 
+#       util :  shutil. move  ( move to different directory)
+#       nd create it sh
+        dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
+    #os.makedir(dest)
+    dest_d = dest.replace('\\', '\\\\')
+    else :
+    dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
+    #os.makedir(dest)
+    dest_d = dest.replace('\\', '\\\\'
+        
+"""
+
+
+
+
+
+
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
 #os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
@@ -1334,11 +1352,48 @@ while row_count < int(sys.argv[3]): # stop variant
                     if key == '18_TXpower' or key == '4_EVM_RMShigh' or key == '15_IQoffset' or key =='16_FreqError':
                         Tx_MultiEval_Res[key] = v
                 logger.debug("multivaluation result is ",Tx_MultiEval_Res)
+                logger.debug(132 * '_')
+                logger.debug(132 * '_')
+                logger.debug("DUT TX power is : {0}".format(Tx_MultiEval_Res.get("18_TXpower")))
+                logger.debug(132 * '_')
+                logger.info('{0}'.format(132 * '-'))
 
                 Tx_multi_avg_result = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:AVERage?")
+                res = ['1_Reliability', '2_OutOfTol', '3_EVM_RMSlow', '4_EVM_RMShigh', '5_EVMpeakLow', '6_EVMpeakHigh',
+                       '7_MErr_RMSlow', '8_MErr_RMShigh', '9_MErrPeakLow', '10_MErrPeakHigh', '11_PErr_RMSlow',
+                       '12_PErr_RMSh', '13_PErrPeakLow', '14_PErrPeakHigh', '15_IQoffset', '16_FreqError',
+                       '17_TimingError', '18_TXpower', '19_PeakPower', '20_RBpower', '21_EVM_DMRSl', '22_EVM_DMRSh',
+                       '23_MErr_DMRSl', '24_MErr_DMRSh', '25_PErr_DMRS', '26_PErr_DMRSh', '27_GainImbal',
+                       '28_QuadError', '29_EVM_SRS']
+
+                for i_meas, meas in enumerate(Tx_multi_avg_result):
+                    if 'E+' in meas or 'E-' in meas:
+                        Tx_multi_avg_result[i_meas] = '{0:8.3f}'.format(float(meas))
+                    logger.debug('{0}:{1:>8}'.format(res[i_meas], Tx_multi_avg_result[i_meas]))
+
                 logger.debug("Tx multievaluation average:{0}".format(Tx_multi_avg_result))
                 Tx_multi_extreme_result = cmw.ask("FETCh:LTE:MEAS:MEValuation:MODulation:EXTReme?")
+                res1 = ['1_Reliability','2_OutOfTol','3_EVM_RMSlow','4_EVM_RMShigh','5_EVMpeakLow','6_EVMpeakHigh','7_MErr_RMSlow','8_MErr_RMShigh','9_MErrPeakLow','10_MErrPeakHigh','11_PErr_RMSlow','12_PErr_RMSh','13_PErrPeakLow','14_PErrPeakHigh','15_IQoffset','16_FreqError','17_TimingError','18_TXpowerMin','19_TXpowerMax','20_PeakPowerMin','21_PeakPowerMax','22_RBpowerMin','23_RBpowerMax','24_EVM_DMRSl','25_EVM_DMRSh','26_MErr_DMRSl','27_MErr_DMRSh','28_PErr_DMRS','29_PErr_DMRSh','30_GainImbal','31_QuadError','32_EVM_SRS']
+
+                for i_meas, meas in enumerate(Tx_multi_extreme_result):
+                    if 'E+' in meas or 'E-' in meas:
+                        Tx_multi_extreme_result[i_meas] = '{0:8.3f}'.format(float(meas))
+                    logger.debug('{0}:{1:>8}'.format(res1[i_meas], Tx_multi_extreme_result[i_meas]))
                 logger.debug("Tx multievaluation extreme:{0}".format(Tx_multi_extreme_result))
+                """
+                Tx_multi_SDEViation_result = cmw.read("READ:LTE:MEAS<i>:MEValuation:MODulation:SDEViation?")
+                res = ['1_Reliability', '2_OutOfTol', '3_EVM_RMSlow', '4_EVM_RMShigh', '5_EVMpeakLow', '6_EVMpeakHigh',
+                       '7_MErr_RMSlow', '8_MErr_RMShigh', '9_MErrPeakLow', '10_MErrPeakHigh', '11_PErr_RMSlow',
+                       '12_PErr_RMSh', '13_PErrPeakLow', '14_PErrPeakHigh', '15_IQoffset', '16_FreqError',
+                       '17_TimingError', '18_TXpower', '19_PeakPower', '20_RBpower', '21_EVM_DMRSl', '22_EVM_DMRSh',
+                       '23_MErr_DMRSl', '24_MErr_DMRSh', '25_PErr_DMRS', '26_PErr_DMRSh', '27_GainImbal',
+                       '28_QuadError', '29_EVM_SRS']
+                for i_meas, meas in enumerate(Tx_multi_SDEViation_result):
+                    if 'E+' in meas or 'E-' in meas:
+                        Tx_multi_SDEViation_result[i_meas] = '{0:8.3f}'.format(float(meas))
+                    logger.debug('{0}:{1:>8}'.format(res[i_meas], Tx_multi_SDEViation_result[i_meas]))
+                logger.debug("Tx_multi_SDEViation_result:{0}".format(Tx_multi_SDEViation_result))
+                """
 
             logger.debug(132 * '_')
             fsw.write("SENS:SWE:MODE LIST")
@@ -1650,7 +1705,6 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
 
                 logger.debug(132 * '-')
-
                 # writing to file Fsw measuremnt
 
                 ranges = [1, 2]
@@ -1706,11 +1760,11 @@ while row_count < int(sys.argv[3]): # stop variant
         else:
             range3_msmt = str(Meas[0][2]/1000000) + '/ ' + str(Meas[1][2]) + '/' + str(Meas[2][2])
             range4_msmt = str(Meas[0][3]/1000000) + '/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
+            Tx_power_Res = str(Tx_MultiEval_Res.get("18_TXpower"))+ '/' + str(Tx_MultiEval_Res.get("4_EVM_RMShigh")) + '/' + str(Tx_MultiEval_Res.get("15_IQoffset")) + '/'+ str(Tx_MultiEval_Res.get("16_FreqError"))
             lte_tx_result = {"Build_info": [Build_info], 'band': [TEST_BAND], 'BandWidth': [TEST_BW],
                              'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB],
-                             '@power': [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_MultiEval_Res], "Rang3//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range3_msmt, "Rang4//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range4_msmt,
+                             '@power': [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_power_Res], "Rang3//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range3_msmt, "Rang4//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range4_msmt,
                              'Summary': [summary]}
-
 
         output = pd.DataFrame(lte_tx_result)
         #now_re = datetime.(now)
