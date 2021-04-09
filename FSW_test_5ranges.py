@@ -53,14 +53,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
     dest_d = dest.replace('\\', '\\\\'
         
 """
-
-
-
-
-
-
 dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
-#os.makedir(dest)
 dest_d = dest.replace('\\', '\\\\')
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
@@ -73,8 +66,6 @@ logger.addHandler(fh)
 
 total_bands = ['Band2', 'Band4', 'Band5', 'Band12', 'Band13', 'Band66']
 # to pick min/max power input file from ctf command ine
-
-
 if sys.argv[4] == 'max' or sys.argv[4] == 'MAX':
     power = 'Band2MaxPowerInput1_FrequencySweepRanges.xlsx'
     logger.debug("TEST is based on 3gpp MAX power Value -23dbm")
@@ -116,18 +107,18 @@ while row_count < int(sys.argv[3]): # stop variant
     freq_start_r3 = int(sheet.cell_value(row_count, 9))
     freq_start_r4 = int(sheet.cell_value(row_count, 10))
     freq_start_r5 = int(sheet.cell_value(row_count, 11))
-
     freq_stop_r1 = int(sheet.cell_value(row_count, 12))
     freq_stop_r2 = int(sheet.cell_value(row_count, 13))
     freq_stop_r3 = int(sheet.cell_value(row_count, 14))
     freq_stop_r4 = int(sheet.cell_value(row_count, 15))
     freq_stop_r5 = int(sheet.cell_value(row_count, 16))
+    UL_FREQUENCY = float(sheet.cell_value(row_count, 17))
     ul_att = float(sheet.cell_value(row_count, 18))
     dl_att = float(sheet.cell_value(row_count, 19))
-
-
     freq_start = [freq_start_r1, freq_start_r2, freq_start_r3, freq_start_r4, freq_start_r5]
     freq_stop = [freq_stop_r1, freq_stop_r2, freq_stop_r3,freq_stop_r4, freq_stop_r5]
+
+
 
 
     # set log level
@@ -407,16 +398,6 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            #self.ul_att = 25.0
-            #self.dl_att = 25.0
-            #self.imsi = '310260123456789'
-            #self.band = 4
-            #self.bw = 5
-
-            #self.nrb = 50
-            #self.tx_close_loop_power = 0.0
-            #self.rs_epre = -85.0
-            #self.apn = 'fast.t-mobile.com'
             self.qci = 5
             self.rb_d = {1.4: 6, 3: 15, 5: 25, 10: 50, 15: 75, 20: 100}
             self.bw_d = {2: [1.4, 3, 5, 10, 15, 20],
@@ -439,9 +420,6 @@ while row_count < int(sys.argv[3]): # stop variant
             self.sua = 1
             self.rf_port = "RF1C"
             self.converter = 1
-            #self.ul_att = 0.0
-            #self.dl_att = 0.0
-            #self.imsi = '0010010123456063'
             self.opc_key = "00000000000000000000000000000000"
             self.secret_key = "000102030405060708090A0B0C0D0E0F"
             self.milenage = False
@@ -449,7 +427,6 @@ while row_count < int(sys.argv[3]): # stop variant
             self.tx_close_loop_power = Power_level_TYPE
             if TEST_CH_TYPE == 'low' or TEST_CH_TYPE == 'mid' or TEST_CH_TYPE == 'high' :
                 self.chanel_type = TEST_CH_TYPE
-                #logger.debug(self.chanel_type)
             else :
                 logger.debug("CHOOSE the low or mid or high ")
             # Calculating the channel values:
@@ -464,8 +441,6 @@ while row_count < int(sys.argv[3]): # stop variant
             self.dl_freq = TEST_FREQ_DL
             self.duplex_freq = self.band_d[self.band][-1]
             self.ul_freq = self.dl_freq - self.duplex_freq
-            #self.rs_epre = -85.0
-            #self.dl_total_power = -57.2
             logger.debug('print band: {0}'.format(self.band))
 
     dl_channel = c_lte().dl_chan
@@ -605,12 +580,6 @@ while row_count < int(sys.argv[3]): # stop variant
                 if 'converter' in data['lte']:
                     lte.converter = data['lte']['converter']
 
-                #if 'dl_att' in data['lte']:
-                #   lte.dl_att = data['lte']['dl_att']
-
-                #if 'ul_att' in data['lte']:
-                    #lte.dl_att = data['lte']['ul_att']
-                logger.debug(132 * '_')
                 if 'band' in data['lte']:
                     lte.band = data['lte']['band']
 
@@ -691,18 +660,16 @@ while row_count < int(sys.argv[3]): # stop variant
             # set CMW display
             logger.info('{0}'.format(132 * '-'))
 
-            #cmw.write("CALL:LTE:SIGN:PSWitched:ACTion DETach")
-            #time.sleep(5)
             cmw.write('SYST:DISP:UPD ON')
 
-            #if loop_rst == 1:
+
             logger.info('{0}'.format(132 * '-'))
             logger.info('RESET CMW')
             cmw.timeout = 1080.0
             cmw.write("*CLS")
             cmw.write("SYST:PRES:ALL")
             cmw.ask("*OPC?")
-            #cmw.timeout = 10.0
+
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -764,8 +731,8 @@ while row_count < int(sys.argv[3]): # stop variant
 
             else:
                 DAU_PRESENT = False
-                logger.debug('Error: VoLTE call requires DAU option CMW-B450 ')
-                raise ValueError('VoLTE call requires DAU option CMW-B450')
+                logger.debug('Error: LTE call requires DAU option CMW-B450 ')
+                raise ValueError('LTE call requires DAU option CMW-B450')
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -908,11 +875,9 @@ while row_count < int(sys.argv[3]): # stop variant
                 cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:FORCemocall OFF")
                 cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:BEARer OFF")
                 cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:ADCodec:TYPE WIDeband")
-                # cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:TYPE NARR")
                 cmw.write('CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:ALIGnment BANDwidtheff')
-                # cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:ALIGnment OCTetaligned")
                 cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:CODec3:ENABle ON")
-                # cmw.write("CONF:DATA:CONT:IMS2:VIRTualsub1:AMR:CODec8:ENABle ON")
+
             else :
                 logger.debug(" with  not Turning off the LTE signalling, DAU, Again ")
 
@@ -1352,6 +1317,11 @@ while row_count < int(sys.argv[3]): # stop variant
                     if key == '18_TXpower' or key == '4_EVM_RMShigh' or key == '15_IQoffset' or key =='16_FreqError':
                         Tx_MultiEval_Res[key] = v
                 logger.debug("multivaluation result is ",Tx_MultiEval_Res)
+               
+                DUTtxpower = Tx_MultiEval_Res['18_TXpower']
+
+
+
                 logger.debug(132 * '_')
                 logger.debug(132 * '_')
                 logger.debug("DUT TX power is : {0}".format(Tx_MultiEval_Res.get("18_TXpower")))
@@ -1402,7 +1372,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
             logger.debug("run the Transducer file before Measurement")
             fsw.write("MMEM:LOAD:TFAC 'C:\dummy_FSW_pathloss.csv'")
-            time.sleep(30)
+            time.sleep(0.5)
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
             # Frequency start and stop
@@ -1469,6 +1439,7 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.write("INIT:SPUR; *WAI")
             time.sleep(25)
             list_of_Freq = fsw.ask("TRAC:DATA? SPURIOUS")
+            time.sleep(25)
             # when it returns, at that time length of list_freq ==1
             logger.debug(len(list_of_Freq))
             logger.debug(list_of_Freq)
@@ -1528,30 +1499,27 @@ while row_count < int(sys.argv[3]): # stop variant
                 i = 0
                 while i < len(abs_fre) - 1:
                     if abs_fre[i] <= float(max):
-                        print("abs _power {0}".format(abs_fre[i]))
+                        logger.debug("abs _power {0}".format(abs_fre[i]))
                         verdict.extend(['PASS'])
-                        #print("for max values of 1 to3 ranges", verdict)
                     else:
-                        print("abs _power {0}".format(abs_fre[i]))
+                        logger.debug("abs _power {0}".format(abs_fre[i]))
                         verdict.extend(['FAIL'])
-                        #print("for max values of 1 to3 ranges", verdict)
                     i = i + 1
 
                 # range 4 value
                 if abs_fre[3] <= float(min) :
                     verdict.extend(['PASS'])
-                    print("abs _power {0}".format(abs_fre[3]))
-                    #print("for max values of 4th ranges", verdict)
+                    logger.debug("abs _power {0}".format(abs_fre[3]))
+
                 else:
                     verdict.extend(['FAIL'])
-                    #print("for max values of 4 ranges", verdict)
                 if abs_fre[4] <= float(min) :
                     verdict.extend(['PASS'])
-                    print("abs _power {0}".format(abs_fre[4]))
-                    #print("for max values of 4th ranges", verdict)
+                    logger.debug("abs _power {0}".format(abs_fre[4]))
                 else:
                     verdict.extend(['FAIL'])
-                    #print("for max values of 4 ranges", verdict)
+
+                # for max values of 5 ranges verdict
                 ranges = [1, 2, 3, 4, 5]
                 freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3],Meas[0][4] ]
                 abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3], Meas[1][4]]
@@ -1565,7 +1533,7 @@ while row_count < int(sys.argv[3]): # stop variant
                     margin.append(list1_i-list2_i)
                 #append each difference to list
                 logger.debug(margin)
-                #logger.debug("verdict list is : ", verdict)
+                #verdict list
                 logger.debug(Meas)
                 logger.debug(132 * '-')
                 logger.debug("Measurement Ranges for FSW spectrum analyzer")
@@ -1608,175 +1576,134 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(132 * '_')
                 df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir_d), index=False,
                           mode='a')
-                # logger.debug('\\mydir_d\\fsw_msmt_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr))
+
 
             elif len(list_of_Freq) == 6:
-
                 # Printing the Spurious emissions verdict
-
                 logger.debug(list_of_Freq)
-
                 n = 3
-
                 m = np.array(list_of_Freq)
-
                 y = m.astype(float)
-
                 z = y.tolist()
-
                 Meas_range = [z[i:i + n] for i in range(0, len(z), n)]
-
-
                 def Extract(Meas_range):
-
                     Freq = list(map(itemgetter(0), Meas_range))
-
                     Power_abs = list(map(itemgetter(1), Meas_range))
-
                     Limit_p = list(map(itemgetter(2), Meas_range))
-
                     return Freq, Power_abs, Limit_p
-
-
                 Meas = Extract(Meas_range)
-
                 min = -30.0
-
                 max = -36.0
                 verdict = []
                 if Meas[1][1] < float(min) and Meas[1][0] < float(max):
-
                     summary = 'PASS'
-
                 else:
-
                     summary = 'FAIL'
-
                 abs_fre = [Meas[1][0], Meas[1][1]]
-
                 logger.debug("abs power msew value are {0} {1}".format(Meas[1][0], Meas[1][1]))
-
                 # Measured values of ranges 1,2,3 should be less than -36 dbm
-
                 if Meas[1][0] < float(max):
-
                     verdict.extend['PASS']
-
                 else:
-
                     verdict.extend['FAIL']
-
                 if Meas[1][1] < float(min):
-
                     verdict.extend['PASS']
-
                 else:
-
                     verdict.extend['FAIL']
-
                 logger.debug(Meas)
-
                 logger.debug(132 * '-')
-
                 logger.debug("Measurement Ranges for FSW spectrum analyzer")
-
                 logger.debug(132 * '-')
-
                 logger.debug(" Range  |  Freq  kHZ| PowerAbs(-dbm) |  limit (-db) | Verdict  ")
-
                 logger.debug(
-
                     " Range1 | {0:.05f}     | {1:.02f} |  {2:.02f} |{3}  ".format(Meas[0][0] / 1000, Meas[1][0],
-
                                                                                   Meas[2][0],
-
                                                                                   verdict))
-
                 logger.debug(
-
                     " Range2 | {0:.05f}     | {1:.02f} |  {2:.02f}  |{3} ".format(Meas[0][1] / 1000, Meas[1][1],
-
                                                                                   Meas[2][1],
-
                                                                                   verdict))
-
                 logger.debug(132 * '-')
-
                 logger.debug(" Test Summary for Frequency Measurement for all ranges : {0}  ".format(summary))
-
                 logger.debug(132 * '-')
                 # writing to file Fsw measuremnt
-
                 ranges = [1, 2]
-
                 freq_ranges = [Meas[0][0], Meas[0][1]]
-
                 abs_power = [Meas[1][0], Meas[1][1]]
-
                 limit = [Meas[2][0], Meas[2][1]]
                 band_info = [TEST_BW, TEST_FREQ_DL]
-
                 # dictionary of lists
-
                 dict = {'Band': band_info,  'Range': ranges, 'RBW': rbw_in,
                         'frequency': freq_ranges, 'abs_power': abs_power, 'limit_pwr': limit}
-
                 df = pd.DataFrame(dict)
-
                 timestr = time.strftime("%Y%m%d-%H%M%S")
-
                 # saving the dataframe
-
                 logger.debug(132 * '_')
                 logger.debug(mydir_d)
                 logger.debug(132 * '_')
                 df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir_d),
                           index=False, mode='a')
-                # logger.debug('\\mydir_d\\fsw_msmt_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr))
-
 
             else :
                 logger.debug(" fsw intialization fail or either FSW spurious msmt  values are 1 or 0 ")
                 logger.debug("FSW scpi command fsw.ask(TRAC:DATA? SPURIOUS) returns either value 1  or 0 in msmt list ")
             logger.debug(132 * '_')
             logger.debug(132 * '_')
-
         # End Init FSW
-
         erreur = cmw.ask("SYST:ERR:ALL?")
         logger.debug("Band: 	\t Bandwidth : (MHz) \t	DL Frequency:  (MHz)	\tRB Allocation: 	\t RB Start: 	\t float(Power Level)       \t Channel type")
         logger.debug(" {0}	 \t\t  :{1} (MHz) \t\t	: {2} (MHz)\t	\t\t: {3}	   \t\t\t : {4}	\t\t\t  {5}  ".format(TEST_BAND, TEST_BW, TEST_FREQ_DL, TEST_RB, Start_RB, Power_level_TYPE ))
-        # socket class
-        """"
-        freq_ranges = [Meas[0][0], Meas[0][1], Meas[0][2], Meas[0][3], Meas[0][4]]
-        abs_power = [Meas[1][0], Meas[1][1], Meas[1][2], Meas[1][3], Meas[1][4]]
-        limit = [Meas[2][0], Meas[2][1], Meas[2][2], Meas[2][3], Meas[2][4]]
-        """
+        # Storing the output in json
+
         Build_info = "facebook/mos/mos:8.1.0/OPM1.171019.026/15771000000000000"
+        screenshot = ""
+        Margin_Range4 = margin[3]
+        Margin_Range5 = margin[4]
+        Margin_Range3 = margin[2]
+        # Margin_Range4 = margin[4]
         if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
             range4_msmt = str(Meas[0][3]/1000000) +'/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
+            range4_msmt_power = str(Meas[1][3])
+            range4_msmt_limit = str(Meas[2][3])
+            #range4_msmt_margin = abs(range4_msmt_power - range4_msmt_limit)
             range5_msmt = str(Meas[0][4]/1000000) + '/ ' + str(Meas[1][4]) + '/ ' + str(Meas[2][4])
-            lte_tx_result = {"Build_info":[Build_info],'band': [TEST_BAND], 'BandWidth':[TEST_BW], 'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB], '@power' : [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_MultiEval_Res],"Rang4/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range4_msmt, "Rang5/Freq_msmt(Mhz)/peak(db)/limt(dbm)":range5_msmt, 'Summary': [summary]}
+            range5_msmt_power = str(Meas[1][4])
+            range5_msmt_limit = str(Meas[2][4])
+            #range5_msmt_margin = abs(range5_msmt_power - range5_msmt_limit)
+            #margin [1,2,3,4,5]
+
+
+
+            lte_tx_result = {"UPLINK FREQUENCY": [UL_FREQUENCY], 'ChannelBW(MHz)': [TEST_BW],
+                             'UL RB Allocation': [TEST_RB], 'UL RB Start': [Start_RB], 'Tx Power(-db)': [DUTtxpower],
+                             'Spurious AbsPower Range4(-dbm)': [range4_msmt_power], 'Spurious Abslimit Range4(-db)': [range4_msmt_limit],
+                             'Spurious AbsPower Range5(-dbm)': [range5_msmt_power], 'Spurious Abslimit Range5(-db)': [range5_msmt_limit],'Margin Range4(-dbm)':[Margin_Range4],'Margin Range5(-dbm)':[Margin_Range5],
+                              'Screenshot': [screenshot]}
+
         else:
             range3_msmt = str(Meas[0][2]/1000000) + '/ ' + str(Meas[1][2]) + '/' + str(Meas[2][2])
+            range3_msmt_power = str(Meas[1][2])
+            range3_msmt_limit = str(Meas[2][2])
+
             range4_msmt = str(Meas[0][3]/1000000) + '/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
+            range4_msmt_power = str(Meas[1][3])
+            range4_msmt_limit = str(Meas[2][3])
+
+
+
             Tx_power_Res = str(Tx_MultiEval_Res.get("18_TXpower"))+ '/' + str(Tx_MultiEval_Res.get("4_EVM_RMShigh")) + '/' + str(Tx_MultiEval_Res.get("15_IQoffset")) + '/'+ str(Tx_MultiEval_Res.get("16_FreqError"))
-            lte_tx_result = {"Build_info": [Build_info], 'band': [TEST_BAND], 'BandWidth': [TEST_BW],
-                             'DL Frequency': [TEST_FREQ_DL], 'RB Allocation': [TEST_RB], 'RB Start': [Start_RB],
-                             '@power': [Power_level_TYPE],'Tx_Multievaluation//EVMRMS(%)/IQoffset(dBc)/FreqErr(HZ)/TXPOWER(dB)':[Tx_power_Res], "Rang3//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range3_msmt, "Rang4//Freq_msmt(Mhz)/peak(db)/limt(dbm)": range4_msmt,
-                             'Summary': [summary]}
+            lte_tx_result = {"UPLINK FREQUENCY":[UL_FREQUENCY], 'ChannelBW(MHz)': [TEST_BW],'UL RB Allocation': [TEST_RB],'UL RB Start': [Start_RB],'Tx Power(-db)':[DUTtxpower],
+                             'Spurious AbsPower Range3(-dbm)': [range3_msmt_power],'Spurious Abslimit Range3(-db)':[range3_msmt_limit],'Spurious AbsPower Range4(-dbm)':[range4_msmt_power],'Spurious Abslimit Range4(-db)':[range4_msmt_limit],'Margin Range3(-dbm)':[Margin_Range3],'Margin Range4(-dbm)':[Margin_Range4],'Screenshot':[screenshot]}
 
         output = pd.DataFrame(lte_tx_result)
-        #now_re = datetime.(now)
+
         timestr_cmw = time.strftime("%Y%m%d-%H%M%S")
-        #dt_re_string = now.strftime("%d_%m_%Y_%H_%M_%S")
         # saving the dataframe
         logger.debug(132 * '_')
         logger.debug(mydir_d)
         logger.debug(132 * '_')
         output.to_csv('{1}\\CMW_logsresult_{0}.csv'.format(timestr_cmw, mydir_d), index=False, mode='a')
-
-        #row_count = row_count + 1
+#
         """
         if erreur[0] != '0':
             raise ValueError(erreur)
@@ -1786,16 +1713,12 @@ while row_count < int(sys.argv[3]): # stop variant
         rm = pyvisa.ResourceManager()
         instr = rm.open_resource('TCPIP::192.168.0.219::INSTR')  # replace by your IP-address
         instr.timeout = 3000
-
         instr.write('INIT:CONT OFF')
-
         # truns on color printing
         instr.write('HCOP:DEV:COL ON')
-
         # select file format
         # (WMF | GDI | EWMF | BMP | PNG | JPEG | JPG | PDF | SVG | DOC | RTF)
         instr.write('HCOP:DEV:LANG PNG')
-        #rth.write_str("HCOP:LANG PNG")
 
         # set print to file
         instr.write('HCOP:DEST "MMEM"')
@@ -1804,36 +1727,23 @@ while row_count < int(sys.argv[3]): # stop variant
         logger.debug(132 * '_')
         filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw)# size of 18kb
         filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw, mydir_d)# no data
-
         # file path on instrument
         instr.write('MMEM:NAME "{}"'.format(filePathInstr))
-
         # create screenshot
         instr.write("HCOP:IMM")
-
         # ask for file data from instrument
         fileData = instr.query_binary_values('MMEM:DATA? "{}"'.format(filePathInstr), datatype='s')[0]
-        # print(type(fileData))
-        #time.sleep(20)
 
         rth.write_str(f"MMEM:NAME '{filePathInstr}'")
         rth.write_str_with_opc("HCOP:IMM")
         rth.read_file_from_instrument_to_pc(filePathInstr, filePathPc)
-
         print(instr.query('SYST:ERR?'))
-
         instr.close()
-
-
     # catch error
     except Exception as Err:
-
         logger.error(Err)
         logging.traceback.print_exc()
-
-
     finally:
-
         # close CMW class
         if cmw is not None:
             cmw.write('&GTL')
@@ -1842,7 +1752,6 @@ while row_count < int(sys.argv[3]): # stop variant
     row_count = row_count + 1
     logger.debug( "end of {0} th loop".format(int(row_count)))
 
-# end of While loop
 # Storing all csv file in to single file to conclude the results summary for all runs
 timestr_out = time.strftime("%Y%m%d")
 logger.debug(132*'_')
@@ -1859,7 +1768,6 @@ CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
-#df.to_json (r'{0}\\cmw_ctf_j.json'.format(mydir_d), orient='split' )
 
 FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
 fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
@@ -1867,18 +1775,15 @@ df_fsw = pd.concat((pd.read_csv(f, header=0 ) for f in fsw_csv_files))
 df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
 
 # converting csv file to json
-
 #moving csv files and json files to results_run folder
-#shutil.move(os.path.join(mydir_d, ), os.path.join(dest_d))
 shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
-
 
 # converting fsw verdict csv file to json
 df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
 df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
-#logger.debug(df_j)
+
 """
 This script:
 1. collects the test case csv filenames into a list
@@ -1892,8 +1797,6 @@ This script:
 Note: Remove any non test case csv files from directory before running to prevent conflict 
 or extraneous data from being included in the visualization.
 """
-
-
 
 class CtfVisualization:
     """Interface to create the visualization data json file from csv results files"""
