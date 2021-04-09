@@ -1264,11 +1264,11 @@ logger.debug(132 * '_')
 # defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\cmw_logsresult*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\cmw_*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
-CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
+CMW_verdict = 'cmw_verdict_{0}'.format(timestr_f)#_20210221-221813CMW_VERDICT
 #writing csv files
 df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
 #writing on to csv files content to json file
@@ -1287,9 +1287,9 @@ shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
 
 
 # converting fsw verdict csv file to json
-df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
+df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, CMW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
+df.to_json (r'{0}\\ctf_cmw.json'.format(mydir_d), orient='split')
 # printing the csv contents in run log .py for all variants
 #logger.debug(df_j)
 """
@@ -1323,7 +1323,7 @@ class CtfVisualization:
         # CTF create data blob
         ctf_json = CtfJsonData(name=self._name, path=self._path)
 
-        all_csv_files = glob(os.path.join(self._path, "FSW_verdict_*.csv"))
+        all_csv_files = glob(os.path.join(self._path, "cmw_output_*.csv"))
         for fn in all_csv_files:
             df = pd.read_csv(fn, sep=',', na_filter=False)
 

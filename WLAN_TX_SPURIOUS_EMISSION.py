@@ -1058,6 +1058,7 @@ try:
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:BTYPe NHTBursts')
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:RATE Q6M34')
                         cmw.write('TRIGger:WLAN:SIGN:RX:MACFrame:RREStriction ON')
+                        #cmw.write("TRIGger:WLAN:MEAS<i>:MEValuation:SOURce 'WLAN Sig1:RXFrameTrigger'")
                         cmw.write("TRIGger:WLAN:MEAS<i>:MEValuation:TOUT OFF")
 
 
@@ -1099,6 +1100,8 @@ try:
                             logger.debug('{0}:{1:>8}'.format(res[i_meas], buffin[i_meas]))
                             dict2 = {'{0}'.format(res[i_meas]): (buffin[i_meas])}
                             dict1.update(dict2)
+
+
 
                         logger.debug('Get TX WLAN TSM results')
                         buffin = cmw.ask('FETCh:WLAN:MEAS:MEValuation:TSMask:AVERage?')
@@ -1145,6 +1148,7 @@ try:
                                             '21_IQOffset': buffin[20], '22_DCPower': buffin[21],
                                             '23_GainImbalance': buffin[22], '24QuadError': buffin[23],
                                             '25_LTFPower': buffin[24], '26_DataPower': buffin[25]}
+                        df = pd.DataFrame(dict_fsw)
                         """
 
 

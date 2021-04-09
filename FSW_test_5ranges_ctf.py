@@ -1657,9 +1657,10 @@ while row_count < int(sys.argv[3]): # stop variant
 
         Build_info = "facebook/mos/mos:8.1.0/OPM1.171019.026/15771000000000000"
         screenshot = ""
+        Margin_Range3 = margin[2]
         Margin_Range4 = margin[3]
         Margin_Range5 = margin[4]
-        Margin_Range3 = margin[2]
+        
         # Margin_Range4 = margin[4]
         if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
             range4_msmt = str(Meas[0][3]/1000000) +'/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
