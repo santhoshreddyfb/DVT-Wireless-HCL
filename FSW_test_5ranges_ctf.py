@@ -1660,7 +1660,7 @@ while row_count < int(sys.argv[3]): # stop variant
         Margin_Range3 = margin[2]
         Margin_Range4 = margin[3]
         Margin_Range5 = margin[4]
-        
+
         # Margin_Range4 = margin[4]
         if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
             range4_msmt = str(Meas[0][3]/1000000) +'/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
@@ -1761,7 +1761,7 @@ logger.debug(132 * '_')
 #defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\CMW_*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\CMW_logsresult_*.csv".format(timestr_out, mydir_d))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
