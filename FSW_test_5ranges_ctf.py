@@ -36,7 +36,7 @@ logger.addHandler(sh)
 logger.setLevel(logging.DEBUG)
 # Making a directory For the Run
 mydir = os.path.join('{0}'.format(os.getcwd().split('D')[0]),"stability_run", '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
-#os.makedirs(mydir)
+os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 """
@@ -1535,7 +1535,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 margin = []
                 zip_object = zip(abs_power, margin_l)
                 for list1_j, list2_j in zip_object:
-                    margin_l.append(list1_j - list2_j)
+                    margin.append(list1_j - list2_j)
 
                 # append each difference to list
                 logger.debug(margin)
@@ -1582,7 +1582,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(132 * '_')
                 logger.debug(mydir_d)
                 logger.debug(132 * '_')
-                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir_d), index=False,
+                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir), index=False,
                           mode='a')
 
 
@@ -1649,7 +1649,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug(132 * '_')
                 logger.debug(mydir_d)
                 logger.debug(132 * '_')
-                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir_d),
+                df.to_csv('{3}\\fsw_logsresult_{0}_band{1}_{2}.csv'.format(TEST_BW, TEST_BAND, timestr, mydir),
                           index=False, mode='a')
 
             else :
@@ -1709,9 +1709,9 @@ while row_count < int(sys.argv[3]): # stop variant
         timestr_cmw = time.strftime("%Y%m%d-%H%M%S")
         # saving the dataframe
         logger.debug(132 * '_')
-        logger.debug(mydir_d)
+        logger.debug(mydir)
         logger.debug(132 * '_')
-        output.to_csv('{1}\\CMW_logsresult_{0}.csv'.format(timestr_cmw, mydir_d), index=False, mode='a')
+        output.to_csv('{1}\\CMW_logsresult_{0}.csv'.format(timestr_cmw, mydir), index=False, mode='a')
 #
         """
         if erreur[0] != '0':
@@ -1735,7 +1735,7 @@ while row_count < int(sys.argv[3]): # stop variant
         logger.debug(mydir_d)
         logger.debug(132 * '_')
         filePathInstr = r"/temp/spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw)# size of 18kb
-        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw, mydir_d)# no data
+        filePathPc = r"{3}\\spurious_emi{0}_{1}_{2}.png".format(TEST_BAND, TEST_BW, timestr_cmw, mydir)# no data
         # file path on instrument
         instr.write('MMEM:NAME "{}"'.format(filePathInstr))
         # create screenshot
@@ -1769,28 +1769,28 @@ logger.debug(132 * '_')
 #defining glob function to aggregate the CMW, FSW CSV files
 logger.debug(132 * '_')
 
-cmw_csv_files = glob("{1}\\CMW_logsresult_*.csv".format(timestr_out, mydir_d))
+cmw_csv_files = glob("{1}\\CMW_logsresult_*.csv".format(timestr_out, mydir))
 #creating pandas data frame dict for cmw csv files
 df = pd.concat((pd.read_csv(f, header = 0) for f in cmw_csv_files))
 timestr_f = time.strftime("%Y%m%d-%H%M%S")
 CMW_verdict = 'CMW_VERDICT_{0}'.format(timestr_f)#CMW_VERDICT_20210221-221813
 #writing csv files
-df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir_d), index=False)
+df.to_csv("{1}\\{0}.csv".format(CMW_verdict, mydir), index=False)
 #writing on to csv files content to json file
 
 FSW_verdict = 'FSW_VERDICT_{0}'.format(timestr_f)
-fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir_d))
+fsw_csv_files = glob("{1}\\fsw_*.csv".format(timestr_out, mydir))
 df_fsw = pd.concat((pd.read_csv(f, header=0 ) for f in fsw_csv_files))
-df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir_d), index=False)
+df_fsw.to_csv("{1}\\{0}.csv".format(FSW_verdict, mydir), index=False)
 
 # converting csv file to json
 #moving csv files and json files to results_run folder
-shutil.copytree(mydir_d, dest_d,dirs_exist_ok=True )
+shutil.copytree(mydir, dest_d,dirs_exist_ok=True )
 
 # converting fsw verdict csv file to json
-df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir_d, FSW_verdict))
+df_f = pd.read_csv (r'{0}\\{1}.csv'.format(mydir, FSW_verdict))
 #df_j.to_json (r'{0}\\ctf_j.json'.format(mydir_d))
-df.to_json (r'{0}\\ctf_fsw.json'.format(mydir_d), orient='split')
+df.to_json (r'{0}\\ctf_fsw.json'.format(mydir), orient='split')
 # printing the csv contents in run log .py for all variants
 
 """
