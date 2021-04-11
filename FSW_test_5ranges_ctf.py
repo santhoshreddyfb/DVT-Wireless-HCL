@@ -35,8 +35,8 @@ sh.setFormatter(logging.Formatter(logger_format))
 logger.addHandler(sh)
 
 # Making a directory For the Run
-mydir = os.path.join('{0}{1}'.format(os.getcwd().split('D')[0], "stability_run"), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
-#os.makedirs(mydir)
+mydir = os.path.join('{0}{1}'.format(os.getcwd().split('D')[0],"stability_run"), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
+os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 """
@@ -53,7 +53,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
     dest_d = dest.replace('\\', '\\\\'
         
 """
-dest = os.path.join('{0}{1}'.format(os.getcwd().split('D')[0], "stability_run"), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
+dest = os.path.join('{0}\\stability_run\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
 dest_d = dest.replace('\\', '\\\\')
 logger.debug("OUT put logs will be stored in {0}".format(dest_d))
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
@@ -1522,13 +1522,9 @@ while row_count < int(sys.argv[3]): # stop variant
                 band_info = [TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND]
                 DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']   
                 #initialization of result list
-                margin_1=[]
-                zip_object = zip(abs_power, limit)
-                for list1_i, list2_i in zip_object:
-                    margin_1.append(list1_i-list2_i)
-
+                ref_power = [-36, -36, -36, -30, -30]
                 margin = []
-                zip_object = zip(abs_power, margin_1)
+                zip_object = zip(abs_power, ref_power)
                 for list1_i, list2_i in zip_object:
                     margin.append(list1_i - list2_i)
 
