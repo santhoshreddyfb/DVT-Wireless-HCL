@@ -35,8 +35,8 @@ sh.setFormatter(logging.Formatter(logger_format))
 logger.addHandler(sh)
 
 # Making a directory For the Run
-mydir = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
-os.makedirs(mydir)
+mydir = os.path.join('{0}{1}'.format(os.getcwd().split('D')[0], "stability_run"), '{0}_{1}_{2}'.format(sys.argv[1], datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'), sys.argv[4],os.getcwd().split('D')[0]))
+#os.makedirs(mydir)
 mydir_d = mydir.replace('\\', '\\\\')
 logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 """
@@ -53,8 +53,9 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
     dest_d = dest.replace('\\', '\\\\'
         
 """
-dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
+dest = os.path.join('{0}{1}'.format(os.getcwd().split('D')[0], "stability_run"), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
 dest_d = dest.replace('\\', '\\\\')
+logger.debug("OUT put logs will be stored in {0}".format(dest_d))
 logfilename = mydir_d.replace('.py', '').replace('.PY', '')
 timestr_l = time.strftime("%Y%m%d-%H%M%S")
 logfilename = logfilename + '{0}.log'.format(timestr_l)
@@ -644,7 +645,7 @@ while row_count < int(sys.argv[3]): # stop variant
         workdir = os.getcwd()
         logger.info('{0}'.format(workdir))
         logger.info('{0}'.format(132 * '-'))
-        time.sleep(10)
+        #time.sleep(10)
         # Init CMW
         if 1:
             logger.info('{0}'.format(132 * '-'))
@@ -662,14 +663,14 @@ while row_count < int(sys.argv[3]): # stop variant
 
             cmw.write('SYST:DISP:UPD ON')
 
-
-            logger.info('{0}'.format(132 * '-'))
-            logger.info('RESET CMW')
-            cmw.timeout = 1080.0
-            cmw.write("*CLS")
-            cmw.write("SYST:PRES:ALL")
-            cmw.ask("*OPC?")
-
+            while loop_rst <2:
+                logger.info('{0}'.format(132 * '-'))
+                logger.info('RESET CMW')
+                cmw.timeout = 1080.0
+                cmw.write("*CLS")
+                cmw.write("SYST:PRES:ALL")
+                cmw.ask("*OPC?")
+                loop_rst = loop_rst + 1
 
             logger.info('{0}'.format(132 * '-'))
 
@@ -742,22 +743,19 @@ while row_count < int(sys.argv[3]): # stop variant
                 # End Init CMW
                 # Configure CMW LTE CELL CMW DAU IMS2 server and VoLTE subscriber
             if 1:
-
                 logger.info('{0}'.format(132 * '-'))
                 logger.info('LTE Cell - TURN LTE CELL OFF')
                 buffin = cmw.ask("SYST:SIGNaling:ALL:OFF;*OPC?")
 
-                TIMEOUT = 120.0
+                TIMEOUT = 45.0
                 tstart = time.time()
                 buffin = cmw.ask("SOUR:LTE:SIGN:CELL:STAT:ALL?")
                 while not (buffin[0] == "OFF" and buffin[1] == "ADJ"):
 
                     # wait 500 ms
                     time.sleep(0.5)
-
                     # query LTE CELL state
                     buffin = cmw.ask("SOURce:LTE:SIGN:CELL:STAT:ALL?")
-
                     # check TIMEOUT
                     if (time.time() - tstart) > TIMEOUT:
                         # x = win32api.MessageBox(0, "TIMEOUT occurs")
@@ -881,7 +879,6 @@ while row_count < int(sys.argv[3]): # stop variant
             else :
                 logger.debug(" with  not Turning off the LTE signalling, DAU, Again ")
 
-            loop_rst = loop_rst + 1
 
         # Configure LTE Signaling
         if 1:
@@ -1079,7 +1076,7 @@ while row_count < int(sys.argv[3]): # stop variant
             else:
                 cmw.write("CONF:LTE:SIGN:CONN:UDCH:DL {0},{1},QPSK,9".format(lte.nrb, pos))
                 cmw.write("CONF:LTE:SIGN:CONN:UDCH:UL {0},{1},QPSK,10".format(lte.nrb, pos))
-            time.sleep(5)
+            #time.sleep(5)
             logger.info('{0}'.format(132 * '-'))
 
             erreur = cmw.ask("SYST:ERR:ALL?")
@@ -1090,7 +1087,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
             # End Configure LTE CELL
         # *****************************************************************************
-        time.sleep(5)
+        #time.sleep(5)
         device.shell('settings put global airplane_mode_on 0')
         # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
         device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
@@ -1170,13 +1167,13 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.write("*RST")
             fsw.write("INIT:CONT OFF")
             fsw.write("SYST:PRES:ALL")
-            time.sleep(0.5)
+            time.sleep(0.3)
             fsw.write("SENSe:CORRection:TRANsducer:SELect 'dummy_FSW_pathloss'")
             fsw.write("SENSe:CORRection:TRANsducer:ON")
             fsw.write("SENSe:CORRection:TRANsducer:UNIT 'DB'")
             fsw.write("SENSe:CORRection:TRANsducer:COMMent 'Test Transducer'")
             fsw.write("SENSe:CORRection:TRANsducer:DATA 30e6,5, 13e9, 3")
-            time.sleep(10)
+            #time.sleep(10)
             fsw.write("INIT:CONT ON")
             fsw.write("INP:ATT:AUTO OFF")
             fsw.write("INP:ATT 40")
@@ -1190,7 +1187,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('TURN LTE CELL ON')
             cmw.write("SOUR:LTE:SIGN:CELL:STATe ON")
 
-            TIMEOUT = 120.0
+            TIMEOUT = 60.0
             tstart = time.time()
             buffin = cmw.ask("SOUR:LTE:SIGN:CELL:STAT:ALL?")
             while not (buffin[0] == 'ON' and buffin[1] == "ADJ"):
@@ -1205,7 +1202,7 @@ while row_count < int(sys.argv[3]): # stop variant
 
             logger.info('LTE CELL READY')
             logger.info('{0}'.format(132 * '-'))
-            time.sleep(30)
+            time.sleep(5)
             # Check Default Bearers
             TIMEOUT = 30
             # changed
@@ -1227,7 +1224,7 @@ while row_count < int(sys.argv[3]): # stop variant
                     device.shell('settings put global airplane_mode_on 1')
                     # NOTE: Some android versions require device.shell('su -c am broadcast -a android.intent.action.AIRPLANE_MODE')
                     device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
-                    time.sleep(2.0)
+                    time.sleep(1.0)
                     device.shell('settings put global airplane_mode_on 0')
                     device.shell('am broadcast -a android.intent.action.AIRPLANE_MODE')
                     time.sleep(2.0)
@@ -1242,12 +1239,10 @@ while row_count < int(sys.argv[3]): # stop variant
 
                         if rrc_state == 'CONN':
                             registered = True
-
-
                         else :
-                            time.sleep(1.0)
+                            #time.sleep(1.0)
                             device.shell('reboot')
-                            time.sleep(120)
+                            time.sleep(90)
                             device.shell('root')
 
 
@@ -1372,7 +1367,7 @@ while row_count < int(sys.argv[3]): # stop variant
             logger.info('{0}'.format(132 * '-'))
             logger.debug("run the Transducer file before Measurement")
             fsw.write("MMEM:LOAD:TFAC 'C:\dummy_FSW_pathloss.csv'")
-            time.sleep(0.5)
+            #time.sleep(0.5)
             fsw.write("INIT:CONT OFF")
             fsw.write("LIST:RANG:COUNt?")
             # Frequency start and stop
@@ -1437,9 +1432,9 @@ while row_count < int(sys.argv[3]): # stop variant
             fsw.result = fsw.ask("CALC:LIM1:FAIL?")
             logger.debug('result is: {0}'.format(fsw.result)) # this scpi
             fsw.write("INIT:SPUR; *WAI")
-            time.sleep(25)
+            #time.sleep(.5)
             list_of_Freq = fsw.ask("TRAC:DATA? SPURIOUS")
-            time.sleep(25)
+            time.sleep(10)
             # when it returns, at that time length of list_freq ==1
             logger.debug(len(list_of_Freq))
             logger.debug(list_of_Freq)
@@ -1527,10 +1522,16 @@ while row_count < int(sys.argv[3]): # stop variant
                 band_info = [TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND, TEST_BAND]
                 DL_freq = [TEST_FREQ_DL, TEST_CH_TYPE, TEST_BW, TEST_RB, 'next']   
                 #initialization of result list
-                margin=[]
+                margin_1=[]
                 zip_object = zip(abs_power, limit)
                 for list1_i, list2_i in zip_object:
-                    margin.append(list1_i-list2_i)
+                    margin_1.append(list1_i-list2_i)
+
+                margin = []
+                zip_object = zip(abs_power, margin_1)
+                for list1_i, list2_i in zip_object:
+                    margin.append(list1_i - list2_i)
+
                 #append each difference to list
                 logger.debug(margin)
                 #verdict list
