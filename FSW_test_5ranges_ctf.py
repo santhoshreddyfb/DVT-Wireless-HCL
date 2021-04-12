@@ -42,6 +42,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
 """
 #Creating directory for results
 # if dest_(LTE_TX_Band13_max) == found 
+
 #       util :  shutil. move  ( move to different directory)
 #       nd create it sh
         dest = os.path.join('{0}\\Logs_folder\\'.format(os.getcwd().split('D')[0]), 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
@@ -1316,7 +1317,7 @@ while row_count < int(sys.argv[3]): # stop variant
                 logger.debug("multivaluation result is ",Tx_MultiEval_Res)
                
                 DUTtxpower = Tx_MultiEval_Res['18_TXpower']
-
+                Tx_P = str(DUTtxpower[0])
 
 
                 logger.debug(132 * '_')
@@ -1672,37 +1673,43 @@ while row_count < int(sys.argv[3]): # stop variant
         # Margin_Range4 = margin[4]
         if TEST_BAND == 2 or TEST_BAND == 4 or TEST_BAND == 66:
             range4_msmt = str(Meas[0][3]/1000000) +'/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
+            range4_msmt_Peak_Frq = str(Meas[0][3]/1000000)
+
             range4_msmt_power = str(Meas[1][3])
             range4_msmt_limit = str(Meas[2][3])
             #range4_msmt_margin = abs(range4_msmt_power - range4_msmt_limit)
             range5_msmt = str(Meas[0][4]/1000000) + '/ ' + str(Meas[1][4]) + '/ ' + str(Meas[2][4])
             range5_msmt_power = str(Meas[1][4])
             range5_msmt_limit = str(Meas[2][4])
+            range5_msmt_Peak_Frq = str(Meas[0][4] / 1000000)
             #range5_msmt_margin = abs(range5_msmt_power - range5_msmt_limit)
             #margin [1,2,3,4,5]
 
 
 
             lte_tx_result = {"UPLINK FREQUENCY": [UL_FREQUENCY], 'ChannelBW(MHz)': [TEST_BW],
-                             'UL RB Allocation': [TEST_RB], 'UL RB Start': [Start_RB], 'Tx Power(-db)': [DUTtxpower],
-                             'Spurious AbsPower Range4(-dbm)': [range4_msmt_power], 'Spurious Abslimit Range4(-db)': [range4_msmt_limit],
+                             'UL RB Allocation': [TEST_RB], 'UL RB Start': [Start_RB], 'Tx Power(-db)': [Tx_P],'Spurious Peak Frq Range4':[range4_msmt_Peak_Frq],
+                             'Spurious AbsPower Range4(-dbm)': [range4_msmt_power], 'Spurious Abslimit Range4(-db)': [range4_msmt_limit],'Spurious Peak Frq Range5':[range5_msmt_Peak_Frq],
                              'Spurious AbsPower Range5(-dbm)': [range5_msmt_power], 'Spurious Abslimit Range5(-db)': [range5_msmt_limit],'Margin Range4(-dbm)':[Margin_Range4],'Margin Range5(-dbm)':[Margin_Range5],
                               'Screenshot': [screenshot]}
 
         else:
             range3_msmt = str(Meas[0][2]/1000000) + '/ ' + str(Meas[1][2]) + '/' + str(Meas[2][2])
+            range3_msmt_Peak_Frq = str(Meas[0][2] / 1000000)
+
             range3_msmt_power = str(Meas[1][2])
             range3_msmt_limit = str(Meas[2][2])
 
             range4_msmt = str(Meas[0][3]/1000000) + '/ ' + str(Meas[1][3]) + '/ ' + str(Meas[2][3])
             range4_msmt_power = str(Meas[1][3])
             range4_msmt_limit = str(Meas[2][3])
+            range4_msmt_Peak_Frq = str(Meas[0][3] / 1000000)
 
 
 
             Tx_power_Res = str(Tx_MultiEval_Res.get("18_TXpower"))+ '/' + str(Tx_MultiEval_Res.get("4_EVM_RMShigh")) + '/' + str(Tx_MultiEval_Res.get("15_IQoffset")) + '/'+ str(Tx_MultiEval_Res.get("16_FreqError"))
-            lte_tx_result = {"UPLINK FREQUENCY":[UL_FREQUENCY], 'ChannelBW(MHz)': [TEST_BW],'UL RB Allocation': [TEST_RB],'UL RB Start': [Start_RB],'Tx Power(-db)':[DUTtxpower],
-                             'Spurious AbsPower Range3(-dbm)': [range3_msmt_power],'Spurious Abslimit Range3(-db)':[range3_msmt_limit],'Spurious AbsPower Range4(-dbm)':[range4_msmt_power],'Spurious Abslimit Range4(-db)':[range4_msmt_limit],'Margin Range3(-dbm)':[Margin_Range3],'Margin Range4(-dbm)':[Margin_Range4],'Screenshot':[screenshot]}
+            lte_tx_result = {"UPLINK FREQUENCY":[UL_FREQUENCY], 'ChannelBW(MHz)': [TEST_BW],'UL RB Allocation': [TEST_RB],'UL RB Start': [Start_RB],'Tx Power(-db)':[Tx_P],'Spurious Peak Frq Range3':[range3_msmt_Peak_Frq],
+                             'Spurious AbsPower Range3(-dbm)': [range3_msmt_power],'Spurious Abslimit Range3(-db)':[range3_msmt_limit],'Spurious Peak Frq Range4':[range4_msmt_Peak_Frq],'Spurious AbsPower Range4(-dbm)':[range4_msmt_power],'Spurious Abslimit Range4(-db)':[range4_msmt_limit],'Margin Range3(-dbm)':[Margin_Range3],'Margin Range4(-dbm)':[Margin_Range4],'Screenshot':[screenshot]}
 
         output = pd.DataFrame(lte_tx_result)
 
