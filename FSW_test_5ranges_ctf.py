@@ -55,7 +55,7 @@ logger.debug("Result log folder created succesfully {0}".format(mydir_d))
         
 """
 #while os.path.exists("{0}\\stability_run\\LTE_TX_Band13_max".format(os.getcwd().split('D')[0])) ==
-dest = os.path.join('{0}'.format(os.getcwd().split('D')[0]), "stability_run", 'LTE_TX_{0}_{1}'.format(sys.argv[1], sys.argv[4],os.getcwd().split('D')[0]))
+dest = os.path.join('{0}'.format(os.getcwd().split('D')[0]), "stability_run", 'LTE_TX_{0}_{1}_{2}'.format(sys.argv[1], sys.argv[4], datetime.datetime.now().strftime('%H-%M-%S'), os.getcwd().split('D')[0]))
 #os.makedirs(dest)
 dest_d = dest.replace('\\', '\\\\')
 logger.debug("OUT put logs will be stored in {0}".format(dest_d))
